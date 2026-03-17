@@ -1,0 +1,30 @@
+Package: renalGeneticCEA
+Title: Cost-Effectiveness of Renal Genetic Testing Strategies in Chronic Kidney Disease
+Version: 0.2.0
+Authors@R: person("Zachary", "Sentell", email = "zachary.sentell@mail.mcgill.ca",
+    role = c("aut", "cre"))
+Description: Individual-level probabilistic microsimulation model evaluating the
+    cost-effectiveness of targeted gene panels, clinical exome sequencing, and a
+    reflex (panel-to-exome) strategy for adults with chronic kidney disease referred
+    to a specialized renal genetics clinic. Perspective: Quebec public payer (RAMQ).
+    Follows CHEERS 2022 reporting guidelines.
+License: MIT + file LICENSE
+URL: https://github.com/zacsentell/renal-genetic-testing-cea
+BugReports: https://github.com/zacsentell/renal-genetic-testing-cea/issues
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+Imports:
+    dplyr,
+    tidyr,
+    purrr,
+    readr,
+    readxl,
+    ggplot2,
+    ggrepel,
+    config,
+    here,
+    scales,
+    assertthat,
+    meta,
+    sensitivity

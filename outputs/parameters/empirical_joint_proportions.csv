@@ -1,0 +1,27 @@
+# Table 2. Empirical joint (Gene, Variant Class) proportions derived from weighted proband counts for multinomial sampling in the CEA model. Top 5 pairs per phenotype shown.
+Phenotype,Gene,Variant Class,Proportion,Inheritance,Note
+CKDu,COL4A5,SNV,8.1%,XL,NA
+CKDu,COL4A3,SNV,7.2%,AD,NA
+CKDu,COL4A3,INDEL,4.5%,AD,NA
+CKDu,COL4A4,SNV,3.6%,AD,NA
+CKDu,INF2,SNV,3.6%,AD,NA
+Cystic,PKD1,SNV,25.1%,AD,NA
+Cystic,PKD1,INDEL,17.8%,AD,NA
+Cystic,PKD2,SNV,12.5%,AD,NA
+Cystic,PKD1,SNV,12.0%,AD,Difficult Locus (Separate Model)
+Cystic,PKHD1,SNV,9.0%,AR,NA
+Glomerular,COL4A5,SNV,22.3%,XL,NA
+Glomerular,COL4A3,SNV,16.8%,AD,NA
+Glomerular,COL4A4,SNV,11.3%,AD,NA
+Glomerular,COL4A5,INDEL,8.0%,XL,NA
+Glomerular,NPHS2,INDEL,3.8%,AR,NA
+Tubulointerstitial,NPHP1,CNV,21.5%,AR,NA
+Tubulointerstitial,UMOD,SNV,10.8%,AD,NA
+Tubulointerstitial,MUC1,INDEL,7.7%,AD,Difficult Locus (Separate Model)
+Tubulointerstitial,MUC1,SNV,7.7%,AD,Difficult Locus (Separate Model)
+Tubulointerstitial,PAX2,SNV,4.6%,AD,NA
+Tubulopathies,SLC12A3,SNV,20.0%,AR,NA
+Tubulopathies,CLCN5,SNV,8.9%,XL,NA
+Tubulopathies,CLCNKB,SNV,6.7%,AR,NA
+Tubulopathies,SLC7A9,SNV,6.7%,AR,NA
+Tubulopathies,ATP6V1B1,INDEL,4.4%,AR,NA

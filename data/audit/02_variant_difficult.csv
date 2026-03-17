@@ -1,0 +1,85 @@
+pmid,patient_id,phenotype,gene,hgvs_c_dna,hgvs_protein,variant_type,variant_class,difficult_locus_flag,zygosity,inheritance_mode,test_modality,n_probands_with_variant,notes,weight,inheritance_clean
+40533884,GR0035,cystic,PKD1,c.-209-?_2853+?del,NA,large deletion,CNV,1,het,AD,Targeted_panel,1,Affects promoter/exon 1,1,AD
+40533884,MO-0187,cystic,PKD1,c.(8016+1_8017-1)_(11016+1_11017-1)del,NA,large deletion,CNV,1,het,AD,Targeted_panel,1,Genomic coordinates imply multi-exon deletion,1,AD
+40533884,MA-0031,cystic,PKD1,c.10026del,p.Leu3343Serfs*54,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0143,cystic,PKD1,c.10035del,p.Met3346Cysfs*51,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0041,cystic,PKD1,c.10038del,p.Met3346Ilefs*51,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F334,cystic,PKD1,c.1004_1019del,p.Ala335fs,Frameshift Deletion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,WES_Case_1,cystic,PKD1,c.10167+25_10167+43del,NA,intronic/splice,INDEL,1,unknown,AD,Exome,1,Diagnosed via WES in negative NES panel cohort,1,AD
+40533884,GR0030; GR0061,cystic,PKD1,c.10441delG,p.Val3481Serfs*46,frameshift,INDEL,1,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0019,cystic,PKD1,c.10527_10528delGA,p.Glu3509Aspfs*117,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0060,cystic,PKD1,c.10686C>A,p.Ser3562Arg,missense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0031,cystic,PKD1,c.10725_10726dup,p.Val3576Glyfs*10,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P081,cystic,PKD1,c.10810G>A,p.(Glu3604Lys),missense,SNV,1,het,AD,Exome,1,NA,1,AD
+40533884,GR0062,cystic,PKD1,c.10822-2A>G,NA,canonical splice,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F603,cystic,PKD1,c.10942C>A,p.Pro3648Thr,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F528,cystic,PKD1,c.10946C>A,p.Pro3649His,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+38972501,67,cystic,PKD1,c.10951G>A,NP_001009944.2:p.Gly3651Ser,Nonsynonymous,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0067,cystic,PKD1,c.10952G>C,p.Gly3651Ala,missense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F393,cystic,PKD1,c.11017-10C>A,p.?,Splice region (Intronic),SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0054,cystic,PKD1,c.11112_11119dupCATCAAGC,p.Gln3707Profs*122,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F67,cystic,PKD1,c.11119C>T,p.Gln3707Ter,Stopgain,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0185; PR-0015,cystic,PKD1,c.11156G>A,p.Arg3719Gln,missense,SNV,1,het,AD,Targeted_panel,2,NA,2,AD
+40533884,PR-0001,cystic,PKD1,c.11172G>A,p.Trp3724*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0002,cystic,PKD1,c.11215C>T,p.Gln3739*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F115; F20,cystic,PKD1,c.11249G>A,p.Arg3750Gln,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,2,NA,2,AD
+38972501,52; 170; 491,CKDu,MUC1,NM_001204286.1:c.428dupC,NP_001191215.1:p.Ala144Serfs*86,Intronic,INDEL,2,het,AD,Targeted_panel,3,MUC1 VNTR frameshift,3,AD
+40533884,PR-0011,cystic,PKD1,c.11249G>A,p.Arg3750Gln,missense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+38972501,136,CKDu,MUC1,NM_001204286.1:c.54_55insT,NP_001191215.1:p.Thr19Tyrfs*7,Frame Shift,INDEL,2,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P182,cystic,PKD1,c.11258G>A,p.(Arg3753Gln),missense,SNV,1,het,AD,Exome,1,NA,1,AD
+38972501,670,CKDu,MUC1,NM_001204286.1:c.888G>A,NP_001191215.1:p.Trp296*,Nonsense,SNV,2,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F350; F859; F309; F87; F101,tubulointerstitial,MUC1,NA,NA,NA,SNV,2,het,AD,Targeted_panel,5,Diagnosed by Urinary/Biopsy MUC1fs protein presence; F309/F101 a priori uCKD; F87 a priori GN,5,AD
+35099770,F107; F860; F386; F106; D1,tubulointerstitial,MUC1,c.ins(3n+1),p.MUC1fs,Frameshift,INDEL,2,het,AD,Targeted_panel,5,VNTR insertion,5,AD
+35099770,F615,cystic,PKD1,c.11258G>A,p.Arg3753Gln,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,GR0022; GR0043,cystic,PKD1,c.11294_11313del20,p.Pro3765Argfs*44,frameshift,INDEL,1,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F376,cystic,PKD1,c.11312_11313insTC,p.Ser3771fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0315,cystic,PKD1,c.11340_11346dup,p.Val3783Leufs*35,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F649; F623; F170,cystic,PKD1,c.11343C>G,p.Tyr3781Ter,Stopgain,SNV,1,het,AD,Targeted_panel,3,NA,3,AD
+35099770,F463,cystic,PKD1,c.11395_11396insGGGACGTGGGCCTATTCAG,p.Ala3799fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F366,cystic,PKD1,c.11411+1G>C,p.?,Splicing,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0005,cystic,PKD1,c.11441_11442del,p.Tyr3814*,nonsense,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0088,cystic,PKD1,c.1144G>C,p.Gly382Arg,missense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F367,cystic,PKD1,c.11454delC,p.Gly3818fs,Frameshift Deletion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#19,CKDu,PKD1,c.1145delG,p.(Gly382Valfs*83),frameshift,INDEL,1,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+35099770,F333,cystic,PKD1,c.11525G<A,p.Trp3842Ter,Stopgain,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F361,cystic,PKD1,c.11538-2A>T,p.?,Splicing,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F690,cystic,PKD1,c.11563_11564del,p.Thr3855fs,Frameshift Deletion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#20,CKDu,PKD1,c.11614G>A,p.(Glu3872Lys),missense,SNV,1,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+35099770,F337,cystic,PKD1,c.11614G>C,p.Glu3872Gln,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+32939031,P017,cystic,PKD1,c.11693C>A,p.(Ser3898*),nonsense,SNV,1,het,AD,Exome,1,NA,1,AD
+35099770,F401,cystic,PKD1,c.11699_11700insCTCTCGCTGCC,p.Pro3900fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F396,cystic,PKD1,c.11713dupG,p.Val3905Glyfs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F357,cystic,PKD1,c.1171dupA,p.Ile391fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F340,cystic,PKD1,c.11752G>T,p.Glu3918Ter,Stopgain,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0068,cystic,PKD1,c.11871dupT,p.Ala3958Cysfs*3,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F616,cystic,PKD1,c.11984dupT,p.Leu3995fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0012,cystic,PKD1,c.12010C>T,p.Gln4004*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F531,cystic,PKD1,c.12039_12040insAC,p.Val4014fs,Frameshift Insertion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P123,cystic,PKD1,c.12061C>T,p.(Arg4021*),nonsense,SNV,1,het,AD,Exome,1,NA,1,AD
+40533884,GR0023; MO-0437,cystic,PKD1,c.12061C>T,p.Arg4021*,nonsense,SNV,1,het,AD,Targeted_panel,2,NA,2,AD
+40533884,PR-0010,cystic,PKD1,c.12112del,p.Val4038*,nonsense,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F638,cystic,PKD1,c.12139-2A>C,p.?,Splicing,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0075,cystic,PKD1,c.12167G>A,p.Trp4056*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0074,cystic,PKD1,c.12178C>T,p.Gln4060*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0017,cystic,PKD1,c.12184_12185del,p.Leu4062Valfs*94,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#29,cystic,PKD1,c.12324G>A,p.(Trp4108*),nonsense,SNV,1,het,AD,Exome,1,NA,1,AD
+35099770,F70,cystic,PKD1,c.12386T>G,p.Met4129Arg,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+32939031,P151,cystic,PKD1,c.12444+1G>A,p.(Phe4149Metfs*8),splice site,SNV,1,het,AD,Exome,1,NA,1,AD
+35099770,TF65,cystic,PKD1,c.12445-1G>A,p.?,Splicing,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0016,cystic,PKD1,c.12445-1G>T,NA,canonical splice,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0129,cystic,PKD1,c.12445-34_12445-10del,NA,splice region,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F787,cystic,PKD1,c.12448C>T,p.Arg4150Cys,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0362,cystic,PKD1,c.12453_12454del,p.His4151Glnfs*5,frameshift,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F348,cystic,PKD1,c.12465T>G,p.Phe4155Leu,Non-synonymous SNV,SNV,1,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,GR0079,cystic,PKD1,c.12589_12590delins19,p.Leu4197Met,indel,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F5,cystic,PKD1,c.12604_12631del,p.Gly4202fs,Frameshift Deletion,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F674; F353,cystic,PKD1,c.12673C>T,p.Gln4225Ter,Stopgain,SNV,1,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0119,cystic,PKD1,c.12673C>T,p.Gln4225*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F624,cystic,PKD1,c.12682C>T,p.Arg4228Ter,Stopgain,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0054,cystic,PKD1,c.12683G>C,p.Arg4228Pro,missense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0361,cystic,PKD1,c.12691C>T,p.Gln4231*,nonsense,SNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0035,cystic,PKD1,c.8017-?_8161+?,NA,exon deletion,CNV,1,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0063,cystic,PKD1,c.9202-10_9218del,NA,splice region,INDEL,1,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F680,cystic,PKD1,NA,NA,CNV,CNV,1,het,AD,Targeted_panel,1,"""Large deletion in key gene""",1,AD
+35099770,F688,cystic,PKD1,NA,NA,CNV,CNV,1,het,AD,Targeted_panel,1,"""5114 bp deletion""",1,AD
+35099770,F698,cystic,PKD1,NA,NA,CNV,CNV,1,het,AD,Targeted_panel,1,"""19770 bp deletion""",1,AD

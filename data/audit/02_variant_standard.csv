@@ -1,0 +1,654 @@
+pmid,patient_id,phenotype,gene,hgvs_c_dna,hgvs_protein,variant_type,variant_class,difficult_locus_flag,zygosity,inheritance_mode,test_modality,n_probands_with_variant,notes,weight,inheritance_clean
+33226606,#1,glomerular,COL4A5,c.1871G>A,p.(Gly624Asp),missense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+33226606,#4,CKDu,SLC5A2,c.1961A>G,p.(Asn654Ser),missense,SNV,0,het,AD,Exome,1,"Co-occurring with HNF1B variant; listed under ""Unknown reasons""",1,AD
+33226606,#4,CKDu,HNF1B,c.826C>T,p.(Arg276*),nonsense,SNV,0,het,AD,Exome,1,"Co-occurring with SLC5A2 variant; listed under ""Unknown reasons""",1,AD
+33226606,#6,glomerular,COL4A5,NA,NA,CNV loss,CNV,0,hemi,XL,Exome,1,Likely contiguous gene deletion with COL4A6,1,XL
+33226606,#6,glomerular,COL4A6,NA,NA,CNV loss,CNV,0,hemi,XL,Exome,1,Likely contiguous gene deletion with COL4A5,1,XL
+33226606,#8,glomerular,PKHD1,c.4075_4078dupCTGG,p.(Glu1360Alafs*19),frameshift,INDEL,0,het,AR,Exome,1,Heterozygous variant in AR gene included in diagnostic list by authors,1,AR
+33226606,#10,CKDu,LDLR,c.313+1G>A,NA,splicing,SNV,0,het,AD,Exome,1,"Listed under ""Other""",1,AD
+33226606,#11,CKDu,TTC21B,c.626C>T,p.(Pro209Leu),missense,SNV,0,hom,AR,Exome,1,"Listed under ""Other""",1,AR
+33226606,#13,CKDu,PKD2,c.817_818delCT,p.(Leu273Valfs*29),frameshift,INDEL,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+33226606,#13,CKDu,SLC12A3,c.1964G>A,p.(Arg655His),missense,SNV,0,het,AR,Exome,1,Heterozygous variant in AR gene included in diagnostic list by authors; co-occurring with PKD2,1,AR
+33226606,#15,CKDu,SLC9A3R1,c.651delC,p.(Ala218Profs*27),frameshift,INDEL,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+33226606,#16,CKDu,BBS2,c.1864C>T,p.(Arg622*),nonsense,SNV,0,het,AR,Exome,1,"Heterozygous variant in AR gene included in diagnostic list by authors; listed under ""Unknown reasons""",1,AR
+33226606,#17,CKDu,BBS2,c.2067delA,p.(Lys689Asnfs*6),frameshift,INDEL,0,het,AR,Exome,1,"Heterozygous variant in AR gene included in diagnostic list by authors; listed under ""Unknown reasons""",1,AR
+33226606,#21,CKDu,COL4A4,c.755G>A,p.(Gly252Asp),missense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+33226606,#25,CKDu,COL4A5,c.520G>C,p.(Gly174Arg),missense,SNV,0,hemi,XL,Exome,1,"Listed under ""Unknown reasons""",1,XL
+33226606,#26,CKDu,CLCN5,c.1869delG,p.(Arg624Glyfs*32),frameshift,INDEL,0,hemi,XL,Exome,1,"Listed under ""Unknown reasons""",1,XL
+33226606,#27; #30,CKDu,COL4A5,c.1075G>A,p.(Gly359Arg),missense,SNV,0,hemi,XL,Exome,2,"Recurrent variant found in two probands (#27 listed ""Unknown reasons"", #30 listed ""Glomerular disease"")",2,XL
+33226606,#32,CKDu,AGXT,c.33dupC,p.(Lys12Glnfs*156),frameshift,INDEL,0,hom,AR,Exome,1,"Listed under ""Unknown reasons""",1,AR
+33226606,#35,CKDu,COL4A1,c.2566C>T,p.(Gln856*),nonsense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+33226606,#35,CKDu,SLC34A1,c.840+1G>C,NA,splicing,SNV,0,het,AD,Exome,1,"Heterozygous in gene marked AR/AD; listed under ""Unknown reasons""",1,AD
+33226606,#37,tubulopathies,ATP6V1B1,c.1037C>G,p.(Pro346Arg),missense,SNV,0,compound_het,AR,Exome,1,Biallelic with c.33delG,1,AR
+33226606,#37,tubulopathies,ATP6V1B1,c.33delG,p.(Leu12Serfs*8),frameshift,INDEL,0,compound_het,AR,Exome,1,Biallelic with c.1037C>G,1,AR
+33226606,#44,glomerular,COL4A3,c.1006G>T,p.(Gly336Cys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+33226606,#47,cystic,CYP24A1,c.1186C>T,p.(Arg396Trp),missense,SNV,0,het,AR,Exome,1,Heterozygous variant in AR gene included in diagnostic list by authors,1,AR
+33226606,#53,CKDu,CLCN5,c.1007T>C,p.(Leu336Pro),missense,SNV,0,hemi,XL,Exome,1,"Listed under ""Unknown reasons""",1,XL
+33226606,#53,CKDu,SLC4A1,c.118G>A,p.(Glu40Lys),missense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""; co-occurring with CLCN5 variant",1,AD
+33226606,#55,CKDu,SLC34A1,c.460_480dupATCCTGGTGACCGTGCTGGTG,p.(Ile154_Val160dup),indel,INDEL,0,hom,AR,Exome,1,"Listed under ""Unknown reasons""",1,AR
+33226606,#57,glomerular,NPHS2,c.855_856delAA,p.(Arg286Thrfs*17),frameshift,INDEL,0,hom,AR,Exome,1,NA,1,AR
+33226606,#58,cystic,PKD2,c.1548+1G>A,NA,splicing,SNV,0,het,AD,Exome,1,NA,1,AD
+33226606,#59,tubulopathies,PAX2,c.821delC,p.(Pro274Leufs*23),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+33226606,#60,cystic,PKHD1,c.131-1G>A,NA,splicing,SNV,0,het,AR,Exome,1,Heterozygous variant in AR gene included in diagnostic list by authors; co-occurring with PKD1 variant,1,AR
+33226606,#62,tubulopathies,SLC7A9,c.313G>A,p.(Gly105Arg),missense,SNV,0,het,AR,Exome,1,Heterozygous variant in AR/AD gene included in diagnostic list by authors,1,AR
+33226606,#65,CKDu,PIGV,c.439C>T,p.(Gln147*),nonsense,SNV,0,het,AR,Exome,1,"Heterozygous variant in AR gene included in diagnostic list by authors; listed under ""Unknown reasons""",1,AR
+33226606,#66,CKDu,BBS10,c.271dupT,p.(Cys91Leufs*5),frameshift,INDEL,0,hom,AR,Exome,1,"Listed under ""Unknown reasons""",1,AR
+33226606,#68,glomerular,COL4A5,c.4629C>A,p.(Tyr1543*),nonsense,SNV,0,hemi,XL,Exome,1,"Reported as ""stop"" in variant type",1,XL
+33226606,#71,CKDu,SLC4A1,c.1765C>T,p.(Arg589Cys),missense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+33226606,#72,CKDu,SLC34A1,c.272_292delTCCCCAAGCTGCGCCAGGCTG,p.(Val91_Ala97del),indel,INDEL,0,hom,AR,Exome,1,"Reported as ""Inframe deletion""; listed under ""Unknown reasons""",1,AR
+33226606,#75,cystic,PKHD1,c.4882C>G,p.(Pro1628Ala),missense,SNV,0,het,AR,Exome,1,Heterozygous variant in AR gene included in diagnostic list by authors,1,AR
+33226606,#78,tubulopathies,OCRL,NA,NA,CNV loss,CNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P200,tubulopathies,ATP6V1B1,c.183del,p.(Gln61Hisfs*103),frameshift,INDEL,0,hom,AR,Exome,1,NA,1,AR
+32939031,P200,tubulopathies,AMPD2,c.1360C>T,p.(Gln454*),nonsense,SNV,0,het,AR,Exome,1,biallelic with c.2489del,1,AR
+32939031,P200,tubulopathies,AMPD2,c.2489del,p.(Ile830Thrfs*45),frameshift,INDEL,0,het,AR,Exome,1,biallelic with c.1360C>T,1,AR
+32939031,P055,tubulopathies,AVPR2,c.513C>G,p.(Ser171Arg),missense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P117,tubulopathies,AVPR2,c.835_837del,p.(Val279del),in-frame deletion,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P048,cystic,BBS10,c.1337_1338delTT,p.(Phe446Tyrfs*3),frameshift,INDEL,0,hom,AR,Exome,1,NA,1,AR
+32939031,P137,tubulopathies,CASR,c.554G>A,p.(Arg185Gln),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P115,tubulopathies,CLCN5,c.1231A>T,p.(Lys411*),nonsense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P187,tubulopathies,CLCN5,c.1119dupC,p.(Asn374Glnfs*2),frameshift,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P063,tubulopathies,CLCN5,c.802G>T,p.(Glu268*),nonsense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P071,tubulopathies,CLCNKB,c.226C>T,p.(Arg76*),nonsense,SNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P047,tubulopathies,CLDN16,c.453G>T,p.(Leu151Phe),missense,SNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P165,glomerular,COL4A1,c.3068G>C,p.(Gly1023Ala),missense,SNV,0,het,AD,Exome,1,Dual diagnosis with COL4A3,1,AD
+32939031,P119,glomerular,COL4A3,c.1594G>T,p.(Gly532Cys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P040,glomerular,COL4A3,c.1855G>A,p.(Gly619Arg),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P165,glomerular,COL4A3,c.2083G>A,p.(Gly695Arg),missense,SNV,0,het,AD,Exome,1,Dual diagnosis with COL4A1,1,AD
+32939031,P020,glomerular,COL4A3,c.2162del,p.(Gly721Valfs*26),frameshift,INDEL,0,hom,AR,Exome,1,NA,1,AR
+32939031,P091,glomerular,COL4A3,c.2497G>C,p.(Gly833Arg),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.4421T>C,1,AR
+32939031,P091,glomerular,COL4A3,c.4421T>C,p.(Leu1474Pro),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.2497G>C,1,AR
+32939031,P161,glomerular,COL4A3,c.4981C>T,p.(Arg1661Cys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P176,glomerular,COL4A4,c.1108G>A,p.(Gly370Arg),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P045,glomerular,COL4A4,c.1970G>A,p.(Gly657Asp),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P160,glomerular,COL4A4,c.2279dup,p.(Asp761Argfs*27),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P169,glomerular,COL4A4,c.230G>C,p.(Gly77Ala),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P109,glomerular,COL4A4,c.2377delG,p.(Ala793Leufs*11),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P174,glomerular,COL4A4,c.2617G>A,p.(Gly873Arg),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P085,glomerular,COL4A4,c.2638delG,p.(Ala880Hisfs*70),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P036,glomerular,COL4A4,c.4129C>T,p.(Arg1377*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P126,glomerular,COL4A4,c.446G>T,p.(Gly149Val),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P004,glomerular,COL4A5,c.1225G>A,p.(Gly409Ser),missense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P153,glomerular,COL4A5,c.1690G>T,p.(Gly564Cys),missense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P046,glomerular,COL4A5,c.2333G>A,p.(Gly778Asp),missense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P028,glomerular,COL4A5,c.2473G>A,p.(Gly825Arg),missense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P082,glomerular,COL4A5,c.295G>A,p.(Gly99Arg),missense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P015,glomerular,COL4A5,c.3685G>A,p.(Gly1229Ser),missense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P027,glomerular,COL4A5,c.3704G>T,p.(Gly1235Val),missense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P131,glomerular,COL4A5,c.4101_4108del,p.(Gln1367Hisfs*3),frameshift,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P061,glomerular,COL4A5,c.4913G>A,p.(Cys1638Tyr),missense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P001,glomerular,COL4A5,c.4920C>G,p.(Tyr1640*),nonsense,SNV,0,hemi,XL,Exome,1,NA,1,XL
+32939031,P196,glomerular,COL4A5,c.659T>A,p.(Leu220*),nonsense,SNV,0,het,XL,Exome,1,NA,1,XL
+32939031,P080,cystic,CUL7,c.3173-3_3174delTAGAT,NA,deletion,INDEL,0,het,AR,Exome,1,biallelic with PKHD1 (P) - dual diagnosis/multilocus,1,AR
+32939031,P072,tubulointerstitial,FAN1,c.2086C>T,p.(Gln696*),nonsense,SNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P052,tubulointerstitial,FAN1,c.2616delA,p.(Asp873Thrfs*17),frameshift,INDEL,0,hom,AR,Exome,1,NA,1,AR
+32939031,P172,glomerular,FN1,c.2918A>G,p.(Tyr973Cys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P179,cystic,HNF1B,c.187del,p.(His63Ilefs*62),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P162,cystic,HNF1B,c.481A>T,p.(Lys161*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P142,cystic,HNF1B,c.529C>T,p.(Arg177*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P128,cystic,HNF1B,c.61dupG,p.(Val21Glyfs*67),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P099,cystic,HNF1B,c.826C>T,p.(Arg276*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P118,tubulointerstitial,IFT172,c.1445T>G,p.(Val482Gly),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.5179T>C,1,AR
+32939031,P118,tubulointerstitial,IFT172,c.5179T>C,p.(Cys1727Arg),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.1445T>G,1,AR
+32939031,P032; P193,tubulopathies,KCNJ1,c.658C>T,p.(Leu220Phe),missense,SNV,0,hom,AR,Exome,2,NA,2,AR
+32939031,P106,tubulointerstitial,NPHP1,whole gene deletion,NA,CNV loss,CNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P084,glomerular,NPHS1,c.2335-1G>A,NA,splice site,SNV,0,compound_het,AR,Exome,1,biallelic with c.3481+1G>T,1,AR
+32939031,P084,glomerular,NPHS1,c.3481+1G>T,NA,splice site,SNV,0,compound_het,AR,Exome,1,biallelic with c.2335-1G>A,1,AR
+32939031,P050,cystic,PKD2,c.2522+1_2522+2delGT,p.V841Pfs*19,splice site,INDEL,0,het,AD,Exome,1,NA,1,AD
+32939031,P103; P054,cystic,PKHD1,c.10219C>T,p.(Gln3407*),nonsense,SNV,0,compound_het,AR,Exome,2,biallelic in both cases,2,AR
+32939031,P121,cystic,PKHD1,c.107C>T,p.(Thr36Met),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.9319C>T,1,AR
+32939031,P130,cystic,PKHD1,c.2341C>T,p.(Arg781*),nonsense,SNV,0,compound_het,AR,Exome,1,biallelic with c.6992T>A,1,AR
+32939031,P002,cystic,PKHD1,c.2507T>C,p.(Val836Ala),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.6332+2T>A,1,AR
+32939031,P067,cystic,PKHD1,c.274C>T,p.(Arg92Trp),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.8824C>T,1,AR
+32939031,P016,cystic,PKHD1,c.2936C>T,p.(Thr979Ile),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.3761_3762delinsG,1,AR
+32939031,P016,cystic,PKHD1,c.3761_3762delinsG,p.(Ala1254Glyfs*49),indel,INDEL,0,compound_het,AR,Exome,1,biallelic with c.2936C>T,1,AR
+32939031,P009,cystic,PKHD1,c.4199C>T,p.(Ser1400Leu),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.8870T>C,1,AR
+32939031,P054,cystic,PKHD1,c.4811C>T,p.(Thr1604Met),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.10219C>T,1,AR
+32939031,P002,cystic,PKHD1,c.6332+2T>A,NA,splice site,SNV,0,compound_het,AR,Exome,1,biallelic with c.2507T>C,1,AR
+32939031,P029,cystic,PKHD1,c.664A>G,p.(Ile222Val),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.930delC,1,AR
+32939031,P130,cystic,PKHD1,c.6992T>A,p.(Ile2331Lys),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.2341C>T,1,AR
+32939031,P103,cystic,PKHD1,c.7280T>C,p.(Ile2427Thr),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.10219C>T,1,AR
+32939031,P067,cystic,PKHD1,c.8824C>T,p.(Arg2942*),nonsense,SNV,0,compound_het,AR,Exome,1,biallelic with c.274C>T,1,AR
+32939031,P009,cystic,PKHD1,c.8870T>C,p.(Ile2957Thr),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.4199C>T,1,AR
+32939031,P029,cystic,PKHD1,c.930delC,p.(Thr311Leufs*8),frameshift,INDEL,0,compound_het,AR,Exome,1,biallelic with c.664A>G,1,AR
+32939031,P121,cystic,PKHD1,c.9319C>T,p.(Arg3107*),nonsense,SNV,0,compound_het,AR,Exome,1,biallelic with c.107C>T,1,AR
+32939031,P080,cystic,PKHD1,c.4870C>T,p.(Arg1624Trp),missense,SNV,0,het,AR,Exome,1,biallelic with CUL7 (P) - dual diagnosis/multilocus,1,AR
+32939031,P089,tubulopathies,SLC12A3,c.2221G>A,p.(Gly741Arg),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.35dupA,1,AR
+32939031,P089,tubulopathies,SLC12A3,c.35dupA,p.(Asp12Glufs*18),frameshift,INDEL,0,compound_het,AR,Exome,1,biallelic with c.2221G>A,1,AR
+32939031,P166,tubulopathies,SLC12A3,c.473G>A,p.(Arg158Gln),missense,SNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P167,tubulopathies,SLC12A3,c.1180+1G>T,NA,splice site,SNV,0,hom,AR,Exome,1,NA,1,AR
+32939031,P097,tubulopathies,SLC34A1,c.1348G>A,p.(Gly450Ser),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.454_480dup,1,AR
+32939031,P097,tubulopathies,SLC34A1,c.454_480dup,p.(Val152_Val160dup),insertion,INDEL,0,compound_het,AR,Exome,1,biallelic with c.1348G>A,1,AR
+32939031,P024,CKDu,SRCAP,c.7330C>T,p.(Arg2444*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P158,cystic,TMEM67,c.1843T>C,p.(Cys615Arg),missense,SNV,0,compound_het,AR,Exome,1,biallelic with c.2322+2dupT,1,AR
+32939031,P158,cystic,TMEM67,c.2322+2dupT,NA,splice site,INDEL,0,compound_het,AR,Exome,1,biallelic with c.1843T>C,1,AR
+32939031,P025,cystic,TSC1,c.682C>T,p.(Arg228*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P006,tubulointerstitial,UMOD,c.150C>G,p.(Cys50Trp),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+32939031,P049,tubulointerstitial,UMOD,c.278_289delinsCCGCCTCCT,p.(Val93_Gly97delinsAlaAlaSerCys),indel,INDEL,0,het,AD,Exome,1,NA,1,AD
+38972501,4,tubulointerstitial,DNASE1,NA,NA,CNV,CNV,0,het,AD,Targeted_panel,1,"""Systemic lupus erythematosus (predisposition to)""; coordinates not provided",1,AD
+38972501,6; 571,glomerular,COL4A3,NM_000091.4:c.4504T>C,NP_000082.2:p.Phe1502Leu,Nonsynonymous,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+38972501,10,tubulointerstitial,NUP107,NM_020401.2:c.1360C>T,NP_065134.1:p.Arg454Trp,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.1090C>T (VUS),1,AR
+38972501,12,cystic,PKD2,NM_000297.3:c.1445delT,NP_000288.1:p.Phe482Serfs*32,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,13,cystic,PKD2,NM_000297.3:c.1704delT,NP_000288.1:p.Phe568Leufs*16,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,17,glomerular,PODXL,NM_001018111.2:c.568C>T,NP_001018121.1:p.Arg190*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,20,glomerular,WNK1,c.2140-1G>A,NA,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,22; 548,glomerular,COL4A3,NM_000091.4:c.898G>A,NP_000082.2:p.Gly300Arg,Nonsynonymous,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+38972501,23,cystic,JAG1,NA,NA,CNV del,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,28; 58; 59; 74; 76; 177; 259; 544; 545,glomerular,COL4A5,NM_000495.4:c.465+4_465+5insA,NA,Splicing,INDEL,0,hemi,XL,Targeted_panel,9,Founder variant region,9,XL
+38972501,36,tubulointerstitial,COL4A3,NM_000091.4:c.95_96insGTGT,NP_000082.2:p.Lys34Leufs*2,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,38,glomerular,COL4A5,NM_000495.4:c.965G>A,NP_000486.1:p.Gly322Asp,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,40; 566,glomerular,COL4A4,NM_000092.4:c.1250G>A,NP_000083.3:p.Gly417Glu,Nonsynonymous,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+38972501,43,cystic,LRP5,NA,NA,CNV,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,44,glomerular,INF2,NM_022489.3:c.641G>A,NP_071934.3:p.Arg214His,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,45,glomerular,LMNA,NM_170707.3:c.1751G>A,NP_733821.1:p.Arg584His,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,46,tubulointerstitial,TSC1,NM_000368.4:c.587delC,NP_000359.1:p.Pro196Leufs*14,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,54,glomerular,COL4A3,NM_000091.4:c.2323_2340delCTTCCAGGTCTCCCTGGA,NP_000082.2:p.Leu775_Gly780del,In Frame,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,63,CKDu,CLCN5,NM_001127899.3:c.530_536delATGTCAC,NP_001121371.1:p.His177Profs*29,Frame Shift,INDEL,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,70; 162; 209; 528; 532,glomerular,COL4A3,NM_000091.4:c.3829G>A,NP_000082.2:p.Gly1277Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,5,NA,5,AD
+38972501,71,glomerular,PAX2,NM_003988.4:c.254G>C,NP_003979.2:p.Gly85Ala,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,72,CKDu,SLC7A9,NM_001243036.1:c.544G>A,NP_001229965.1:p.Ala182Thr,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,Classified as Positive/LP by authors; typically AR,1,AD
+38972501,73,glomerular,COL4A4,NM_000092.4:c.115-1G>A,NA,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,75,glomerular,COL4A4,NM_000092.4:c.5044C>T,NP_000083.3:p.Arg1682Trp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,81,glomerular,PKHD1,NM_138694.3:c.8870T>C,NP_619639.3:p.Ile2957Thr,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.9689delA,1,AR
+38972501,81; 596,cystic,PKHD1,NM_138694.3:c.9689delA,NP_619639.3:p.Asp3230Valfs*34,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,2,Biallelic with c.8870T>C or c.4870C>T,2,AR
+38972501,84,glomerular,COL4A5,NM_000495.4:c.1032+2T>G,NA,Splicing,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,86,glomerular,SLC12A3,NM_000339.2:c.1048T>C,NP_000330.2:p.Ser350Pro,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.2576T>C,1,AR
+38972501,86,glomerular,SLC12A3,NM_000339.2:c.2576T>C,NP_000330.2:p.Leu859Pro,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.1048T>C,1,AR
+38972501,91,glomerular,LMX1B,NM_001174146.1:c.746G>A,NP_001167617.1:p.Arg249Gln,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,92,glomerular,SALL1,NM_001127892.1:c.3243+2T>C,NA,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,99,glomerular,PKHD1,NM_138694.3:c.9719G>A,NP_619639.3:p.Arg3240Gln,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.664A>G,1,AR
+38972501,99,glomerular,PKHD1,NM_138694.3:c.664A>G,NP_619639.3:p.Ile222Val,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.9719G>A,1,AR
+38972501,104,glomerular,COL4A5,NM_000495.4:c.41T>A,NP_000486.1:p.Leu14*,Nonsense,SNV,0,het,XL,Targeted_panel,1,Reported as heterozygous (female?),1,XL
+38972501,105,glomerular,TBC1D8B,NM_017752.2:c.1607T>A,NP_060222.2:p.Leu536*,Nonsense,SNV,0,hemi,XL,Targeted_panel,1,Dual diagnosis with COL4A3,1,XL
+38972501,105,glomerular,COL4A3,NM_000091.4:c.2954G>T,NP_000082.2:p.Gly985Val,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,Dual diagnosis with TBC1D8B,1,AD
+38972501,108,glomerular,APOA1,NM_000039.2:c.16delC,NP_000030.1:p.Leu6*,Nonsense,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,112,CKDu,COL4A5,NM_000495.4:c.4199-1G>A,NA,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,115,glomerular,COL4A5,NM_000495.4:c.3455-1G>A,NA,Splicing,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,125,tubulointerstitial,AGXT,NM_000030.2:c.919delC,NP_000021.1:p.Leu307Cysfs*5,Nonsense,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,127,glomerular,COL4A5,NM_000495.4:c.973G>A,NP_000486.1:p.Gly325Arg,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,131,glomerular,LMNA,NM_170707.3:c.1262T>C,NP_733821.1:p.Leu421Pro,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,132,cystic,PKHD1,NM_138694.3:c.5895_5896insA,NP_619639.3:p.Leu1966Thrfs*4,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.6992T>A,1,AR
+38972501,132,cystic,PKHD1,NM_138694.3:c.6992T>A,NP_619639.3:p.Ile2331Lys,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.5895_5896insA,1,AR
+38972501,135,glomerular,COL4A4,NM_000092.4:c.193G>A,NP_000083.3:p.Gly65Ser,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.4334-23A>G,1,AR
+38972501,135,glomerular,COL4A4,NM_000092.4:c.4334-23A>G,NA,splicing,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.193G>A,1,AR
+38972501,147; 167; 297; 398; 432; 456; 582; 584; 711; 713; 748; 802,tubulointerstitial,NPHP1,NM_000272.3:c.(?1)(2201_?)del,NA,CNV,CNV,0,hom,AR,Targeted_panel,12,Whole gene deletion,12,AR
+38972501,150,CKDu,COL4A5,NM_000495.4:c.1499G>T,NP_000486.1:p.Gly500Val,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,154,CKDu,COL4A3,NM_000091.4:c.2021-4_2025delTAAGGTATC,NP_000082.2:p.Gly674Alafs*16,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,158,glomerular,NPHP1,NM_000272.3:c.143G>A,NP_000263.2:p.Arg48Lys,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,160,CKDu,PAX2,NM_003988.4:c.239C>T,NP_003979.2:p.Pro80Leu,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,164,CKDu,FN1,NM_212482.2:c.4616C>G,NP_997647.1:p.Ser1539Cys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,172,CKDu,COL4A3,NM_000091.4:c.4486C>T,NP_000082.2:p.Arg1496*,Nonsense,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,177,glomerular,COL4A5,NM_000495.4:c.465+4_465+5insA,NA,splicing,INDEL,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,183,CKDu,UMOD,NM_001278614.1:c.304T>A,NP_001265543.1:p.Cys102Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,187,tubulointerstitial,SCNN1A,NM_001159576.1:c.1612T>C,NP_001153048.1:p.Cys538Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,200,glomerular,ADCY10,NM_001297772.1:c.1534-1G>T,NA,splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,201; 367; 368; 648; 654; 761,glomerular,NPHS2,NM_014625.3:c.855_856delAA,NP_055440.1:p.Arg286Thrfs*17,Frameshift,INDEL,0,compound_het,AR,Targeted_panel,6,Biallelic/Homozygous,6,AR
+38972501,201,glomerular,COL4A4,NM_000092.4:c.2242G>A,NP_000083.3:p.Gly748Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,Reported with NPHS2 variants in positive case,1,AD
+38972501,209,tubulointerstitial,COL4A3,NM_000091.4:c.3829G>A,NP_000082.2:p.Gly1277Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,215,glomerular,PAX2,NM_003988.4:c.239C>T,NP_003979.2:p.Pro80Leu,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,219,CKDu,COL4A3,c.3499G>A,NP_000082.2:p.Gly1167Arg,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.343G>A,1,AR
+38972501,219,CKDu,COL4A3,c.343G>A,NP_000082.2:p.Gly115Arg,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.3499G>A,1,AR
+38972501,220,glomerular,CEP290,NM_025114.3:c.934G>T,NP_079390.3:p.Glu312*,Nonsense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.2T>A (Start-loss),1,AR
+38972501,220,glomerular,CEP290,NM_025114.3:c.2T>A,NP_079390.3:p.0?,Start-loss,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.934G>T,1,AR
+38972501,224,tubulointerstitial,FGF23,NM_020638.2:c.526C>G,NP_065689.1:p.Arg176Gly,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,233,glomerular,PODXL,NM_001018111.2:c.1480-1_1480insG,NP_001018121.1:p.Gln494Alafs*16,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,236,glomerular,COL4A5,NM_000495.4:c.3053G>T,NP_000486.1:p.Gly1018Val,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,237,glomerular,UMOD,c.863G>A,NP_001265543.1:p.Cys288Tyr,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,241; 334,glomerular,TTC21B,NM_024753.4:c.626C>T,NP_079029.3:p.Pro209Leu,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,2,NA,2,AR
+38972501,247,glomerular,COL4A3,NM_000091.4:c.4996A>G,NP_000082.2:p.Met1666Val,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,252,tubulointerstitial,PAX2,NM_003988.4:c.250G>A,NP_003979.2:p.Gly84Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,259,glomerular,COL4A5,NM_000495.4:c.465+4_465+5insA,NA,splicing,INDEL,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,260,CKDu,COL4A3,NM_000091.4:c.3329_3330insAAGTCCTGG,NP_000082.2:p.Gly1110_Leu1111insSerProGly,Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,261,CKDu,NPHS2,NM_014625.3:c.779T>A,NP_055440.1:p.Val260Glu,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.413G>A,1,AR
+38972501,261,CKDu,NPHS2,NM_014625.3:c.413G>A,NP_055440.1:p.Arg138Gln,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.779T>A,1,AR
+38972501,264,CKDu,COL4A3,NM_000091.4:c.3419G>A,NP_000082.2:p.Gly1140Asp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,272,CKDu,INF2,NM_022489.3:c.550G>A,NP_071934.3:p.Glu184Lys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,276,CKDu,COL4A3,NM_000091.4:c.1096G>A,NP_000082.2:p.Gly366Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,279,glomerular,COL4A5,NM_000495.4:c.2782C>T,NP_000486.1:p.Gln928*,Nonsense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+38972501,280,glomerular,NOTCH2,NM_024408.3:c.5949G>A,NP_077719.2:p.Trp1983*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,285,CKDu,FAN1,NM_014967.4:c.2616delA,NP_055782.3:p.Asp873Thrfs*17,Frame Shift,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,290,glomerular,PODXL,NM_001018111.2:c.1139_1146delTATGCCGA,NP_001018121.1:p.Ile380Serfs*12,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,312,CKDu,INF2,NM_022489.3:c.658G>A,NP_071934.3:p.Glu220Lys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,317,glomerular,KLHL3,NM_001257194.1:c.1639+2T>C,p.0?,splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,320,tubulointerstitial,UMOD,NM_001278614.1:c.406G>T,NP_001265543.1:p.Gly136Cys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,322,glomerular,DNASE1,NM_005223.3:c.213delG,NP_005214.2:p.Lys72Serfs*92,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,327,tubulointerstitial,PAX2,NM_003988.4:c.70G>T,NP_003979.2:p.Gly24Trp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,339,CKDu,CLCNKB,NM_000085.4:c.610G>A,NP_000076.2:p.Ala204Thr,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,349,CKDu,DNASE1,NM_005223.3:c.1_*8165del,NP_005214.2:p.0?,CNV,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,353,tubulointerstitial,BBS12,NM_001178007.1:c.1531_1539delCAGATGCAA,NP_001171478.1:p.Gln511_Gln513del,in-frame deletion,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,354,tubulointerstitial,KCNA1,NM_000217.2:c.847G>A,NP_000208.2:p.Glu283Lys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,358,glomerular,UMOD,NM_001278614.1:c.1255delG,NP_001265543.1:p.Asp419Metfs*8,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,364,tubulointerstitial,CEP290,NM_025114.3:c.751_766delGAGAAGATGACTGATG,NP_079390.3:p.Glu251Asnfs*5,Frame Shift,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,374,tubulointerstitial,UMOD,NM_001008389.2:c.553C>A,NP_001008390.1:p.Arg185Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,379,glomerular,COL4A4,NM_000092.4:c.2654_2655ins...,NP_000083.3:p.Gly885_Leu886ins...,Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,380,CKDu,COL4A5,NM_000495.4:c.1871G>A,NP_000486.1:p.Gly624Asp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,383,tubulointerstitial,DCDC2,NM_016356.4:c.942delT,NP_057440.2:p.Gly315Glufs*32,Frame Shift,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,387,CKDu,COL4A3,NM_000091.4:c.345delG,NP_000082.2:p.Pro116Leufs*37,Frame Shift,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,389,tubulointerstitial,NPHP4,NM_015102.4:c.2169delC,NP_055917.1:p.Tyr723*,Nonsense,INDEL,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,390,tubulointerstitial,FLCN,NM_144997.5:c.346C>T,NP_659434.2:p.Gln116*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,394,glomerular,COL4A4,NM_000092.4:c.2102G>A,NP_000083.3:p.Gly701Asp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,396,glomerular,COL4A5,NM_000495.4:c.575G>A,NP_000486.1:p.Gly192Glu,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,397,glomerular,WT1,NM_024426.4:c.423delA,NP_077744.3:p.Lys141Asnfs*17,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,403,glomerular,EYA1,Whole gene deletion,p.0?,CNV,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,404,CKDu,LMNA,NM_170707.3:c.985C>T,NP_733821.1:p.Arg329Cys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,411,glomerular,PAX2,NM_003988.4:c.168delG,NP_003979.2:p.Gln57Serfs*26,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,416,CKDu,TBC1D8B,NM_017752.2:c.1426C>T,NP_060222.2:p.Arg476*,Nonsense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+38972501,425,tubulointerstitial,PAX2,NM_003988.4:c.114G>T,NP_003979.2:p.Arg38Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,430,tubulointerstitial,SALL1,NM_001127892.1:c.2065C>T,NP_001121364.1:p.Arg689*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,438,glomerular,COL4A4,NM_000092.4:c.2833G>T,NP_000083.3:p.Gly945*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,442,CKDu,PAX2,NM_003988.4:c.215A>C,NP_003979.2:p.Tyr72Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,453,glomerular,C3,NM_000064.3:c.193A>C,NP_000055.2:p.Lys65Gln,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,454,CKDu,COL4A5,NM_000495.4:c.341G>T,NP_000486.1:p.Gly114Val,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,458,tubulointerstitial,REN,NM_000537.3:c.145C>T,NP_000528.1:p.Arg49*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,465,CKDu,TSC1,NM_000368.4:c.490delT,NP_000359.1:p.Trp164Glyfs*3,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,474,CKDu,COL4A3,NM_000091.4:c.3751G>A,NP_000082.2:p.Gly1251Ser,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.345delG,1,AR
+38972501,474,CKDu,COL4A3,NM_000091.4:c.345delG,NP_000082.2:p.Pro116Leufs*37,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.3751G>A,1,AR
+38972501,489,glomerular,COQ8B,NM_024876.3:c.1560G>A,NP_079152.3:p.Trp520*,Nonsense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.289+1G>T,1,AR
+38972501,489,glomerular,COQ8B,NM_024876.3:c.289+1G>T,NA,Splicing,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.1560G>A,1,AR
+38972501,502,CKDu,CHD1L,NM_004284.4:c.1_2694del,NA,CNV,CNV,0,het,AD,Targeted_panel,1,Likely large deletion,1,AD
+38972501,508,CKDu,INF2,NM_022489.3:c.642_643insGCGCGC,NP_071934.3:p.Arg214_Thr215insAlaArg,In Frame,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,517,cystic,TSC2,NM_000548.4:c.3598C>T,NP_000539.2:p.Arg1200Trp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,539,glomerular,COL4A3,NM_000091.4:c.362delG,NP_000082.2:p.Gly121Valfs*32,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.713delC,1,AR
+38972501,539,glomerular,COL4A3,NM_000091.4:c.713delC,NP_000082.2:p.Pro238Argfs*9,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.362delG,1,AR
+38972501,549,CKDu,COL4A4,NM_000092.4:c.1369+1G>A,NA,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,558,CKDu,ITGA8,NM_003638.2:c.2982+2T>C,NA,Splicing,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,567,glomerular,COL4A3,NM_000091.4:c.1087G>A,NP_000082.2:p.Gly363Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,569,glomerular,COL4A5,NM_000495.4:c.5029C>T,NP_000486.1:p.Arg1677*,Nonsense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+38972501,571,glomerular,COL4A3,NM_000091.4:c.4504T>C,NP_000082.2:p.Phe1502Leu,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,586,glomerular,CFH,NM_000186.3:c.3628C>T,NP_000177.2:p.Arg1210Cys,Nonsynonymous,SNV,3,het,AD,Targeted_panel,1,NA,1,AD
+38972501,593,CKDu,INF2,NM_022489.3:c.605A>G,NP_071934.3:p.Asn202Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,596,cystic,PKHD1,NM_138694.3:c.4870C>T,NP_619639.3:p.Arg1624Trp,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.9689delA,1,AR
+38972501,600,glomerular,COL4A4,NM_000092.4:c.1624-2A>G,p.0?,splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,607,CKDu,COL4A5,NM_000495.4:c.1094G>C,NP_000486.1:p.Gly365Ala,Nonsynonymous,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,609,cystic,COL4A4,NM_000092.4:c.1978G>C,NP_000083.3:p.Gly660Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,614,glomerular,NUP93,NM_001242795.1:c.637C>T,NP_001229724.1:p.Gln213*,Nonsense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.793C>T (VUS),1,AR
+38972501,618,tubulointerstitial,NPHP1,NM_000272.3:c.1438-1G>A,p.0?,splicing,SNV,0,het,AR,Targeted_panel,1,Zygosity Het reported in positive case,1,AR
+38972501,624,tubulointerstitial,HNF1B,NM_000458.3:c.(?1)(1674_?)dup,p.0?,CNV,CNV,0,het,AD,Targeted_panel,1,Duplication,1,AD
+38972501,627,CKDu,COL4A3,NM_000091.4:c.3472G>C,NP_000082.2:p.Gly1158Arg,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,629; 650,CKDu,FGA,NM_000508.4:c.1653delT,NP_000499.1:p.Gly552Alafs*16,Frame Shift,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+38972501,643,CKDu,COQ8B,NM_024876.3:c.1027C>T,NP_079152.3:p.Arg343Trp,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,644,cystic,PKHD1,NM_138694.3:c.1123C>T,NP_619639.3:p.Arg375Trp,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,648,CKDu,NPHS2,NM_014625.3:c.855_856delAA,NP_055440.1:p.Arg286Thrfs*17,Frame Shift,INDEL,0,het,AR,Targeted_panel,1,Heterozygous reported in positive case,1,AR
+38972501,654,glomerular,NPHS2,NM_014625.3:c.862G>A,NP_055440.1:p.Ala288Thr,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.686G>A (R229Q),1,AR
+38972501,655,CKDu,PODXL,NM_001018111.2:c.1435delC,NP_001018121.1:p.Leu479Serfs*18,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,657,glomerular,PAX2,NM_003988.4:c.187G>T,NP_003979.2:p.Gly63Cys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,660,glomerular,ALMS1,NM_015120.4:c.188_189delAGinsC,NP_055935.4:p.Gln63Profs*6,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.11666-12C>T (VUS),1,AR
+38972501,666,tubulointerstitial,OCRL,NM_001318784.1:c.502C>T,NP_001305713.1:p.Gln168*,Nonsense,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,677,glomerular,DNASE1,NM_005223.3:c.257_258insATCA,NP_005214.2:p.His86Glnfs*7,Frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,680,CKDu,CLDN19,NM_148960.2:c.241C>T,NP_683763.2:p.Arg81Trp,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.59G>A,1,AR
+38972501,680,CKDu,CLDN19,NM_148960.2:c.59G>A,NP_683763.2:p.Gly20Asp,Nonsynonymous,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.241C>T,1,AR
+38972501,690,CKDu,NUP160,c.27delC,p.Ala10Profs*6,Frameshift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.83G>A (VUS),1,AR
+38972501,716,glomerular,COL4A3,NM_000091.4:c.1219G>C,NP_000082.2:p.Gly407Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,718,glomerular,COL4A3,NM_000091.4:c.2935G>A,NP_000082.2:p.Gly979Ser,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,734,glomerular,SLC12A3,NM_000339.2:c.2576T>A,NP_000330.2:p.Leu859His,Nonsynonymous,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,741,glomerular,COL4A3,NM_000091.4:c.127_128delGGinsCA,NP_000082.2:p.Gly43Gln,Nonsynonymous,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,743,glomerular,SALL1,NM_001127892.1:c.1555_1556insTCCA,NP_001121364.1:p.Thr519Ilefs*26,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,757,glomerular,COL4A5,Del COL4A5-COL4A6,NA,CNV,CNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,761,glomerular,NPHS2,NM_014625.3:c.855_856delAA,NP_055440.1:p.Arg286Thrfs*17,Frame Shift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.686G>A (R229Q),1,AR
+38972501,762,glomerular,COQ8B,NM_024876.3:c.1143+2T>G,p.0?,splicing,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+38972501,779,glomerular,COL4A3,NM_000091.4:c.2083G>A,NP_000082.2:p.Gly695Arg,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,782,glomerular,COL4A5,NM_000495.4:c.4199_4688dup,NP_000486.1:p.Gly1400Aspfs*11,Frame Shift,INDEL,0,hemi,XL,Targeted_panel,1,NA,1,XL
+38972501,787,glomerular,COL4A4,NM_000092.4:c.735+2T>C,NA,splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,789,glomerular,COL4A4,NM_000092.4:c.4129C>T,NP_000083.3:p.Arg1377*,Nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,792,glomerular,COQ8B,NM_024876.3:c.995delT,NP_079152.3:p.Leu332Argfs*7,Frameshift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.1507C>T,1,AR
+38972501,792,glomerular,COQ8B,c.1507C>T,p.Arg503*,Nonsense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.995delT,1,AR
+38972501,793,CKDu,DNASE1,NM_005223.3:c.99delT,NP_005214.2:p.Phe33Leufs*19,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,796,CKDu,REN,NM_000537.3:c.1216C>T,NP_000528.1:p.Arg406Cys,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,802,CKDu,NPHP1,NM_000272.3:c.(?1)(2201_?)del,p.0?,CNV,CNV,0,hom,AR,Targeted_panel,1,Whole gene deletion,1,AR
+38972501,809,CKDu,COL4A4,NM_000092.4:c.1334G>C,NP_000083.3:p.Gly445Ala,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,816,CKDu,COL4A4,NM_000092.4:c.293G>A,NP_000083.3:p.Gly98Asp,Nonsynonymous,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+38972501,818,CKDu,PAX2,c.43+2T>G,NA,splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F80,tubulointerstitial,NPHP1,c.555_556insA,p.Pro186Thrfs*2,Frameshift,INDEL,0,hom,AR,Exome,2,Recurrent (also in F105),2,AR
+35099770,F389,tubulointerstitial,NPHP1,c.1027G>A,p.Gly343Arg,Non-synonymous SNV,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F324,tubulointerstitial,BBS9,c.542C>G,p.Pro181Arg,Non-synonymous SNV,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F165,tubulointerstitial,UMOD,c.821A>G,p.Tyr274Cys,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F13,tubulointerstitial,IFT140,c.634G>A,p.Gly212Arg,Non-synonymous SNV,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F232,tubulointerstitial,UMOD,c.1382C>A,p.Ala461Glu,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,FIN,tubulointerstitial,UMOD,c.767G>A,p.Cys256Tyr,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F211,tubulointerstitial,UMOD,c.317G>A,p.Cys106Tyr,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F90,tubulointerstitial,HNF1B,c.544+3_544+6del,p.?,Splicing,INDEL,0,het,AD,Exome,1,NA,1,AD
+35099770,F402,tubulointerstitial,GLI3,c.539G>A,p.Arg180Gln,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F640,glomerular,INF2,c.353T>A,p.Ile118Asn,Non-synonymous SNV,SNV,0,het,AD,Exome,1,Dual diagnosis in family with C3 variant,1,AD
+35099770,F640,glomerular,C3,c.4534C>T,p.Arg1512Cys,Non-synonymous SNV,SNV,0,het,AD,Exome,1,Dual diagnosis in family with INF2 variant,1,AD
+35099770,GF39,glomerular,COL4A5,c.2510-2A>G,p.?,Splicing,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F111,glomerular,RCAN1,c.485T>C,p.Ile162Thr,Non-synonymous SNV,SNV,0,het,AD,Exome,1,Novel gene reported in separate paper,1,AD
+35099770,F100,glomerular,COL4A5,c.2605G>A,p.Gly869Arg,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,KF4,glomerular,INF2,c.653G>A,p.Arg218Gln,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F731; F673,glomerular,COL4A5,c.439G>A,p.Gly147Arg,Non-synonymous SNV,SNV,0,hemi,XL,Exome,2,F673 indication uCKD,2,XL
+35099770,F478; F424,glomerular,COL4A5,c.3310G>T,p.Gly1104Cys,Non-synonymous SNV,SNV,0,hemi,XL,Exome,2,F424 female het,2,XL
+35099770,F982,glomerular,NPHS2,c.868G>A,p.Val290Met,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,1,Biallelic with c.413G>A,1,AR
+35099770,F982; F81,glomerular,NPHS2,c.413G>A,p.Arg138Gln,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,2,Biallelic with other variants,2,AR
+35099770,F81,glomerular,NPHS2,c.855_856del,p.Gln285fs,Frameshift Deletion,INDEL,0,compound_het,AR,Exome,1,Biallelic with c.413G>A,1,AR
+35099770,F976; F11; F1018,glomerular,COL4A5,c.3731G>A,p.Gly1244Asp,Non-synonymous SNV,SNV,0,het,XL,Exome,3,F1018 male hemi; F11 male hemi; F976 female het,3,XL
+35099770,F612,glomerular,COL4A5,c.1762G>A,p.Gly588Ser,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F58,glomerular,COL4A5,c.1423+1G>T,p.?,Splicing,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,KF7,glomerular,COL4A3,c.2452G>A,p.Gly818Arg,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F275,glomerular,COL4A5,c.4075-1G>A,p.?,Splicing,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F216,glomerular,COL4A3,c.4825C>T,p.Arg1609Ter,Stopgain,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F403,glomerular,COL4A5,c.2959_2976del,p.987_992del,Non-frameshift Deletion,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F474,glomerular,FANCI,c.217A>T,p.Ile73Phe,Non-synonymous SNV,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F681,glomerular,COL4A3,c.4253-1G>A,p.?,Splicing,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F693,glomerular,COL4A5,c.442dupC,p.Gly147fs,Frameshift Insertion,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F705,glomerular,NPHS1,c.2335-1G>A,p.?,Splicing,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,CF7,glomerular,COL4A5,c.2024G>T,p.Gly675Val,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F872,glomerular,COL4A5,c.3773G>A,p.Gly1258Asp,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F822,glomerular,COL4A3,c.3575G>A,p.Gly1192Glu,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F21,glomerular,COL4A5,c.3509G>A,p.Gly170Asp,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F774,CKDu,COL4A3,c.661_662del,p.Arg221fs,Frameshift Deletion,INDEL,0,compound_het,AR,Exome,1,Biallelic with c.1591C>T,1,AR
+35099770,F774,CKDu,COL4A3,c.1591C>T,p.Gln531Ter,Stopgain,SNV,0,compound_het,AR,Exome,1,Biallelic with c.661_662del,1,AR
+35099770,F88,CKDu,FAN1,c.2590C>T,p.Gln864Ter,Stopgain,SNV,0,compound_het,AR,Exome,1,Biallelic with c.2774_2775delTT,1,AR
+35099770,F88,CKDu,FAN1,c.2774_2775delTT,p.Leu925fs,Frameshift,INDEL,0,compound_het,AR,Exome,1,Biallelic with c.2590C>T,1,AR
+35099770,F141,CKDu,COL4A5,c.3427G>A,p.Gly1143Ser,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,Recurrent in IgA nephropathy,1,XL
+35099770,F322,CKDu,DYNC2H1,c.12431C>G,p.Pro4144Arg,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,1,Biallelic with c.10063+2T>G,1,AR
+35099770,F322,CKDu,DYNC2H1,c.10063+2T>G,p.?,Splicing,SNV,0,compound_het,AR,Exome,1,Biallelic with c.12431C>G,1,AR
+35099770,N/A (uCKD),CKDu,SLC3A1,c.1799G>A,p.Gly600Glu,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F193,CKDu,UMOD,c.280T>C,p.Cys94Arg,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F198,CKDu,WFS1,c.2654C>T,p.Pro885Leu,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F318,CKDu,OCRL,c.1567G>A,p.Asp523Asn,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F313,CKDu,CLCN5,c.925C>T,p.Arg309Cys,Non-synonymous SNV,SNV,0,het,XL,Exome,1,NA,1,XL
+35099770,F182,CKDu,CLCN5,c.1938del,p.Phe646Leufs*10,Frameshift,INDEL,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F804,CKDu,APOL1,c.1072A>G,p.Ser358Gly,Non-synonymous SNV,SNV,0,hom,AD,Exome,1,"G1 haplotype, reported as likely pathogenic in this cohort",1,AD
+35099770,F804,CKDu,APOL1,c.1200T>G,p.Ile400Met,Non-synonymous SNV,SNV,0,hom,AD,Exome,1,"G1 haplotype, reported as likely pathogenic in this cohort",1,AD
+35099770,F725,CKDu,GLA,c.132G>A,p.Trp44Ter,Stopgain,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F1007,CKDu,SDCCAG8,c.484C>T,p.Gln162Ter,Stopgain,SNV,0,compound_het,AR,Exome,1,Biallelic with c.696T>G,1,AR
+35099770,F1007,CKDu,SDCCAG8,c.696T>G,p.Tyr232Ter,Stopgain,SNV,0,compound_het,AR,Exome,1,Biallelic with c.484C>T,1,AR
+35099770,F1014,CKDu,NPHP1,c.1438-1G>A,p.?,Splicing,SNV,0,hom,AR,Exome,1,NA,1,AR
+35099770,F946,CKDu,SLC4A1,c.1765C>T,p.Arg589Cys,Non-synonymous SNV,SNV,0,het,AD,Exome,1,NA,1,AD
+35099770,F677,glomerular,INF2,c.640C>T,p.Arg214Cys,Non-synonymous SNV,SNV,0,het,AD,Exome,1,Familial Fibrillary GN,1,AD
+35099770,F708,glomerular,CLCN5,c.275G>A,p.Trp92Ter,Stopgain,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F656; F323,tubulopathies,CLCNKB,c.226C>T,p.Arg76Ter,Stopgain,SNV,0,hom,AR,Exome,2,Bartter syndrome,2,AR
+35099770,F610,tubulopathies,CLCN5,c.941C>T,p.Ser314Leu,Non-synonymous SNV,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F935,tubulopathies,CLCN5,c.166-2A>T,p.?,Splicing,SNV,0,hemi,XL,Exome,1,NA,1,XL
+35099770,F945,CKDu,VHL,c.562C>G,p.Leu188Val,Non-synonymous SNV,SNV,0,het,AD,Exome,1,Malignant hypertension,1,AD
+35099770,F1025,tubulopathies,SLC12A3,c.2221G>A,p.Gly741Arg,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,1,Other variant not detected by NGS,1,AR
+35099770,F903,tubulopathies,SLC7A9,c.368C>T,p.Thr123Met,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,1,Biallelic with c.920T>G,1,AR
+35099770,F903,tubulopathies,SLC7A9,c.920T>G,p.Leu307Arg,Non-synonymous SNV,SNV,0,compound_het,AR,Exome,1,Biallelic with c.368C>T,1,AR
+35099770,F886,tubulopathies,CTNS,c.414G>A,p.Trp138Ter,Stopgain,SNV,0,hom,AR,Exome,1,Cystinosis,1,AR
+35099770,F692; F378; F363,cystic,PKD2,c.602G>A,p.Trp201Ter,Stopgain,SNV,0,het,AD,Targeted_panel,3,NA,3,AD
+35099770,F631; F646,cystic,PKD2,c.1480G>T,p.Glu494Ter,Stopgain,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F461,cystic,PKD2,c.195_196insGACC,p.Arg65fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F354,cystic,PKD2,c.2286C>A,p.Tyr762Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F329; F498; F660; F672,cystic,PKD2,c.964C>T,p.Arg322Trp,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,4,NA,4,AD
+35099770,F428,cystic,PKD2,c.982_984del,p.328_328del,Non-frame shift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F429; F573,cystic,PKD2,c.1551delG,p.Leu517fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F436,cystic,PKD2,c.1094+1G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F331,cystic,PKD2,c.2020-2A>-,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0039,cystic,PKD1,c.1261C>T,p.Arg421Cys,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#15,CKDu,PKD1,c.1295C>T,p.(Ala432Val),missense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+40533884,PR-0024,cystic,PKD1,c.1295C>T,p.Ala432Val,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F300,cystic,PKD1,c.1303C>T,p.Gln435Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0001; GR0027,cystic,PKD1,c.1548G>A,p.Trp516*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0125,cystic,PKD1,c.1577A>C,p.His526Pro,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F439,cystic,PKD1,c.1606+5G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F400,cystic,PKD1,c.1606+5G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F817,cystic,PKD1,c.1607-2A>G,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0224,cystic,PKD1,c.165_171del,p.Leu56Argfs*15,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F782,cystic,PKD1,c.1831C>T,p.Arg611Trp,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,GR0020; GR0066; GR0145,cystic,PKD1,c.1831C>T,p.Arg611Trp,missense,SNV,0,het,AD,Targeted_panel,3,NA,3,AD
+35099770,F466,cystic,PKD1,c.2032delG,p.Ala678fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F685,cystic,PKD1,c.2085delC,p.Pro695fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F453,cystic,PKD1,c.2097+2T>C,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F355,cystic,PKD1,c.2097+5G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F627,cystic,PKD1,c.2102_2103insAC,p.Thr701fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0161,cystic,PKD1,c.211G>C,p.Ala71Pro,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F644,cystic,PKD2,c.2614C>T,p.Arg872Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0091,cystic,PKD1,c.2152C>T,p.Gln718*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F686,cystic,PKD1,c.2180T>C,p.Leu727Pro,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+35099770,F645; F1108,cystic,PKD1,c.2396_2421del,p.Arg799fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,PR-0022,cystic,PKD1,c.2396_2421del,p.Arg799Glnfs*9,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F652,cystic,PKD2,c.974G>A,p.Arg325Gln,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0003,cystic,PKD1,c.24_27dup,p.Ala10Profs*105,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0005,cystic,PKD1,c.2494dup,p.Arg832Profs*40,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F341,cystic,PKD1,c.2534T>A,p.Leu845Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F661,cystic,PKD2,c.2376_2382del,p.Asp792fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F491,cystic,PKD2,c.744C>A,p.Tyr248Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F687,cystic,PKD1,c.2534T>C,p.Leu845Ser,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#18,CKDu,PKD1,c.2659delT,p.(Trp887Glyfs*11),frameshift,INDEL,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+38972501,407,cystic,PKD1,c.2685_2686insA,NP_001009944.2:p.Val896Serfs*9,Frame Shift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F726,cystic,PKD2,c.405delC,p.Gly135fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0024,cystic,PKD1,c.2702G>A,p.Trp901*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F19; F28; F745,cystic,PKD1,c.288-2A>G,p.?,Splicing,SNV,0,het,AD,Targeted_panel,3,NA,3,AD
+40533884,MA-0105,cystic,PKD1,c.2985+1G>A,NA,canonical splice,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F346,cystic,PKD1,c.2986-1G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F33,cystic,PKD1,c.301A>G,p.Asn101Asp,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+35099770,F647,cystic,PKD1,c.3184C>T,p.Gln1062Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0017,cystic,PKD1,c.3202C>T,p.Gln1068*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F734,cystic,PKD1,c.3296-2A>G,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0069,cystic,PKD1,c.3346C>T,p.Gln1116*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F79,cystic,PKD1,c.3349C>T,p.Gln1117Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F370,cystic,PKD1,c.348_352del,p.Asn116fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F633,cystic,PKD2,c.2614C>T,p.Arg872Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0009,cystic,PKD1,c.3597_3598del,p.Ala1200Glyfs*10,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F754,cystic,PKD1,c.3684delC,p.Pro1228fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F653,cystic,PKD1,c.3697_3699delGCC,p.Ala1233del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F769,cystic,PKD1,c.3719_3721del,p.1240_1241del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F368,cystic,PKD1,c.4082T>C,p.Leu1361Pro,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,MO-0008,cystic,PKD1,c.4092dupC,p.Val1365Argfs*66,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0040,cystic,PKD1,c.4214G>A,p.Trp1405*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F657,cystic,PKD1,c.4232_4233insTTCCCCTACCG,p.Arg1411fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F567; F957,cystic,PKD1,c.4306C>T,p.Arg1436Ter,Stopgain,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0021,cystic,PKD1,c.4306C>T,p.Arg1436*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,TF88,cystic,PKD1,c.430C>T,p.Gln144Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0092,cystic,PKD1,c.4349_4351del,p.Asn1450del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F427,cystic,PKD1,c.439dupG,p.Val147fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F414,cystic,PKD2,c.1345G>C,p.Gly449Arg,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,GR0016,cystic,PKD1,c.4419delC,p.Asn1474Met,missense,INDEL,0,het,AD,Targeted_panel,1,Variant description in source implies missense/indel mechanism,1,AD
+35099770,F658,cystic,PKD1,c.4452delG,p.Pro1484fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F375,cystic,PKD1,c.4654delG,p.Val1552fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F380,cystic,PKD1,c.4782delT,p.Pro1594fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F317,cystic,PKHD1,c.2702A>C,p.Asn901Thr,Non-synonymous SNV,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.107C>T; VUS,1,AR
+35099770,F317,cystic,PKHD1,c.107C>T,p.Thr36Met,Non-synonymous SNV,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.2702A>C,1,AR
+35099770,F320,cystic,MAP2K2,c.692G>T,p.Arg231Leu,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,Syndromic (CFC syndrome),1,AD
+35099770,F187,cystic,PKHD1,c.5221G>A,p.Val1741Met,Non-synonymous SNV,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+40533884,GR0142,cystic,PKD1,c.4828_4830delATC,p.Ile1610del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0034,cystic,PKD1,c.4888C>T,p.Gln1630*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0004; MA-0032,cystic,PKD2,c.973C>T,p.Arg325*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0007,cystic,PKD2,c.2517delT,p.Gln840Lysfs*4,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0011; GR0210,cystic,PKD2,c.295G>T,p.Glu99*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MA-0055,cystic,PKD1,c.4957C>T,p.Gln1653*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0110,cystic,PKD1,c.4988_4990del,p.Ser1663del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0070,cystic,PKD1,c.4995delC,p.Trp1666Gly,missense,INDEL,0,het,AD,Targeted_panel,1,Variant description implies missense but delC suggests frameshift,1,AD
+40533884,PR-0037,cystic,PKD1,c.5003_5022delinsGCC,p.Ala1668Glyfs*97,indel,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F438; F637; F967,cystic,PKD1,c.5014_5015del,p.Arg1672fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,3,NA,3,AD
+40533884,GR0063; MO-0044,cystic,PKD1,c.5014_5015delAG,p.Arg1672Gly; p.Arg1672Glyfs*98,frameshift,INDEL,0,het,AD,Targeted_panel,2,Described as missense in GR0063 but frameshift in MO-0044; likely frameshift,2,AD
+35099770,F360,cystic,PKD1,c.5142delC,p.Phe1714fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0025,cystic,PKD2,g.(?88928831)(88996847_?)del,NA,large deletion,CNV,0,het,AD,Targeted_panel,1,Genomic coordinates provided,1,AD
+40533884,GR0028; GR0092,cystic,PKD2,c.878G>A,p.Trp293*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MA-0003,cystic,PKD1,c.5501_5502del,p.Asn1834Serfs*15,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0027,cystic,PKD1,c.5861dupA,p.Asn1954Lysfs*36,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0208,cystic,PKD1,c.5875del,p.Ala1959Profs*13,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#55,CKDu,PKD1,c.5963_5964insG,p.(Glu1989*),nonsense,INDEL,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+40533884,GR0047; GR0050,cystic,PKD2,c.411delG,p.Ser138Alafs*95,frameshift,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0049; MA-0043; MA-0044; MA-0090,cystic,PKD2,c.1445delT,p.Phe482Serfs*32,frameshift,INDEL,0,het,AD,Targeted_panel,4,NA,4,AD
+40533884,MA-0033,cystic,PKD1,c.5976_5978del,p.Phe1992_Thr1993delinsLeu,indel,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0332,cystic,PKD1,c.6084C>G,p.Tyr2028*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P177,cystic,PKD1,c.6137del,p.(Leu2046Argfs*70),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+40533884,PR-0029,cystic,PKD1,c.6142del,p.Ser2048Valfs*68,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0067,cystic,PKD2,c.753delG,p.Met252*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0179; PR-0035,cystic,PKD1,c.6184C>T,p.Gln2062*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F345,cystic,PKD1,c.6199C>T,p.Gln2067Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0071; GR0128,cystic,PKD2,c.1807dupA,p.Met603Asn; p.Met603Asnfs*23,frameshift,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F394,cystic,PKD1,c.6367C>T,p.Gln2123Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0001,cystic,PKD1,c.6397_6399delTTC,p.Phe2133del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#60,cystic,PKD1,c.6424C>T,p.(Gln2142*),nonsense,SNV,0,het,AD,Exome,1,NA,1,AD
+40533884,PR-0002,cystic,PKD1,c.6487C>T,p.Arg2163*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F8,cystic,PKD1,c.6493C>T,p.Gln2165Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0085,cystic,COL4A3,c.2330G>A,p.Gly777Asp,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0030,cystic,PKD1,c.6574_6580del,p.Thr2192Alafs*18,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0090,cystic,PKHD1,c.2414C>T,p.Pro805Leu,missense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,GR0091; GR0223,cystic,PKD2,c.1094+1del,NA,canonical splice,INDEL,0,het,AD,Targeted_panel,2,NA,2,AD
+33226606,#48,cystic,PKD1,c.6583_6589delTGCCAGC,p.(Cys2195Glyfs*15),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+40533884,GR0109,cystic,COL4A3,c.4981C>T,p.Arg1661Cys,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0071,cystic,PKD1,c.6593del,p.Pro2198Argfs*14,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0112,cystic,PKHD1,c.9689del,p.Asp3230Val,missense,INDEL,0,het,AR,Targeted_panel,1,Variant description implies missense but 'del' suggests frameshift; monoallelic pathogenic variant in AR gene,1,AR
+40533884,PR-0018,cystic,PKD1,c.6609_6627del,p.Val2204Thrfs*2,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0159,cystic,PKD1,c.6611_6612delC,p.Val2204Glyfs*57,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0072,cystic,PKD1,c.6643C>T,p.Arg2215Trp,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0175,cystic,PKD2,c.2052C>A,p.Tyr684*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F617,cystic,PKD1,c.6727_6728del,p.Gln2243fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0162,cystic,PKD1,c.6730_6731del,p.Ser2244Hisfs*17,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F374,cystic,PKD1,c.6739G>C,p.Asp2247Pro,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,MO-0389,cystic,PKD1,c.6760G>T,p.Glu2254*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#74,cystic,PKD1,c.6778_6780delATT,p.(Ile2260del),indel,INDEL,0,het,AD,Exome,1,"Reported as ""deletion""",1,AD
+40533884,MA-0028,cystic,PKD1,c.6827T>C,p.Leu2276Pro,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F285,cystic,PKD1,c.6846C>A,p.Tyr2282Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0006,cystic,PKD2,c.230dup,p.Ala69Glyfs*23,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0010,cystic,PKHD1,c.6170C>A,p.Ala2057Asp,missense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,GR0002,cystic,PKD1,c.6871C>T,p.Gln2291*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0013,cystic,PKHD1,c.5380+1G>A,NA,canonical splice,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.8388C>G,1,AR
+40533884,MA-0013,cystic,PKHD1,c.8388C>G,p.Ser2796Arg,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.5380+1G>A,1,AR
+35099770,F369,cystic,PKD1,c.6919-9G>A,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F821,cystic,PKD1,c.7000_7001insGCTGGCG,p.Val2334fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0023,cystic,PKD2,c.1681del,p.Ile561*,nonsense,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F675,cystic,PKD1,c.711delC,p.Pro237fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P155,cystic,PKD1,c.7139_7145del,p.(Glu2380Alafs*238),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+40533884,MA-0029,cystic,PKD2,c.592C>T,p.Arg198*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F771,cystic,PKD1,c.7215G>T,p.Trp2405Cys,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0081,cystic,PKD1,c.7222C>T,p.Arg2408Cys,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#51,CKDu,PKD1,c.7288C>T,p.(Arg2430*),nonsense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+40533884,MA-0034,cystic,PKHD1,c.737T>C,p.Ile246Thr,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.5896dup,1,AR
+40533884,MA-0034,cystic,PKHD1,c.5896dup,p.Leu1966Thrfs*4,frameshift,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.737T>C,1,AR
+40533884,GR0103,cystic,PKD1,c.7292T>A,p.Leu2431Gln,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0036; PR-0031,cystic,PKD2,c.1774C>T,p.Arg592*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,PR-0012,cystic,PKD1,c.7292T>C,p.Leu2431Pro,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F568,cystic,PKD1,c.7300C>T,p.Arg2434Trp,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,MO-0165,cystic,PKD1,c.7300C>T,p.Arg2434Trp,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F151,cystic,PKD1,c.7303_7317del,p.2435_2439del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0052,cystic,PKD2,c.2518C>T,p.Gln840*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F385,cystic,PKD1,c.7369G>T,p.Glu2457Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0021,cystic,PKD1,c.74_75delinsT,p.Gly25Valfs*48,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0056; MA-0066,cystic,PKD2,c.916C>T,p.Arg306*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,PR-0027,cystic,PKD1,c.7415_7416insA,p.Ser2475Leufs*26,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0059,cystic,PKD2,c.2301_2302insA,p.Gln768Thrfs*7,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F339,cystic,PKD1,c.7495delC,p.His2499fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0061,cystic,PKD2,c.7540del,p.Leu2514Cysfs*106,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0157; PR-0036,cystic,PKD1,c.7546C>T,p.Arg2516Cys,missense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+33226606,#9,cystic,PKD1,c.763_775delCCTGCCCCCACCT,p.(Pro255Valfs*31),frameshift,INDEL,0,het,AD,Exome,1,NA,1,AD
+35099770,F157,cystic,PKD1,c.78_delC,p.Arg28fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F383,cystic,PKD1,c.7833C>G,p.Tyr2611Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0081,cystic,PKD2,c.2358+1G>T,NA,canonical splice,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0087,cystic,PKD2,c.1094+3_1094+6del,NA,splice region,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F641,cystic,PKD1,c.7903G>T,p.Glu2635Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+32939031,P150,cystic,PKD1,c.7927C>T,p.(Arg2643Cys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+40533884,GR0177,cystic,PKD1,c.7957_7958del,p.Leu2653Glu,missense,INDEL,0,het,AD,Targeted_panel,1,Description implies missense,1,AD
+40533884,MA-0093,cystic,PKD2,c.648C>A,p.Tyr216*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0094,cystic,PKD2,c.2191C>T,p.Gln731*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0095,cystic,PKD2,c.1848C>G,p.Tyr616*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0098,cystic,PKD2,c.965G>A,p.Arg322Gln,missense,SNV,0,het,AD,Targeted_panel,1,Mosaicism noted,1,AD
+40533884,MA-0045,cystic,PKD1,c.7984C>T,p.Gln2662*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0106,cystic,PKD2,c.991T>C,p.Cys331Arg,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F342,cystic,PKD1,c.7987C>T,p.Gln2663Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F441; F650,cystic,PKD1,c.8008C>T,p.Gln2670Ter,Stopgain,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0012; PR-0007,cystic,PKD2,c.2614C>T,p.Arg872*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F476,cystic,PKD1,c.8017-1G>C,p.?,Splicing,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0062; PR-0020,cystic,PKD2,c.1960C>T,p.Arg654*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+35099770,F327,cystic,PKD1,c.8045C>A,p.Ser2682Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F443; F60,cystic,PKD1,c.8056C>T,p.Gln2686Ter,Stopgain,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0069,cystic,PKHD1,c.9524A>G,p.Asn3175Ser,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.10484T>C,1,AR
+40533884,MO-0069,cystic,PKHD1,c.10484T>C,p.Leu3495Pro,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.9524A>G,1,AR
+40533884,MO-0113,cystic,PKD2,c.2117del,p.Lys706Argfs*10,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F709,cystic,PKD1,c.8234_8235insCGTCACCATC,p.Ser2745fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0164,cystic,PKD1,c.8251C>T,p.Gln2751*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F629?,cystic,PKD1,c.8284_8295del,p.2762_2765del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0052,cystic,PKD1,c.8284_8295delATCCTCATGCGC,p.Ile2762_Arg2765del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F408,cystic,PKD1,c.8299C>T,p.Arg2767Cys,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#43,cystic,PKD1,c.8311G>A,p.(Glu2771Lys),missense,SNV,0,het,AD,Exome,1,NA,1,AD
+40533884,MO-0188; MO-0209,cystic,PKD1,c.8311G>A,p.Glu2771Lys,missense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0089,cystic,PKD1,c.8477_8481dup,p.Leu2828Serfs*49,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0178,cystic,PKD1,c.856_862dup,p.Gln288Leu,missense,INDEL,0,het,AD,Targeted_panel,1,Description implies missense,1,AD
+40533884,MA-0019,cystic,PKD1,c.8578C>T,p.Gln2860*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0184,cystic,COL4A5,c.878_879del,p.Glu293Alafs*6,frameshift,INDEL,0,het,XL,Targeted_panel,1,NA,1,XL
+35099770,F618,cystic,PKD1,c.858_932del,p.Gly287_Ser311del,Inframe deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0181; MO-0182,cystic,PKD1,c.8704C>T,p.Gln2902*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0006,cystic,PKD1,c.8860G>T,p.Glu2954*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0211,cystic,PKHD1,c.7328T>G,p.Leu2443*,nonsense,INDEL,0,compound_het,AR,Targeted_panel,1,Biallelic with c.7264T>G,1,AR
+40533884,MO-0211,cystic,PKHD1,c.7264T>G,p.Cys2422Gly,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.7328T>G,1,AR
+40533884,MO-0244; MO-0245,cystic,PKD2,c.1319+1G>A,NA,canonical splice,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0307,cystic,PKHD1,c.(880+1_881-1)_(976+1_977-1)del,NA,exon deletion,CNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+35099770,F651,cystic,PKD1,c.8935_8937del,p.2979_2979del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0047,cystic,PKD1,c.8973C>G,p.Tyr2991*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0348,cystic,PKHD1,c.6731T>A,p.Leu2244His,missense,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+33226606,#33,CKDu,PKD1,c.8990G>T,p.(Ser2997Ile),missense,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+35099770,TF90,cystic,PKD1,c.912_913insG,p.Trp305Valfs*66,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0386,cystic,PKD2,c.2296G>T,p.Gly766*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F776,cystic,PKD1,c.9143T>G,p.Leu3048Arg,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,PR-0004,cystic,PKD1,c.9157G>A,p.Ala3053Thr,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F605,cystic,PKD1,c.9298C>T,p.Gln3100Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F1048,cystic,PKD1,c.9388dupC,p.Arg3130fs,Frameshift Insertion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F607,cystic,PKD1,c.9395C>T,p.Ser3132Leu,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+40533884,PR-0013,cystic,PKD2,c.1158T>A,p.Tyr386*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0014,cystic,PKD2,c.1249C>T,p.Arg417*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0066,cystic,PKD1,c.9397+1G>A,NA,canonical splice,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F773; F422; F642,cystic,PKD1,c.9425T>C,p.Leu3142Pro,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,3,VUS considered disease-causing,3,AD
+40533884,MO-0087,glomerular,PKD1,c.9499A>T,p.Ile3167Phe,missense,SNV,0,het,AD,Targeted_panel,1,Listed in Glomerulopathy table,1,AD
+40533884,PR-0019; PR-0033,cystic,PKD2,c.637C>T,p.Arg213*,nonsense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MA-0058,cystic,PKD1,c.9559_9561del,p.Asp3187del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MA-0072,cystic,PKD1,c.9683dupG,p.Leu3229Profs*24,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+33226606,#16,CKDu,PKD1,c.9713-1G>A,NA,splicing,SNV,0,het,AD,Exome,1,"Listed under ""Unknown reasons""",1,AD
+35099770,F332,cystic,PKD1,c.9736delC,p.Arg3246fs,Frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0028,cystic,PKD2,c.2208_2213delAAACTT,p.Leu736_Asn737del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0028,cystic,PKHD1,c.8824C>T,p.Arg2942*,nonsense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+35099770,F613,cystic,PKD1,c.974A>G,p.Tyr325Cys,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,1,VUS considered disease-causing,1,AD
+32939031,P188,cystic,PKD1,c.9829C>T,p.(Arg3277Cys),missense,SNV,0,compound_het,AD,Exome,1,"biallelic with c.9814C>T (VUS, not listed); case of biallelic PKD1",1,AD
+35099770,F571,cystic,PKD1,c.9859_9861del,p.3287_3287del,Non-frameshift Deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0427,cystic,PKD1,c.9894G>A,p.Trp3298*,nonsense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0037,cystic,PKHD1,c.8870T>C,p.Ile2957Thr,missense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,PR-0038,cystic,PKD2,Gene deletion,NA,whole-gene deletion,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+35099770,F371,cystic,PKD1,c.99C>A,p.Cys33Ter,Stopgain,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,PR-0006,cystic,PKD2,c.1717-1G>T,NA,canonical splice,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0076; GR0134; GR0155,glomerular,COL4A5,c.3605G>A,p.Gly1202Asp,missense,SNV,0,het,XL,Targeted_panel,3,NA,3,XL
+40533884,GR0080,glomerular,COL4A5,c.2605G>A,p.Gly869Arg,missense,SNV,0,hemi,XL,Targeted_panel,1,NA,1,XL
+40533884,GR0086,glomerular,COL4A5,c.1843G>A,p.Gly615Arg,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,GR0087,glomerular,COL4A5,c.440dupG,p.Pro148Thr,frameshift,INDEL,0,hemi,XL,Targeted_panel,1,NA,1,XL
+40533884,GR0094; GR0121,glomerular,COL4A4,c.941G>A,p.Gly314Asp,missense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,GR0096,glomerular,COL4A3,c.343G>A,p.Gly115Arg,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0115,glomerular,COL4A3,c.40_63del,p.Leu14_Leu21del,in-frame deletion,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0127; MO-0421,glomerular,CYP24A1,c.1226T>C,p.Leu409Ser,missense,SNV,0,het,AR,Targeted_panel,2,Monoallelic pathogenic variant in AR gene,2,AR
+40533884,GR0131,glomerular,COL4A4,c.482G>A,p.Gly161Asp,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0163; GR0170; GR0196; MO-0198; MO-0395; MO-0101,glomerular,COL4A3,c.4421T>C,p.Leu1474Pro,missense,SNV,0,het; compound_het,AD,Targeted_panel,6,"Zygosity: Het (5 cases), Comp Het (MO-0101)",6,AD
+40533884,GR0169,glomerular,COL4A3,Exon 12 del,NA,exon deletion,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0184,glomerular,COL4A4,c.1108G>A,p.Gly370Arg,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0205,glomerular,COL4A5,c.3508G>A,p.Gly1170Ser,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MA-0014,glomerular,COL4A5,c.395G>A,p.Gly132Glu,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MA-0084,glomerular,COL4A4,c.4932delCinsTT,p.Ala1645Cysfs*3,indel,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0001,glomerular,COL4A4,c.1889delC,p.Pro630Glnfs*23,frameshift,INDEL,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0003; MO-0049,glomerular,COL4A5,c.1424-4C>G,NA,splice region,SNV,0,het,XL,Targeted_panel,2,NA,2,XL
+40533884,MO-0026,glomerular,COL4A5,c.3088G>A,p.Gly1030Ser,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MO-0033; MO-0034; MO-0043,glomerular,COL4A3,c.1363G>T,p.Gly455Cys,missense,SNV,0,het,AD,Targeted_panel,3,NA,3,AD
+40533884,MO-0064,glomerular,COL4A5,c.973G>A,p.Gly325Arg,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MO-0065; MO-0441,glomerular,COL4A3,c.2083G>A,p.Gly695Arg,missense,SNV,0,het,AD,Targeted_panel,2,NA,2,AD
+40533884,MO-0083; MO-0344,glomerular,COL4A5,c.448G>C,p.Gly150Arg,missense,SNV,0,het,XL,Targeted_panel,2,NA,2,XL
+40533884,MO-0099,glomerular,COL4A5,c.5020C>T,p.Arg1674*,nonsense,SNV,0,het,XL,Targeted_panel,1,Co-occurrence with CYP24A1,1,XL
+40533884,MO-0099,glomerular,CYP24A1,c.1421del,p.Leu474Trpfs*102,frameshift,INDEL,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene; co-occurrence with COL4A5,1,AR
+40533884,MO-0101,glomerular,COL4A3,c.4928+1G>A,NA,canonical splice,SNV,0,compound_het,AD,Targeted_panel,1,Biallelic with c.4421T>C,1,AD
+40533884,MO-0114,glomerular,COL4A4,c.2951del,p.Gly972Glufs*66,frameshift,INDEL,0,het,AD,Targeted_panel,1,Co-occurrence with CUBN,1,AD
+40533884,MO-0114,glomerular,CUBN,c.6928_6934del,NA,in-frame deletion?,INDEL,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene; co-occurrence with COL4A4,1,AR
+40533884,MO-0126,glomerular,COL4A3,c.4235G>T,p.Gly1412Val,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0130,glomerular,COL4A5,c.1075G>A,p.Gly359Arg,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MO-0139,glomerular,COL4A5,c.3688G>A,p.Gly1223Asp,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MO-0144,glomerular,COL4A4,c.2320G>C,p.Gly774Arg,missense,SNV,0,compound_het,AD,Targeted_panel,1,Biallelic with c.4394G>A,1,AD
+40533884,MO-0144,glomerular,COL4A4,c.4394G>A,p.Gly1465Asp,missense,SNV,0,compound_het,AD,Targeted_panel,1,Biallelic with c.2320G>C,1,AD
+40533884,MO-0168,glomerular,TTC21B,c.626C>T,p.Pro209Leu,missense,SNV,0,hom,AR,Targeted_panel,1,NA,1,AR
+40533884,MO-0199; MO-0210; MO-0390,glomerular,COL4A5,c.2282del,p.Pro761Hisfs*31,frameshift,INDEL,0,het,XL,Targeted_panel,3,NA,3,XL
+40533884,MO-0215,glomerular,COL4A4,c.189_192+256del,NA,large deletion,CNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0241,glomerular,COL4A4,c.1423G>C,p.Gly475Arg,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,MO-0265,glomerular,FN1,c.1155G>A,p.Trp385*,nonsense,SNV,0,het,AD,Targeted_panel,1,Co-occurrence with COL4A3,1,AD
+40533884,MO-0265,glomerular,COL4A3,c.765G>A,NA,missense?,SNV,0,het,AD,Targeted_panel,1,Co-occurrence with FN1,1,AD
+40533884,MO-0292,glomerular,CUBN,c.(4168+1_4169-1)_(4350+1_4351-1)del,NA,exon deletion,CNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0329,glomerular,COL4A5,c.3731G>A,p.Gly1244Asp,missense,SNV,0,het,XL,Targeted_panel,1,NA,1,XL
+40533884,MO-0398,glomerular,COL4A4,c.104A>G,p.Tyr35Cys,missense,SNV,0,compound_het,AD,Targeted_panel,1,Biallelic with c.5048G>A,1,AD
+40533884,MO-0398,glomerular,COL4A4,c.5048G>A,p.Cys1683Tyr,missense,SNV,0,compound_het,AD,Targeted_panel,1,Biallelic with c.104A>G,1,AD
+40533884,MO-0256,tubulopathies,CYP24A1,c.1186C>T,p.Arg396Trp,missense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0297; MO-0371,tubulopathies,CYP24A1,c.428_430del,p.Glu143del,in-frame deletion,INDEL,0,het,AR,Targeted_panel,2,Monoallelic pathogenic variant in AR gene,2,AR
+40533884,GR0095,tubulopathies,UMOD,c.947A>C,p.Gln316Pro,missense,SNV,0,het,AD,Targeted_panel,1,NA,1,AD
+40533884,GR0214,tubulopathies,SLC12A3,c.2089_2095del,p.Thr697Glyfs*2,frameshift,INDEL,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MA-0002,tubulopathies,SLC12A3,c.852+1G>A,NA,canonical splice,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0115,tubulopathies,SLC12A3,c.644T>C,p.Leu215Pro,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.1390G>A,1,AR
+40533884,MO-0115,tubulopathies,SLC12A3,c.1390G>A,p.Ala464Thr,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.644T>C,1,AR
+40533884,MO-0116,tubulopathies,SLC4A4,c.654del,p.Lys218Asnfs*31,frameshift,INDEL,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0266,tubulopathies,ATP6V0A4,c.1185del,p.Tyr396Thrfs*12,frameshift,INDEL,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0315,tubulopathies,GRHPR,c.905G>A,p.Arg302His,missense,SNV,0,het,AR,Targeted_panel,1,Monoallelic pathogenic variant in AR gene,1,AR
+40533884,MO-0360,tubulopathies,SLC12A3,c.3052C>T,p.Arg1018*,nonsense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.812T>C,1,AR
+40533884,MO-0360,tubulopathies,SLC12A3,c.812T>C,p.Leu271Pro,missense,SNV,0,compound_het,AR,Targeted_panel,1,Biallelic with c.3052C>T,1,AR
+35099770,F234; F729; F813,cystic,PKD1,NA,NA,Non-synonymous SNV,SNV,0,het,AD,Targeted_panel,3,LR-PCR; HGVS not provided,3,AD
+40533884,WES_Case_2,tubulointerstitial,NPHP1,NA,NA,whole-gene deletion,CNV,0,hom,AR,Exome,1,"Diagnosed via WES; ""all exons homozygous deletion""",1,AR
+40533884,Panel_Case_3,CKDu,INF2,NA,p.Glu220Lys,missense,SNV,0,unknown,AD,Targeted_panel,1,Diagnosed via larger targeted panel; HGVS_cDNA not provided,1,AD

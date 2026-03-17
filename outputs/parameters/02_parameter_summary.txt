@@ -1,0 +1,104 @@
+=== RENAL GENETICS CEA: PARAMETER AUDIT ===
+Generated: 2026-03-12 14:50:30.389441 
+
+--- 1. DIAGNOSTIC YIELDS (Pooled Random Effects) ---
+          Phenotype Pooled_Yield CI_95_Lower CI_95_Upper N_Studies Alpha Beta
+         glomerular        30.0%       21.4%       40.2%         6  26.6 62.2
+             cystic        62.1%       49.3%       73.5%         6  36.2 22.1
+      tubulopathies        39.5%       16.8%       67.9%         5   4.2  6.4
+               CKDu        19.6%        6.9%       44.4%         5   3.2 13.1
+ tubulointerstitial        27.7%       15.6%       44.3%         3   9.7 25.3
+
+--- 2. PHENOTYPE PREVALENCE (Dirichlet Alphas) ---
+                   phenotype_alphas
+CKDu                           1367
+cystic                          931
+glomerular                     1059
+tubulointerstitial              187
+tubulopathies                   194
+
+--- 3. JOINT (GENE, VARIANT_CLASS) PROPORTIONS BY PHENOTYPE ---
+Proportions should sum to 1.0.
+
+[GLOMERULAR] (Sum = 1)
+   gene variant_class count proportion modal_inheritance
+ COL4A5           SNV    53 0.22268908                XL
+ COL4A3           SNV    40 0.16806723                AD
+ COL4A4           SNV    27 0.11344538                AD
+ COL4A5         INDEL    19 0.07983193                XL
+  NPHS2         INDEL     9 0.03781513                AR
+ COL4A3         INDEL     8 0.03361345                AD
+ COL4A4         INDEL     7 0.02941176                AD
+  COQ8B           SNV     4 0.01680672                AR
+   INF2           SNV     4 0.01680672                AD
+  NPHS2           SNV     4 0.01680672                AR
+
+[CKDU] (Sum = 1)
+   gene variant_class count proportion modal_inheritance
+ COL4A5           SNV     9 0.08653846                XL
+ COL4A3           SNV     8 0.07692308                AD
+ COL4A3         INDEL     5 0.04807692                AD
+ COL4A4           SNV     4 0.03846154                AD
+   INF2           SNV     4 0.03846154                AD
+   PKD1           SNV     4 0.03846154                AD
+  CLCN5         INDEL     3 0.02884615                XL
+   PAX2           SNV     3 0.02884615                AD
+ SLC4A1           SNV     3 0.02884615                AD
+  APOL1           SNV     2 0.01923077                AD
+
+[TUBULOPATHIES] (Sum = 1)
+     gene variant_class count proportion modal_inheritance
+  SLC12A3           SNV     9 0.20000000                AR
+    CLCN5           SNV     4 0.08888889                XL
+   CLCNKB           SNV     3 0.06666667                AR
+   SLC7A9           SNV     3 0.06666667                AR
+ ATP6V1B1         INDEL     2 0.04444444                AR
+  CYP24A1         INDEL     2 0.04444444                AR
+    KCNJ1           SNV     2 0.04444444                AR
+  SLC12A3         INDEL     2 0.04444444                AR
+    AMPD2         INDEL     1 0.02222222                AR
+    AMPD2           SNV     1 0.02222222                AR
+
+[CYSTIC] (Sum = 1)
+   gene variant_class count  proportion modal_inheritance
+   PKD1           SNV   100 0.318471338                AD
+   PKD1         INDEL    71 0.226114650                AD
+   PKD2           SNV    50 0.159235669                AD
+  PKHD1           SNV    36 0.114649682                AR
+   PKD2         INDEL    27 0.085987261                AD
+  PKHD1         INDEL     8 0.025477707                AR
+  HNF1B           SNV     3 0.009554140                AD
+ COL4A3           SNV     2 0.006369427                AD
+  HNF1B         INDEL     2 0.006369427                AD
+   PKD2           CNV     2 0.006369427                AD
+
+[TUBULOINTERSTITIAL] (Sum = 1)
+   gene variant_class count proportion modal_inheritance
+  NPHP1           CNV    14 0.25454545                AR
+   UMOD           SNV     7 0.12727273                AD
+   PAX2           SNV     3 0.05454545                AD
+ IFT172           SNV     2 0.03636364                AR
+  NPHP1         INDEL     2 0.03636364                AR
+  NPHP1           SNV     2 0.03636364                AR
+   AGXT         INDEL     1 0.01818182                AR
+  BBS12         INDEL     1 0.01818182                AR
+   BBS9           SNV     1 0.01818182                AR
+ CEP290         INDEL     1 0.01818182                AR
+
+
+--- 4. DIFFICULT LOCI (Separate Treatment) ---
+ gene n_variants total_weight primary_variant_class modal_inheritance
+ MUC1          5           15                 INDEL                AD
+ PKD1         79           87                   SNV                AD
+
+Difficult Loci by Phenotype:
+          phenotype gene variant_class count proportion
+               CKDu MUC1         INDEL     4 0.57142857
+               CKDu MUC1           SNV     1 0.14285714
+               CKDu PKD1         INDEL     1 0.14285714
+               CKDu PKD1           SNV     1 0.14285714
+             cystic PKD1           CNV     6 0.07058824
+             cystic PKD1         INDEL    31 0.36470588
+             cystic PKD1           SNV    48 0.56470588
+ tubulointerstitial MUC1         INDEL     5 0.50000000
+ tubulointerstitial MUC1           SNV     5 0.50000000

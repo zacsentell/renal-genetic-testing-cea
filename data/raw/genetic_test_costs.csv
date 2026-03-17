@@ -1,0 +1,7 @@
+cost_item_id,cost_item_label,applied_when,mean_cad,min_cad,max_cad,source
+panel_multigene,Targeted multigene panel,Panel-first strategy,1400,700,2100,"Cost Parameters.docx refs 16,17"
+clinical_exome,Clinical exome (or equivalent),Exome- or broad-test-first strategy,2500,2000,3000,"Cost Parameters.docx refs 16,17"
+clinical_genome,Clinical genome,Genome-first strategy,4500,4000,5000,"Cost Parameters.docx refs 16,17"
+targeted_single_variant,Targeted single-variant test,Familial variant testing plus VUS segregation,300,200,400,Cost Parameters.docx
+consult_pretest,Pre-test genetics consultation,Initial genetics visit for proband,350,250,450,RAMQ code 09001
+consult_posttest,Post-test genetics consultation,Follow-up visit(s),200,150,250,"RAMQ codes 09001/09003"
