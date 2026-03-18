@@ -135,10 +135,7 @@ compute_icpd_series <- function(data, focal_label, comp_label) {
         )
 }
 
-icpd_es_panel  <- compute_icpd_series(dsa_iter, "ES",             "Panel")
-icpd_reflex_es <- compute_icpd_series(dsa_iter, "Panel_Reflex_ES", "ES")
-
-icpd_all <- bind_rows(icpd_es_panel, icpd_reflex_es)
+icpd_all <- compute_icpd_series(dsa_iter, "Panel_Reflex_ES", "Panel")
 
 n_invalid <- sum(is.na(icpd_all$icpd))
 if (n_invalid > 0) {
@@ -182,24 +179,14 @@ write_csv_validated(cost_summary,  OUTPUT_COSTS_CSV, "cascade_dsa_costs")
 # ==============================================================================
 # 7. Figure: ICPD vs n_relatives
 # ==============================================================================
-comparison_labels <- c(
-    "ES vs Panel"            = "ES vs Panel",
-    "Panel_Reflex_ES vs ES"  = "Reflex (Panel\u2192ES) vs ES"
-)
-
-plot_data <- icpd_summary %>%
-    mutate(
-        comparison_label = recode(comparison, !!!comparison_labels),
-        comparison_label = factor(comparison_label, levels = unname(comparison_labels))
-    )
+plot_data <- icpd_summary
 
 p <- ggplot(plot_data,
-            aes(x = n_relatives, y = icpd_mean,
-                colour = comparison_label, fill = comparison_label)) +
+            aes(x = n_relatives, y = icpd_mean)) +
     geom_ribbon(aes(ymin = icpd_q025, ymax = icpd_q975),
-                alpha = 0.15, colour = NA) +
-    geom_line(linewidth = 0.9) +
-    geom_point(size = 2.8) +
+                alpha = 0.15, fill = "#440154") +
+    geom_line(linewidth = 0.9, colour = "#440154") +
+    geom_point(size = 2.8, colour = "#440154") +
     geom_vline(xintercept = base_n, linetype = "dashed",
                colour = "grey45", linewidth = 0.6) +
     annotate("text",
@@ -215,23 +202,18 @@ p <- ggplot(plot_data,
     scale_y_continuous(
         labels = scales::dollar_format(prefix = "$", suffix = "")
     ) +
-    scale_colour_viridis_d(option = "D", begin = 0.15, end = 0.75,
-                           name = "Comparison") +
-    scale_fill_viridis_d(option = "D",   begin = 0.15, end = 0.75,
-                         name = "Comparison") +
     labs(
         title    = "One-Way DSA: Cascade Testing Family Size",
         subtitle = paste0(
-            "Incremental cost per additional diagnosis (ICPD) by number of eligible\n",
+            "ICPD for Reflex (Panel\u2192ES) vs Panel by number of eligible\n",
             "first-degree relatives tested per diagnosed proband (base case = ", base_n, ")"
         ),
         x        = "Eligible first-degree relatives per diagnosed proband (n)",
         y        = "ICPD (CAD per additional diagnosis)",
-        caption  = "Shaded bands: 95% uncertainty interval (PSA, 1000 iterations). Dashed line: base case."
+        caption  = "Shaded band: 95% uncertainty interval (PSA, 1000 iterations). Dashed line: base case."
     ) +
     theme_bw(base_size = 11) +
     theme(
-        legend.position  = "bottom",
         plot.caption     = element_text(size = 8, colour = "grey50"),
         plot.subtitle    = element_text(size = 9)
     )
