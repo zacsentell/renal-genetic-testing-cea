@@ -23,6 +23,7 @@ library(purrr)
 
 # IO Paths
 INPUT_COSTS <- "data/raw/genetic_test_costs.csv"
+INPUT_UPTAKE <- "data/raw/uptake_parameters.csv"
 INPUT_PANELS_DIR <- "data/raw/panels"
 OUTPUT_RDS <- "data/intermediate/01b_parameters.rds"
 
@@ -146,6 +147,83 @@ cat(sprintf(
 ))
 
 # -------------------------------------------------------------------------
+# 1b. Load Uptake Parameters
+# -------------------------------------------------------------------------
+cat("\nLoading uptake parameters from", INPUT_UPTAKE, "...\n")
+
+raw_uptake <- read_csv(INPUT_UPTAKE, show_col_types = FALSE)
+
+required_uptake_cols <- c(
+    "parameter", "base_case", "beta_shape1", "beta_shape2",
+    "dsa_min", "dsa_max", "source"
+)
+missing_uptake_cols <- setdiff(required_uptake_cols, names(raw_uptake))
+if (length(missing_uptake_cols) > 0) {
+    stop("Uptake table missing required columns: ", paste(missing_uptake_cols, collapse = ", "))
+}
+
+required_uptake_ids <- c("reflex_uptake", "cascade_uptake")
+missing_uptake_ids <- setdiff(required_uptake_ids, raw_uptake$parameter)
+if (length(missing_uptake_ids) > 0) {
+    stop("Uptake table missing required parameters: ", paste(missing_uptake_ids, collapse = ", "))
+}
+
+# Validate base_case values are probabilities
+for (idx in seq_len(nrow(raw_uptake))) {
+    pid <- raw_uptake$parameter[idx]
+    bc <- raw_uptake$base_case[idx]
+    if (!is.numeric(bc) || bc < 0 || bc > 1) {
+        stop(sprintf("Uptake parameter '%s': base_case must be in [0, 1], got %s", pid, bc))
+    }
+    s1 <- raw_uptake$beta_shape1[idx]
+    s2 <- raw_uptake$beta_shape2[idx]
+    if (!is.na(s1) && (!is.numeric(s1) || s1 <= 0)) {
+        stop(sprintf("Uptake parameter '%s': beta_shape1 must be > 0 when specified", pid))
+    }
+    if (!is.na(s2) && (!is.numeric(s2) || s2 <= 0)) {
+        stop(sprintf("Uptake parameter '%s': beta_shape2 must be > 0 when specified", pid))
+    }
+    dmin <- raw_uptake$dsa_min[idx]
+    dmax <- raw_uptake$dsa_max[idx]
+    if (!is.na(dmin) && !is.na(dmax)) {
+        if (dmin < 0 || dmin > 1 || dmax < 0 || dmax > 1) {
+            stop(sprintf("Uptake parameter '%s': dsa_min and dsa_max must be in [0, 1]", pid))
+        }
+        if (dmin > bc || bc > dmax) {
+            stop(sprintf("Uptake parameter '%s': must have dsa_min <= base_case <= dsa_max", pid))
+        }
+    }
+}
+
+# Build nested list by parameter name
+uptake_params <- list()
+for (idx in seq_len(nrow(raw_uptake))) {
+    pid <- raw_uptake$parameter[idx]
+    # Strip "_uptake" suffix for cleaner list names (reflex_uptake -> reflex)
+    key <- sub("_uptake$", "", pid)
+    uptake_params[[key]] <- list(
+        base_case   = raw_uptake$base_case[idx],
+        beta_shape1 = raw_uptake$beta_shape1[idx],
+        beta_shape2 = raw_uptake$beta_shape2[idx],
+        dsa_min     = raw_uptake$dsa_min[idx],
+        dsa_max     = raw_uptake$dsa_max[idx]
+    )
+}
+
+cat("Uptake parameters loaded:\n")
+for (key in names(uptake_params)) {
+    up <- uptake_params[[key]]
+    if (!is.na(up$beta_shape1)) {
+        cat(sprintf("  %s: base = %.2f, Beta(%.0f, %.0f), DSA range = %.2f–%.2f\n",
+            key, up$base_case, up$beta_shape1, up$beta_shape2,
+            up$dsa_min, up$dsa_max))
+    } else {
+        cat(sprintf("  %s: base = %.2f (fixed, not sampled in PSA)\n",
+            key, up$base_case))
+    }
+}
+
+# -------------------------------------------------------------------------
 # 2. Load and Process Panels
 # -------------------------------------------------------------------------
 cat("\nLoading panels from", INPUT_PANELS_DIR, "...\n")
@@ -246,8 +324,10 @@ if (!dir.exists(PARAMS_DIR)) dir.create(PARAMS_DIR, recursive = TRUE)
 saveRDS(costs_list, file.path(PARAMS_DIR, "costs.rds"))
 saveRDS(panels_list, file.path(PARAMS_DIR, "panels.rds"))
 saveRDS(cascade_params, file.path(PARAMS_DIR, "cascade_params.rds"))
+saveRDS(uptake_params, file.path(PARAMS_DIR, "uptake_params.rds"))
 
 cat("Exported to data/params/:\n")
 cat("  - costs.rds\n")
 cat("  - panels.rds\n")
 cat("  - cascade_params.rds\n")
+cat("  - uptake_params.rds\n")

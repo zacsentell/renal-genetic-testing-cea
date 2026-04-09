@@ -7,7 +7,7 @@
 **Purpose.** This document provides a self-contained account of the cost-effectiveness analysis (CEA) supporting the manuscript *Genetic Evaluation in Chronic Kidney Disease: A Canadian Single-Centre Experience.* It follows CHEERS 2022 reporting guidelines (see Appendix A). All numerical results are generated directly from simulation outputs; the CHEERS checklist and key-finding callouts are reviewed and confirmed after each pipeline run.
 
 **Run configuration.** n_iter = 1000; n_probands = 1000; seed_start = 2025; cost CV = 0.25; GS yield uplift (scenario) = +10%.
-**Generated:** 2026-03-17 11:00 EDT.
+**Generated:** 2026-03-29 (post reflex-uptake parameterization; base-case reflex uptake = 50%). See `docs/report/report.md` for the canonical version including §7.3 (PKD1 full detection scenario) and Appendix E (reflex uptake DSA).
 
 ---
 
@@ -56,9 +56,9 @@ For each simulated proband and strategy:
 1. **Assign phenotype** — draw from a Dirichlet-multinomial distribution parameterised by pooled phenotype proportions from the literature synthesis.
 2. **Assign monogenic status** — conditional on phenotype, draw from a Beta distribution representing the phenotype-specific detectable monogenic probability under a high-sensitivity reference strategy.
 3. **Assign causal architecture** — if monogenic, draw a (Gene, Inheritance mode, Variant class) triple from phenotype-specific empirical joint proportions derived from the curated variant table.
-4. **Apply strategy** — traverse the planned test sequence: apply gene-coverage check, then analytic detection probability for the modality and variant class. If detected, record diagnosis and accumulate costs; if negative and the strategy includes reflex, execute the ES step.
+4. **Apply strategy** — traverse the planned test sequence: apply gene-coverage check, then analytic detection probability for the modality and variant class. If detected, record diagnosis and accumulate costs; if negative and the strategy includes reflex, draw a Bernoulli trial with probability equal to the reflex uptake parameter to determine whether the proband proceeds to ES.
 5. **VUS outcome** — independently draw whether ≥1 reportable VUS is returned at each testing step, using modality-specific Beta-distributed probabilities.
-6. **Accumulate costs** — sum clinical visits, laboratory testing, VUS follow-up (if applicable), and cascade testing for diagnosed probands. Cascade cost is computed as Nₜᵣₗ × (pre-test consultation + targeted familial variant test), applied only to probands with a P/LP result. Two simplifying assumptions are made: (a) **100% cascade uptake** — all diagnosed probands are assumed to undergo familial testing for all eligible relatives; (b) **no health benefit to relatives is modelled** — consistent with the 12-month proband-centric perspective, but this creates a conservative cost-effectiveness bias against higher-yield strategies. The base case assumes 2 eligible first-degree relatives per diagnosed proband; a one-way sensitivity analysis varying Nₜᵣₗ from 0 to 4 is presented in Appendix D.
+6. **Accumulate costs** — sum clinical visits, laboratory testing, VUS follow-up (if applicable), and cascade testing for diagnosed probands. Cascade cost is computed as Nₜᵣₗ × (pre-test consultation + targeted familial variant test), applied only to probands with a P/LP result. Three simplifying assumptions are made: (a) **100% cascade uptake**; (b) **no health benefit to relatives is modelled**; (c) **50% reflex uptake (base case)** — of panel-negative probands offered ES, half accept. Parameterized as a Bernoulli trial per proband; Beta(5,5) prior in the PSA (mean 0.50, 95% interval 0.19–0.81). The base case assumes 2 eligible first-degree relatives; one-way sensitivity analyses vary Nₜᵣₗ from 0 to 4 (Appendix D) and reflex uptake from 20% to 100% (Appendix E in the canonical report).
 
 ### 2.3  Variant classes and detection logic
 
@@ -165,10 +165,10 @@ _Detection % values are posterior mean analytic sensitivities. PKD1 and MUC1 col
 | Strategy | Total Cost per Proband, Mean [95% UI] | Diagnostic Yield, Mean [95% UI] | Cost per Diagnosis, Mean [95% UI] | Pr(≥1 VUS), Mean [95% UI] |
 | --- | --- | --- | --- | --- |
 | Panel | $2,554 [$1,863, $3,394] | 30.7% [23.3%, 39.4%] | $8,447 [$5,800, $12,069] | 56.4% [53.3%, 59.4%] |
-| ES | $3,527 [$2,471, $4,833] | 31.1% [23.6%, 40.6%] | $11,543 [$7,612, $17,106] | 27.6% [24.7%, 30.6%] |
-| Reflex (Panel->ES) | $4,488 [$3,408, $5,649] | 34.3% [26.3%, 44.1%] | $13,332 [$9,221, $18,829] | 64.3% [61.2%, 67.2%] |
+| ES | $3,527 [$2,473, $4,847] | 31.1% [23.8%, 40.6%] | $11,540 [$7,610, $17,021] | 27.6% [24.7%, 30.5%] |
+| Reflex (Panel→ES) | $3,522 [$2,532, $4,694] | 32.5% [24.6%, 41.9%] | $11,021 [$7,392, $15,748] | 60.4% [56.4%, 64.5%] |
 
-> **Key finding:** Panel is the least-cost strategy (mean $2,554/proband) and achieves 30.7% diagnostic yield. ES is extendedly dominated — it is more costly than Panel while achieving marginally higher yield (31.1% vs 30.7%), and is also more costly than Reflex for any given diagnostic return. Reflex (Panel→ES) achieves the highest yield (34.3%) among the three strategies at a mean cost of $4,488/proband.
+> **Key finding:** Panel is the least-cost strategy (mean $2,554/proband) and achieves 30.7% diagnostic yield. At 50% reflex uptake, Reflex (Panel→ES) costs $3,522/proband — slightly cheaper than ES ($3,527) — while achieving higher yield (32.5% vs 31.1%). ES is therefore strictly dominated by Reflex and is excluded from the choice set entirely.
 
 ### 4.2  Cost composition
 
@@ -183,11 +183,11 @@ _Detection % values are posterior mean analytic sensitivities. PKD1 and MUC1 col
 | ES | Cascade Testing | $403 | 11.4% |
 | ES | Genetics Visits | $547 | 15.5% |
 | ES | Laboratory Testing | $2,482 | 70.4% |
-| ES | VUS Follow-up | $95 | 2.7% |
-| Reflex (Panel->ES) | Cascade Testing | $445 | 9.9% |
-| Reflex (Panel->ES) | Genetics Visits | $686 | 15.3% |
-| Reflex (Panel->ES) | Laboratory Testing | $3,126 | 69.7% |
-| Reflex (Panel->ES) | VUS Follow-up | $231 | 5.2% |
+| ES | VUS Follow-up | $96 | 2.7% |
+| Reflex (Panel→ES) | Cascade Testing | $421 | 12.0% |
+| Reflex (Panel→ES) | Genetics Visits | $616 | 17.5% |
+| Reflex (Panel→ES) | Laboratory Testing | $2,267 | 64.4% |
+| Reflex (Panel→ES) | VUS Follow-up | $217 | 6.2% |
 
 ![Cost Composition by Strategy](../outputs/results/base_case/cost_composition/mean_cost_composition_by_strategy_base_case.png)
 
@@ -200,16 +200,16 @@ _Figure 1. Stacked bars show mean total diagnostic-episode cost per proband part
 | Strategy | Dominance Status | Incremental Cost | Incremental Yield | ICPD (CAD) |
 | --- | --- | --- | --- | --- |
 | Panel | Non Dominated | — | — | — |
-| ES | Extendedly Dominated | — | — | — |
-| Reflex (Panel->ES) | Non Dominated | $1,934 | 0.0362 | $53,430 |
+| ES | Strictly Dominated | — | — | — |
+| Reflex (Panel→ES) | Non Dominated | $968 | 0.0181 | $53,619 |
 
-_Frontier: Reflex (Panel->ES) vs Panel: +36.2 diagnoses per 1,000 probands at +$1,934/proband; ICPD $53,430 per additional diagnosis._
+_Frontier: Reflex (Panel→ES) vs Panel: +18.1 diagnoses per 1,000 probands at +$968/proband; ICPD $53,619 per additional diagnosis._
 
 ![Efficiency Frontier](../outputs/results/incremental_analysis/base_case/efficiency_frontier_base_case.png)
 
-_Figure 2. Efficiency frontier on the cost–diagnosis plane. Each point is a strategy positioned by mean diagnostic yield (x-axis) and mean total cost per proband (y-axis). The frontier line connects non-dominated strategies. ES falls below the frontier (extendedly dominated). The slope between Panel and Reflex equals the ICPD._
+_Figure 2. Efficiency frontier on the cost–diagnosis plane. Each point is a strategy positioned by mean diagnostic yield (x-axis) and mean total cost per proband (y-axis). The frontier line connects non-dominated strategies. ES is strictly dominated by Reflex (lower yield and higher cost). The slope between Panel and Reflex equals the ICPD._
 
-> **Key finding:** The efficiency frontier runs from Panel (lowest cost, lowest yield) to Reflex (highest yield). ES is extendedly dominated and excluded from the frontier. ICPD for Reflex vs Panel: $53,430 per additional diagnosis.
+> **Key finding:** The efficiency frontier runs from Panel (lowest cost, lowest yield) to Reflex (highest yield). ES is strictly dominated — Reflex achieves higher yield at lower cost than ES — and is excluded from the frontier. ICPD for Reflex vs Panel: $53,619 per additional diagnosis.
 
 ---
 
@@ -222,14 +222,14 @@ The model tracks whether each proband receives ≥1 reportable VUS as a secondar
 | Strategy | Diagnosed (P/LP) | VUS Only | Negative |
 | --- | --- | --- | --- |
 | Panel | 30.7% | 39.1% | 30.3% |
-| ES | 31.1% | 19.0% | 49.9% |
-| Reflex (Panel->ES) | 34.3% | 42.3% | 23.4% |
+| ES | 31.1% | 19.1% | 49.9% |
+| Reflex (Panel→ES) | 32.5% | 40.8% | 26.8% |
 
 ![Outcome Proportions by Strategy](../outputs/results/base_case/vus_burden/outcome_proportions_stacked.png)
 
 _Figure 3. Stacked horizontal bars showing the proportion of probands in each outcome category: Diagnosed (P/LP), VUS only, and Negative._
 
-> **Key finding:** ES has the lowest VUS burden (27.6% Pr[≥1 VUS]), compared to Panel (56.4%) and Reflex (64.3%). Reflex carries the highest VUS burden, accumulating exposures from both the panel and exome steps.
+> **Key finding:** ES has the lowest VUS burden (27.6% Pr[≥1 VUS]), compared to Panel (56.4%) and Reflex (60.4%). At 50% reflex uptake, the Reflex VUS-only proportion is 40.8% — lower than at full uptake (42.3%) but still the highest of the three strategies.
 
 ---
 
@@ -243,15 +243,15 @@ PSA is fully represented by the outer Monte Carlo loop. For each of the 1,000 it
 
 | Strategy | Pr(Non-dominated) |
 | --- | --- |
-| Panel | 94.6% |
-| ES | 17.1% |
-| Reflex (Panel->ES) | 100.0% |
+| Panel | 94.7% |
+| ES | 22.8% |
+| Reflex (Panel→ES) | 95.5% |
 
 ![PSA Cost–Diagnosis Scatter](../outputs/results/uncertainty_sensitivity/probabilistic_sensitivity_analysis/psa_cost_diagnosis_scatter.png)
 
 _Figure 4. PSA scatter on the cost–diagnosis plane. Each small point is one Monte Carlo iteration. Large solid circles mark the mean. The cloud spread reflects joint uncertainty in costs and diagnostic yields._
 
-> **Key finding:** Reflex is non-dominated in 100.0% of PSA iterations. Panel is non-dominated in 94.6%. ES is non-dominated in only 17.1% of iterations.
+> **Key finding:** Reflex is non-dominated in 95.5% of PSA iterations; Panel in 94.7%. ES is non-dominated in 22.8% of iterations. The ~4.5% of iterations where Reflex is dominated occur when sampled reflex uptake is low, making Reflex yield close to Panel yield at higher cost.
 
 ### 6.2  Cost-effectiveness acceptability analysis (CEAC)
 
@@ -263,23 +263,23 @@ The CEAC quantifies the probability that each strategy is cost-effective (highes
 
 | WTP Threshold (CAD) | Pr Cost-effective: Panel | Pr Cost-effective: ES | Pr Cost-effective: Reflex (Panel→ES) |
 | --- | --- | --- | --- |
-| $0 | 92.5% | 7.5% | 0.0% |
-| $10,000 | 91.6% | 8.4% | 0.0% |
-| $20,000 | 89.3% | 10.7% | 0.0% |
-| $30,000 | 85.7% | 12.5% | 1.8% |
-| $40,000 | 75.1% | 10.7% | 14.2% |
-| $50,000 | 55.2% | 7.7% | 37.1% |
-| $60,000 | 34.5% | 4.1% | 61.4% |
-| $70,000 | 21.0% | 2.0% | 77.0% |
-| $80,000 | 11.6% | 1.5% | 86.9% |
-| $90,000 | 6.5% | 0.3% | 93.2% |
-| $100,000 | 3.7% | 0.1% | 96.2% |
+| $0 | 92.6% | 7.4% | 0.0% |
+| $10,000 | 91.5% | 8.5% | 0.0% |
+| $20,000 | 89.3% | 10.5% | 0.2% |
+| $30,000 | 84.7% | 12.3% | 3.0% |
+| $40,000 | 73.1% | 12.3% | 14.6% |
+| $50,000 | 54.8% | 12.0% | 33.2% |
+| $60,000 | 37.4% | 10.9% | 51.7% |
+| $70,000 | 23.8% | 10.4% | 65.8% |
+| $80,000 | 16.2% | 10.1% | 73.7% |
+| $90,000 | 10.0% | 9.6% | 80.4% |
+| $100,000 | 7.0% | 9.1% | 83.9% |
 
 ![CEAC](../outputs/results/uncertainty_sensitivity/willingness_to_pay/ceac_plot.png)
 
 _Figure 5. Cost-effectiveness acceptability curve. Lines show the probability each strategy is cost-effective across WTP thresholds from $0 to $100,000 CAD per additional diagnosis._
 
-> **Key finding:** Panel is the most probable cost-effective strategy at WTP below approximately the Reflex ICPD ($53,430/diagnosis). Reflex surpasses Panel in cost-effectiveness probability above this threshold and reaches 96.2% probability of being cost-effective at $100,000/diagnosis. ES has negligible cost-effectiveness probability at all thresholds due to extended dominance.
+> **Key finding:** Panel is the most probable cost-effective strategy at WTP below approximately the Reflex ICPD ($53,619/diagnosis). Reflex surpasses Panel near this threshold and reaches 83.9% probability at $100,000/diagnosis. ES retains residual cost-effectiveness probability (up to ~12%) because strict dominance by Reflex is probabilistic, not absolute across all PSA iterations.
 
 ---
 
@@ -294,10 +294,10 @@ Cost-effectiveness of genetic testing is highly sensitive to the phenotypic comp
 | Strategy | Total Cost per Proband, Mean [95% UI] | Diagnostic Yield, Mean [95% UI] | Cost per Diagnosis, Mean [95% UI] |
 | --- | --- | --- | --- |
 | Panel | $2,828 [$2,088, $3,723] | 60.3% [45.6%, 73.2%] | $4,740 [$3,361, $6,654] |
-| ES | $3,752 [$2,679, $5,077] | 50.5% [37.7%, 61.9%] | $7,532 [$5,034, $10,863] |
-| Reflex (Panel->ES) | $3,942 [$3,027, $4,990] | 62.3% [47.6%, 75.2%] | $6,445 [$4,492, $9,477] |
+| ES | $3,752 [$2,684, $5,083] | 50.6% [38.0%, 62.1%] | $7,525 [$5,064, $10,798] |
+| Reflex (Panel→ES) | $3,382 [$2,525, $4,346] | 61.3% [46.3%, 74.3%] | $5,603 [$3,940, $7,837] |
 
-In the cystic subgroup, Panel achieves 60.3% diagnostic yield at the lowest cost — ES is strictly dominated (lower yield and higher cost). Reflex remains on the frontier with ICPD $57,178 vs the all-phenotype base case ICPD of $53,430. This pattern generalises across phenotypes: under Reflex (Panel→ES), diagnostic yield ranges from 18.5% (CKDu) to 62.3% (Cystic), while cost per proband varies only modestly ($3,942–$4,790). Consequently, cost per diagnosis tracks almost entirely with yield, ranging from $6,445 (Cystic) to $36,169 (CKDu).
+In the cystic subgroup, Panel achieves 60.3% diagnostic yield at the lowest cost — ES is strictly dominated (lower yield and higher cost). At 50% reflex uptake, the Reflex cystic cost falls to $3,382 (from $3,942 at full uptake), because only half of cystic panel-negatives receive the ES step. Reflex remains on the frontier with ICPD $57,691 vs the all-phenotype base case ICPD of $53,619. Under Reflex, diagnostic yield ranges from 17.1% (CKDu) to 61.3% (Cystic), while cost per proband varies modestly ($3,382–$3,636). Cost per diagnosis tracks almost entirely with yield, ranging from $5,603 (Cystic) to $29,441 (CKDu).
 
 ![Cost vs Yield by Phenotype](../outputs/results/supplement/phenotype_stratified/reflex_cost_yield_by_phenotype.png)
 
@@ -313,12 +313,12 @@ Genome sequencing (GS) is excluded from the base case for two reasons. First, di
 
 | Scenario | Strategy | Diagnostic Yield | Total Cost per Proband | Cost per Diagnosis |
 | --- | --- | --- | --- | --- |
-| Base Case | Reflex (Panel->ES) | 34.3% | $4,488 | $13,332 |
+| Base Case | Reflex (Panel→ES) | 32.5% | $3,522 | $11,021 |
 | GS Scenario (+10% yield) | GS | 37.4% | $5,576 | $15,175 |
 
-_Incremental: GS (scenario) vs Reflex (Panel→ES): delta yield +3.1% (+30.7 per 1,000 probands); delta cost +$1,088/proband; ICPD $35,456 per additional diagnosis._
+_Incremental: GS (scenario) vs Reflex (Panel→ES): delta yield +4.9% (+48.8 per 1,000 probands); delta cost +$2,054/proband; ICPD $42,065 per additional diagnosis._
 
-**Threshold analysis.** Without any yield uplift, GS achieves a mean diagnostic yield of 34.0%, below Reflex (34.3%), and is dominated. GS enters the efficiency frontier at a minimum uplift of +1%, but the ICPD at that level is impractically high. At +7% uplift, the ICPD vs Reflex falls to $53,302, below the base-case Reflex vs Panel ICPD of $53,430. This implies that a yield improvement of at least +7% is required for GS to offer a lower marginal cost per additional diagnosis than the Panel-to-Reflex transition.
+**Threshold analysis.** Without any yield uplift, GS base yield (34.0%) now exceeds the 50% uptake Reflex yield (32.5%), so GS without uplift is non-dominated but has an impractically high ICPD vs Reflex (~$137,000). A yield improvement of approximately +7% relative to GS base yield (reaching ~36.3% yield) is required for GS ICPD vs Reflex to fall below the Reflex vs Panel ICPD of $53,619. At +10% uplift, the ICPD of $42,065 crosses this threshold comfortably.
 
 ![GS Scenario Efficiency Frontier](../outputs/results/scenario_analysis/gs_uplift/efficiency_frontier_gs_scenario.png)
 
@@ -328,7 +328,7 @@ _Figure 7. Efficiency frontier including all base-case strategies and the GS sce
 
 _Figure 8. CEAC including the GS scenario arm alongside base-case strategies (WTP range $0–$100,000 CAD)._
 
-> **Key finding:** Under the +10% yield uplift, GS achieves an ICPD of $35,456 vs Reflex, compared to $53,430 for Reflex vs Panel. A minimum yield improvement of +7% is required for GS to be cost-effective at WTP thresholds where Reflex is currently preferred over Panel. GS unit cost is the most sensitive parameter (PRCC 0.976).
+> **Key finding:** Under the +10% yield uplift, GS achieves an ICPD of $42,065 vs Reflex, compared to $53,619 for Reflex vs Panel. A minimum yield improvement of approximately +7% is still required for GS ICPD to fall below the Panel-to-Reflex threshold. GS unit cost (PRCC 0.978) and reflex uptake (PRCC -0.751) are the dominant cost uncertainty drivers.
 
 ---
 
@@ -348,7 +348,7 @@ _Figure 8. CEAC including the GS scenario arm alongside base-case strategies (WT
 
 7. **Cost model.** All panels cost $1,400 CAD regardless of gene count (11 to 200+ genes). ES ($2,500) and GS ($4,500) are commercial send-out list prices; in-house testing is substantially cheaper. Consultation costs use Quebec RAMQ fee codes. Cascade testing assumes 100% uptake with 2 eligible relatives and does not distinguish by inheritance pattern; autosomal recessive diagnoses trigger the same cascade cost as autosomal dominant. VUS follow-up is costed as a single segregation test; actual management ranges from no action to extensive functional workup. The impact of varying eligible relatives from 0 to 4 is characterised in Appendix D; the frontier ranking is preserved across this range.
 
-8. **Model structure.** All testing is singleton; trio sequencing is excluded. Diagnosis is binary (P/LP or undiagnosed). Secondary and incidental findings from ES/GS outside the renal indication are not captured. The reflex strategy assumes 100% of panel-negative probands proceed to ES.
+8. **Model structure.** All testing is singleton; trio sequencing is excluded. Diagnosis is binary (P/LP or undiagnosed). Secondary and incidental findings from ES/GS outside the renal indication are not captured. The reflex strategy models 50% uptake of the ES step (base case), parameterized as a Bernoulli trial per proband using a Beta(5,5) prior. Uptake uncertainty and one-way sensitivity are characterized in §6.1 (PSA), Appendix C (PRCC), and Appendix E (one-way DSA; see canonical report).
 
 9. **Generalisability.** Parameters are calibrated to a Quebec tertiary referral setting. Phenotype mix, test pricing, and reimbursement structures vary by jurisdiction.
 
@@ -422,25 +422,23 @@ Partial Rank Correlation Coefficients (PRCC) quantify the contribution of each s
 
 | Domain | Parameter | A: Cost | A: Yield | B: Cost | B: Yield |
 | --- | --- | --- | --- | --- | --- |
-| Cost | Clinical exome unit cost | 0.987 | — | -0.844 | — |
-| Cost | Clinical genome unit cost | — | — | 0.976 | — |
-| Cost | Targeted multigene panel unit cost | — | — | -0.805 | — |
-| Yield | Monogenic probability: CKDu | -0.736 | 0.605 | 0.281 | 0.742 |
-| Yield | Monogenic probability: Cystic | -0.552 | — | 0.178 | 0.390 |
-| Detection | GS PKD1 difficult-locus detection sensitivity | — | — | — | 0.531 |
-| Cost | Post-test genetics consultation cost | 0.517 | — | -0.192 | — |
-| Yield | Monogenic probability: Glomerular | -0.377 | 0.364 | 0.108 | 0.375 |
-| Yield | Monogenic probability: Tubulopathies | -0.256 | — | 0.124 | 0.208 |
-| Yield | Monogenic probability: Tubulointerstitial | — | 0.184 | — | — |
-| Cost | Targeted familial variant test cost | 0.166 | — | — | — |
+| Uptake | Reflex ES uptake probability | 0.947 | 0.719 | -0.751 | -0.664 |
+| Cost | Clinical exome unit cost | 0.897 | — | -0.621 | — |
+| Cost | Clinical genome unit cost | — | — | 0.978 | — |
+| Cost | Targeted multigene panel unit cost | — | — | -0.815 | — |
+| Yield | Monogenic probability: CKDu | -0.322 | 0.436 | 0.153 | 0.715 |
+| Yield | Monogenic probability: Cystic | -0.227 | — | 0.082 | 0.259 |
+| Cost | Post-test genetics consultation cost | 0.230 | — | -0.138 | — |
+| Yield | Monogenic probability: Glomerular | -0.114 | 0.286 | — | 0.375 |
+| Yield | Monogenic probability: Tubulopathies | — | — | 0.088 | 0.136 |
 
-_A = Reflex (Panel\u2192ES) vs Panel; B = GS scenario vs Reflex. Values shown only for parameters with |PRCC| ≥ 0.1 and 95% CI excluding zero in that analysis. — = not material. A: Cost and A: Yield = incremental cost and yield for the Reflex vs Panel frontier step; B: Cost and B: Yield = incremental cost and yield for the GS scenario vs Reflex step._
+_A = Reflex (Panel→ES) vs Panel; B = GS scenario vs Reflex. Values shown only for parameters with |PRCC| ≥ 0.1 and 95% CI excluding zero in at least one analysis. — = not material. Reflex ES uptake probability is new in this analysis (base case = 50%, Beta(5,5) PSA prior)._
 
 ![PRCC Tornado: composite](../outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/prcc_tornado_composite.png)
 
 _Figure C.1. PRCC tornado plots for the primary frontier transition (Reflex vs Panel). Panel A: incremental cost. Panel B: incremental diagnoses. Bar length = |PRCC|; direction = sign of association. Faded bars have 95% CI crossing zero._
 
-> **Key finding:** Clinical exome unit cost is the dominant driver of Reflex vs Panel incremental cost (PRCC 0.987). Monogenic probability: CKDu is the principal driver of Reflex vs Panel incremental yield (PRCC 0.605) and also influences incremental cost (PRCC -0.736). Clinical genome unit cost (PRCC 0.976) dominates GS scenario cost uncertainty; GS PKD1 difficult-locus detection sensitivity (PRCC 0.531) dominates GS scenario yield uncertainty.
+> **Key finding:** Reflex ES uptake probability is the dominant driver of both Reflex vs Panel incremental cost (PRCC 0.947) and incremental yield (PRCC 0.719), displacing clinical exome unit cost (PRCC 0.897). Monogenic probability: CKDu is the second-ranked yield driver (PRCC 0.436). For GS vs Reflex, uptake is also material (PRCC -0.751 on cost; -0.664 on yield): higher reflex uptake makes Reflex a stronger comparator. Clinical genome unit cost (PRCC 0.978) dominates GS scenario cost uncertainty.
 
 ---
 
@@ -452,10 +450,10 @@ The base case assumes 2 eligible first-degree relatives per diagnosed proband. T
 
 | Eligible relatives (n) | Reflex (Panel→ES) vs Panel |
 | --- | --- |
-| 0 | $55,738 [$26,965–$113,212] |
-| 1 | $56,387 [$27,413–$113,774] |
-| **2 (base)** | $57,035 [$27,970–$114,333] |
-| 3 | $57,684 [$28,775–$114,888] |
-| 4 | $58,332 [$29,577–$115,442] |
+| 0 | $59,070 [$23,982–$130,292] |
+| 1 | $59,719 [$24,530–$130,870] |
+| **2 (base)** | $60,367 [$25,073–$131,448] |
+| 3 | $61,016 [$25,621–$132,166] |
+| 4 | $61,665 [$26,171–$133,021] |
 
-_Across the full range of N = 0–4, mean ICPD shifts by $2,594 for Reflex (Panel→ES) vs Panel. The efficiency frontier ranking is unchanged across all values of N._
+_Across the full range of N = 0–4, mean ICPD shifts by $2,595 for Reflex (Panel→ES) vs Panel. The efficiency frontier ranking is unchanged across all values of N. Note: values here are mean of per-iteration ICPD ratios, which differs from the main table estimate ($53,619); frontier ranking conclusion is identical under both approaches._

@@ -31,6 +31,8 @@ default:
       - scripts/06e_phenotype_figure.R
       - scripts/09a_gs_scenario_analysis.R
       - scripts/09c_cascade_dsa.R
+      - scripts/09e_reflex_uptake_dsa.R
+      - scripts/09d_pkd1_full_detection_scenario.R
       - scripts/07_global_sensitivity_analysis.R
       - scripts/08a_probabilistic_sensitivity.R
       - scripts/08_wtp_analysis.R

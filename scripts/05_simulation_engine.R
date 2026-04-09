@@ -75,7 +75,10 @@ params <- list(
     panels = read_param("panels"),
     # Cascade params are loaded separately from config.yml to ensure they are
     # never passed through sample_gamma_cost() in the PSA rapply block.
-    cascade = read_param("cascade_params")
+    cascade = read_param("cascade_params"),
+    # Uptake probabilities (reflex ES, cascade testing) loaded from
+    # data/raw/uptake_parameters.csv via 01b_load_parameters.R.
+    uptake = read_param("uptake_params")
 )
 
 cat("Parameters loaded.\n")
@@ -343,10 +346,16 @@ get_coverage <- function(cohort, modality, panel_rec) {
 # cascade_n_relatives: number of eligible first-degree relatives per diagnosed
 #   proband for cascade testing costing. Kept as an explicit argument (not read
 #   from current_costs) so the DSA can sweep this independently of the PSA.
+# uptake_reflex: probability that a panel-negative proband proceeds to ES
+#   in reflex strategies. Drawn from Beta(5,5) in PSA; swept in DSA.
+# uptake_cascade: probability that a diagnosed proband undergoes cascade
+#   testing. Fixed at 1.0 in the current analysis; parameterized for future use.
 run_simulation_step <- function(cohort, strategy,
                                 sampled_detection, sampled_vus, current_costs,
                                 panel_genes_list, phenotype_costs_map,
-                                cascade_n_relatives = 2) {
+                                cascade_n_relatives = 2,
+                                uptake_reflex = 1.0,
+                                uptake_cascade = 1.0) {
     n_probands <- nrow(cohort)
 
     # 1. Base Costs (Consultations) in a vector
@@ -404,6 +413,8 @@ run_simulation_step <- function(cohort, strategy,
 
     # 2. Execute Strategy
     # -------------------
+    reflex_mask <- rep(FALSE, n_probands) # tracks who actually received reflex ES
+
     if (strategy %in% c("Panel", "ES", "GS", "ES_Augmented")) {
         res <- apply_test(strategy, rep(TRUE, n_probands))
 
@@ -421,8 +432,9 @@ run_simulation_step <- function(cohort, strategy,
         total_costs <- total_costs + res1$cost
         cost_testing <- res1$cost
 
-        # Step 2: Reflex (Only Undiagnosed)
-        mask_step2 <- !is_diagnosed
+        # Step 2: Reflex (Only Undiagnosed who accept reflex testing)
+        mask_step2 <- !is_diagnosed & (runif(n_probands) < uptake_reflex)
+        reflex_mask <- mask_step2
         if (any(mask_step2)) {
             res2 <- apply_test("ES", mask_step2)
 
@@ -448,12 +460,13 @@ run_simulation_step <- function(cohort, strategy,
         total_costs <- total_costs + res1$cost
         cost_testing <- res1$cost
 
-        # Step 2: ES_Augmented (panel-negatives only)
+        # Step 2: ES_Augmented (panel-negatives who accept reflex testing)
         # PKD1 assay universal; MUC1 assay for tubulointerstitial.
         # Note: for cystic/tubulointerstitial probands the relevant assay is applied at
         # both steps; <2% of cystic probands reach step 2 (panel PKD1 sensitivity ~99%),
         # so marginal yield inflation is negligible (minor approximation).
-        mask_step2 <- !is_diagnosed
+        mask_step2 <- !is_diagnosed & (runif(n_probands) < uptake_reflex)
+        reflex_mask <- mask_step2
         if (any(mask_step2)) {
             res2 <- apply_test("ES_Augmented", mask_step2)
             is_diagnosed[mask_step2] <- is_diagnosed[mask_step2] | res2$diag[mask_step2]
@@ -465,11 +478,9 @@ run_simulation_step <- function(cohort, strategy,
         }
     }
 
-    # Track which probands had reflex (for consultation cost tracking)
-    had_reflex <- rep(FALSE, n_probands)
-    if (strategy %in% c("Panel_Reflex_ES", "Reflex_Augmented")) {
-        had_reflex <- !res1$diag # Probands not diagnosed by panel went to reflex ES step
-    }
+    # Track which probands had reflex (for consultation cost tracking).
+    # Uses reflex_mask which reflects both panel-negative status AND uptake acceptance.
+    had_reflex <- reflex_mask
 
     # 3. Downstream Outcomes (with per-component cost tracking)
     # ---------------------------------------------------------
@@ -483,12 +494,13 @@ run_simulation_step <- function(cohort, strategy,
     cost_consultation[had_reflex] <- cost_consultation[had_reflex] +
         current_costs$consultations$posttest
 
-    # A. Cascade Testing (If Diagnosed)
+    # A. Cascade Testing (If Diagnosed AND accepts cascade testing)
     # cascade_n_relatives * (pretest + familial_test)
     # n_relatives is passed explicitly as cascade_n_relatives to keep it out of
     # the Gamma-sampling rapply block; it is an integer count, not a unit cost.
     cost_cascade_unit <- current_costs$consultations$pretest + current_costs$tests$familial
-    cost_cascade <- ifelse(is_diagnosed, cascade_n_relatives * cost_cascade_unit, 0)
+    cascade_accepted <- is_diagnosed & (runif(n_probands) < uptake_cascade)
+    cost_cascade <- ifelse(cascade_accepted, cascade_n_relatives * cost_cascade_unit, 0)
     total_costs <- total_costs + cost_cascade
 
     # B. VUS Follow-up (If VUS AND NOT Diagnosed)
@@ -586,6 +598,18 @@ if (sys.nframe() == 0) {
             rbeta(1, shape1 = bp["shape1"], shape2 = bp["shape2"])
         })
 
+        # Sample uptake probabilities (Beta if parameterized, else fixed)
+        uptake_reflex_i <- if (!is.na(params$uptake$reflex$beta_shape1)) {
+            rbeta(1, params$uptake$reflex$beta_shape1, params$uptake$reflex$beta_shape2)
+        } else {
+            params$uptake$reflex$base_case
+        }
+        uptake_cascade_i <- if (!is.na(params$uptake$cascade$beta_shape1)) {
+            rbeta(1, params$uptake$cascade$beta_shape1, params$uptake$cascade$beta_shape2)
+        } else {
+            params$uptake$cascade$base_case
+        }
+
         # 2. Cohort using the exact sampled yields for this iteration.
         cohort_res <- generate_cohort(
             n_probands = N_PROBANDS,
@@ -681,7 +705,10 @@ if (sys.nframe() == 0) {
             cost_gs = iteration_truth$sampled_costs$tests$gs,
             cost_familial = iteration_truth$sampled_costs$tests$familial,
             cost_consult_pre = iteration_truth$sampled_costs$consultations$pretest,
-            cost_consult_post = iteration_truth$sampled_costs$consultations$posttest
+            cost_consult_post = iteration_truth$sampled_costs$consultations$posttest,
+            # Uptake probabilities
+            uptake_reflex = uptake_reflex_i,
+            uptake_cascade = uptake_cascade_i
         )
 
         # Store parameter trace (5.5.6)
@@ -699,7 +726,9 @@ if (sys.nframe() == 0) {
             res <- run_simulation_step(
                 cohort, strat, iteration_truth$sampled_detection, iteration_truth$sampled_vus, iteration_truth$sampled_costs,
                 params$panels, curr_pheno_costs,
-                cascade_n_relatives = params$cascade$eligible_relatives_base
+                cascade_n_relatives = params$cascade$eligible_relatives_base,
+                uptake_reflex = uptake_reflex_i,
+                uptake_cascade = uptake_cascade_i
             )
 
             # Compute derived columns

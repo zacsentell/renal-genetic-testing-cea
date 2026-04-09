@@ -1,10 +1,14 @@
-# 09b_es_augmented_scenario.R
-# Purpose: Augmented ES scenario analysis (§7.4)
-#   Tests whether the efficiency frontier changes when ES is co-ordered with
-#   phenotype-directed difficult-locus assays: PKD1 long-range PCR applied
-#   universally (all phenotypes) and MUC1-VNTR assay applied to tubulointerstitial
-#   probands only. Augmented Reflex applies the same upgraded ES detection at the
-#   reflex step. Bundled assay costs are absorbed within the ES unit price.
+# 09d_pkd1_full_detection_scenario.R
+# Purpose: PKD1 full detection scenario analysis (§7.3)
+#   Standard short-read WES detects only 7.14% of PKD1 variants in exons 1-32
+#   due to competitive capture by six pseudogenes sharing 97.6-97.8% sequence
+#   identity. Chang et al. (2022) showed that a modified xGEN probe design with
+#   pseudogene-aware forced-alignment achieves complete coverage of all PKD1
+#   coding regions at 35.8-68.6x mean depth, with 100% concordance to clinical
+#   genetic testing. This scenario assigns full PKD1 variant detection (1.0) to
+#   all Panel phenotypes and to ES, representing a near-future state in which
+#   optimized capture and bioinformatic disambiguation make the entire PKD1 locus
+#   accessible within standard exome workflows.
 #   Full PSA re-run required (detection changes affect per-proband diagnosis
 #   probabilities; a post-hoc uplift is not valid).
 # Author: Renal Genetics CEA Team
@@ -32,30 +36,33 @@ source("scripts/utils_cea.R")
 # ==============================================================================
 cfg <- config::get()
 PARAMS_DIR <- "data/params"
-OUTPUT_DIR <- "outputs/results/supplement/es_augmented_scenario"
+OUTPUT_DIR <- "outputs/results/scenario_analysis/pkd1_full_detection"
 if (!dir.exists(OUTPUT_DIR)) dir.create(OUTPUT_DIR, recursive = TRUE)
 
-OUTPUT_ITER_CSV <- file.path(OUTPUT_DIR, "es_augmented_iteration_summary.csv")
-OUTPUT_FRONTIER_PNG <- file.path(OUTPUT_DIR, "efficiency_frontier_es_augmented.png")
-OUTPUT_PSA_CSV <- file.path(OUTPUT_DIR, "es_augmented_psa_robustness.csv")
+OUTPUT_ITER_CSV <- file.path(OUTPUT_DIR, "pkd1_full_iteration_outcomes.csv")
+OUTPUT_SUMMARY_CSV <- file.path(OUTPUT_DIR, "pkd1_full_summary.csv")
+OUTPUT_INCREMENTAL_CSV <- file.path(OUTPUT_DIR, "pkd1_full_incremental.csv")
+OUTPUT_FRONTIER_PNG <- file.path(OUTPUT_DIR, "efficiency_frontier_pkd1_full.png")
+OUTPUT_PSA_CSV <- file.path(OUTPUT_DIR, "pkd1_full_psa_robustness.csv")
+OUTPUT_COMPARISON_CSV <- file.path(OUTPUT_DIR, "pkd1_full_comparison_vs_base.csv")
 
 N_ITER <- cfg$simulation$n_iter
 N_PROBANDS <- cfg$simulation$n_probands
 SEED_START <- cfg$simulation$seed_start
 COST_CV <- cfg$simulation$cost_cv
 
-STRATEGIES <- c("Panel", "ES_Augmented", "Reflex_Augmented")
+STRATEGIES <- c("Panel", "ES", "Panel_Reflex_ES")
 
-STRATEGY_MAP_AUG <- c(
-    "Panel"            = 1L,
-    "ES_Augmented"     = 4L,
-    "Reflex_Augmented" = 5L
+STRATEGY_MAP <- c(
+    "Panel"           = 1L,
+    "ES"              = 2L,
+    "Panel_Reflex_ES" = 3L
 )
 
 STRATEGY_LABELS <- c(
-    "Panel"            = "Panel",
-    "ES_Augmented"     = "ES (Augmented)",
-    "Reflex_Augmented" = "Reflex (Augmented)"
+    "Panel"           = "Panel",
+    "ES"              = "ES",
+    "Panel_Reflex_ES" = "Reflex (Panel\u2192ES)"
 )
 
 # ==============================================================================
@@ -82,17 +89,40 @@ params <- list(
     uptake = read_param("uptake_params")
 )
 
-# Verify ES_Augmented is present in detection matrix
-if (is.null(params$detection_betas$strategy_detection_matrix$ES_Augmented)) {
-    stop("ES_Augmented not found in detection_betas. Re-run scripts/01d_load_detection.R first.")
-}
-cat("Parameters loaded. ES_Augmented detection matrix present.\n")
+# Verify base strategies present in detection matrix
+stopifnot(
+    !is.null(params$detection_betas$strategy_detection_matrix$Panel),
+    !is.null(params$detection_betas$strategy_detection_matrix$ES)
+)
+cat("Parameters loaded. Panel and ES detection matrices present.\n")
 
 # ==============================================================================
-# 3. PSA Loop
+# 3. PKD1 Full Detection Override
+# ==============================================================================
+# Override sampled PKD1 detection probabilities to 1.0 for all Panel phenotypes
+# and for ES (Universal). All other detection parameters (SNV/Indel, CNV/SV,
+# MUC1) remain at their sampled values. This is a deterministic scenario
+# assumption, not a sampled parameter.
+
+override_pkd1_full <- function(s_det) {
+    # Panel: phenotype-keyed, override each phenotype's PKD1
+    for (pheno in names(s_det$Panel)) {
+        if (!is.null(s_det$Panel[[pheno]]$Difficult_Locus$PKD1)) {
+            s_det$Panel[[pheno]]$Difficult_Locus$PKD1 <- 1.0
+        }
+    }
+    # ES: universal, override PKD1
+    if (!is.null(s_det$ES$Universal$Difficult_Locus$PKD1)) {
+        s_det$ES$Universal$Difficult_Locus$PKD1 <- 1.0
+    }
+    s_det
+}
+
+# ==============================================================================
+# 4. PSA Loop
 # ==============================================================================
 cat(sprintf(
-    "Starting Augmented ES scenario PSA: %d iterations, %d probands, %d strategies\n",
+    "Starting PKD1 full detection scenario PSA: %d iterations, %d probands, %d strategies\n",
     N_ITER, N_PROBANDS, length(STRATEGIES)
 ))
 
@@ -113,6 +143,10 @@ for (i in 1:N_ITER) {
 
     # Sample parameters
     s_det <- sample_detection_matrix(params$detection_betas$strategy_detection_matrix)
+
+    # Apply PKD1 full detection override
+    s_det <- override_pkd1_full(s_det)
+
     s_vus <- sample_vus_probs(params$vus_betas)
 
     curr_costs <- rapply(params$costs, function(x) {
@@ -168,7 +202,7 @@ for (i in 1:N_ITER) {
 
         iter_results_list[[list_idx]] <- data.frame(
             iteration_id               = i,
-            strategy_id                = STRATEGY_MAP_AUG[[strat]],
+            strategy_id                = STRATEGY_MAP[[strat]],
             strategy_label             = STRATEGY_LABELS[[strat]],
             total_cost_per_proband_cad = res$total_cost_per_proband_cad,
             diagnoses_per_proband      = res$diagnoses_per_proband,
@@ -182,8 +216,11 @@ for (i in 1:N_ITER) {
 iter_df <- bind_rows(iter_results_list)
 cat("PSA complete.\n")
 
+write_csv(iter_df, OUTPUT_ITER_CSV)
+cat("Iteration outcomes written to:", OUTPUT_ITER_CSV, "\n")
+
 # ==============================================================================
-# 4. Summary Statistics
+# 5. Summary Statistics
 # ==============================================================================
 summary_df <- iter_df %>%
     group_by(strategy_id, strategy_label) %>%
@@ -194,15 +231,16 @@ summary_df <- iter_df %>%
         diagnoses_per_proband_mean = mean(diagnoses_per_proband),
         diagnoses_per_proband_ui_low = quantile(diagnoses_per_proband, 0.025),
         diagnoses_per_proband_ui_high = quantile(diagnoses_per_proband, 0.975),
+        cost_per_diagnosis_cad_mean = mean(cost_per_diagnosis_cad, na.rm = TRUE),
         pr_at_least_one_vus_mean = mean(pr_at_least_one_vus),
         .groups = "drop"
     )
 
-write_csv(iter_df, OUTPUT_ITER_CSV)
-cat("Iteration summary written to:", OUTPUT_ITER_CSV, "\n")
+write_csv(summary_df, OUTPUT_SUMMARY_CSV)
+cat("Summary written to:", OUTPUT_SUMMARY_CSV, "\n")
 
 # ==============================================================================
-# 5. Incremental Analysis and Efficiency Frontier
+# 6. Incremental Analysis and Efficiency Frontier
 # ==============================================================================
 analysis_data <- summary_df %>%
     select(
@@ -218,23 +256,20 @@ analysis_data <- summary_df %>%
 
 results <- perform_incremental_analysis(analysis_data)
 
-cat("\n--- Augmented ES Scenario: Dominance Analysis ---\n")
+write_csv(results, OUTPUT_INCREMENTAL_CSV)
+cat("Incremental analysis written to:", OUTPUT_INCREMENTAL_CSV, "\n")
+
+cat("\n--- PKD1 Full Detection Scenario: Dominance Analysis ---\n")
 print(results %>% select(
     strategy_label, cost, effect, dominance_status,
     incremental_cost, incremental_effect, icer
 ))
 
-# PSA robustness: proportion of iterations each strategy is non-dominated
-psa_robustness <- iter_df %>%
-    group_by(iteration_id) %>%
-    arrange(cost = total_cost_per_proband_cad, .by_group = TRUE) %>%
-    mutate(iter_data = list(cur_data())) %>%
-    ungroup()
-
+# ==============================================================================
+# 7. PSA Robustness
+# ==============================================================================
 # Per-iteration frontier: compute non-dominated set for each iteration
 compute_non_dominated_iter <- function(df) {
-    # Sort by effect ascending; strategy is non-dominated if no other has
-    # higher effect at lower cost (strict dominance) or lies on the frontier
     df <- df %>% arrange(diagnoses_per_proband)
     non_dom <- logical(nrow(df))
     min_cost_so_far <- Inf
@@ -244,10 +279,9 @@ compute_non_dominated_iter <- function(df) {
             min_cost_so_far <- df$total_cost_per_proband_cad[k]
         }
     }
-    # Also check extended dominance via frontier
+    # Check extended dominance via frontier
     frontier_idx <- which(non_dom)
     if (length(frontier_idx) >= 2) {
-        # Check if any non-dominated strategy lies above the line
         frontier <- df[frontier_idx, ]
         for (ki in seq_along(frontier_idx)) {
             if (ki == 1 || ki == length(frontier_idx)) next
@@ -284,9 +318,57 @@ cat(
 )
 
 write_csv(robustness_tbl, OUTPUT_PSA_CSV)
+cat("PSA robustness written to:", OUTPUT_PSA_CSV, "\n")
 
 # ==============================================================================
-# 6. Efficiency Frontier Figure
+# 8. Comparison with Base Case
+# ==============================================================================
+BASE_CASE_CSV <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
+if (file.exists(BASE_CASE_CSV)) {
+    base_iter <- read_csv(BASE_CASE_CSV, show_col_types = FALSE)
+
+    base_summary <- base_iter %>%
+        group_by(strategy_id) %>%
+        summarise(
+            base_cost = mean(total_cost_per_proband_cad),
+            base_yield = mean(diagnoses_per_proband),
+            .groups = "drop"
+        )
+
+    scenario_summary <- summary_df %>%
+        select(
+            strategy_id, strategy_label,
+            scenario_cost = total_cost_per_proband_cad_mean,
+            scenario_yield = diagnoses_per_proband_mean
+        )
+
+    # Join on strategy_id only (base case uses raw names, scenario uses display labels)
+    comparison_df <- scenario_summary %>%
+        inner_join(base_summary, by = "strategy_id") %>%
+        mutate(
+            delta_cost = scenario_cost - base_cost,
+            delta_yield = scenario_yield - base_yield
+        )
+
+    write_csv(comparison_df, OUTPUT_COMPARISON_CSV)
+    cat("Comparison with base case written to:", OUTPUT_COMPARISON_CSV, "\n")
+
+    cat("\n--- Base Case vs PKD1 Full Detection ---\n")
+    print(comparison_df %>%
+        mutate(
+            base_yield_pct = sprintf("%.2f%%", base_yield * 100),
+            scenario_yield_pct = sprintf("%.2f%%", scenario_yield * 100),
+            delta_yield_pct = sprintf("%+.2f pp", delta_yield * 100),
+            delta_cost_fmt = sprintf("%+.0f CAD", delta_cost)
+        ) %>%
+        select(strategy_label, base_yield_pct, scenario_yield_pct, delta_yield_pct, delta_cost_fmt))
+} else {
+    cat("WARNING: Base case iteration outcomes not found at:", BASE_CASE_CSV, "\n")
+    cat("Skipping base case comparison.\n")
+}
+
+# ==============================================================================
+# 9. Efficiency Frontier Figure
 # ==============================================================================
 plot_df <- results %>%
     left_join(summary_df %>% select(strategy_id, pr_at_least_one_vus_mean), by = "strategy_id") %>%
@@ -351,7 +433,7 @@ p_frontier <- ggplot(plot_df, aes(x = effect, y = cost)) +
         expand = expansion(mult = c(0.08, 0.12))
     ) +
     labs(
-        title    = "Efficiency Frontier: Augmented ES Scenario",
+        title    = "Efficiency Frontier: PKD1 Full Detection Scenario",
         subtitle = "Bubble size represents VUS burden (larger = higher probability of VUS).\nError bars show 95% UI.",
         x        = "Diagnostic Yield (Proportion of Probands Diagnosed)",
         y        = "Total Cost per Proband (CAD)",
@@ -377,17 +459,17 @@ ggsave(OUTPUT_FRONTIER_PNG, p_frontier, width = 7, height = 5.5, dpi = 300, bg =
 cat("Efficiency frontier saved to:", OUTPUT_FRONTIER_PNG, "\n")
 
 # ==============================================================================
-# 7. Print key results for report
+# 10. Print key results for report
 # ==============================================================================
-cat("\n=== KEY RESULTS FOR §7.4 ===\n")
+cat("\n=== KEY RESULTS FOR \u00a77.3 ===\n")
 cat("\nMean outcomes:\n")
 print(summary_df %>%
     mutate(
         yield_pct = sprintf("%.1f%%", diagnoses_per_proband_mean * 100),
         cost_fmt = sprintf("$%s", formatC(round(total_cost_per_proband_cad_mean), big.mark = ",")),
-        yield_ui = sprintf("[%.1f%%–%.1f%%]", diagnoses_per_proband_ui_low * 100, diagnoses_per_proband_ui_high * 100),
+        yield_ui = sprintf("[%.1f%%\u2013%.1f%%]", diagnoses_per_proband_ui_low * 100, diagnoses_per_proband_ui_high * 100),
         cost_ui = sprintf(
-            "[$%s–$%s]",
+            "[$%s\u2013$%s]",
             formatC(round(total_cost_per_proband_cad_ui_low), big.mark = ","),
             formatC(round(total_cost_per_proband_cad_ui_high), big.mark = ",")
         )
@@ -397,7 +479,7 @@ print(summary_df %>%
 cat("\nIncremental analysis:\n")
 print(results %>%
     select(strategy_label, dominance_status, incremental_cost, incremental_effect, icer) %>%
-    mutate(icer_fmt = ifelse(is.na(icer), "—", sprintf("$%s", formatC(round(icer), big.mark = ",")))))
+    mutate(icer_fmt = ifelse(is.na(icer), "\u2014", sprintf("$%s", formatC(round(icer), big.mark = ",")))))
 
 cat("\n=== SUCCESS ===\n")
 cat("Outputs written to:", OUTPUT_DIR, "\n")

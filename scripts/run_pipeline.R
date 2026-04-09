@@ -39,6 +39,7 @@ required_outputs <- c(
     "outputs/results/uncertainty_sensitivity/probabilistic_sensitivity_analysis/psa_decision_robustness.csv",
     "outputs/results/uncertainty_sensitivity/probabilistic_sensitivity_analysis/psa_cost_diagnosis_scatter.png",
     "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/prcc_results_reflex_vs_panel.csv",
+    "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/prcc_results_es_vs_panel.csv",
     "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/prcc_results_genome_vs_reflex.csv",
     "outputs/results/uncertainty_sensitivity/willingness_to_pay/ceac_table.csv",
     "outputs/results/uncertainty_sensitivity/willingness_to_pay/ceac_plot.png",

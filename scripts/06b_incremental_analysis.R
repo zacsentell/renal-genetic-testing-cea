@@ -202,7 +202,7 @@ p <- ggplot(plot_data, aes(x = effect, y = cost)) +
     # Labels
     labs(
         title = "Efficiency Frontier: Cost vs Diagnostic Yield",
-        subtitle = "Bubble size represents VUS burden (larger = higher probability of VUS). Error bars show 95% UI.",
+        subtitle = "Bubble size represents VUS burden (larger = higher probability of VUS).\nError bars show 95% UI.",
         x = "Diagnostic Yield (Proportion of Probands Diagnosed)",
         y = "Total Cost per Proband (CAD)",
         color = NULL

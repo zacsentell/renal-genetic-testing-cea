@@ -1,0 +1,3 @@
+parameter,base_case,beta_shape1,beta_shape2,dsa_min,dsa_max,source
+reflex_uptake,0.50,5,5,0.20,1.00,"Bindhu et al.; Beta(5,5) prior"
+cascade_uptake,1.00,NA,NA,NA,NA,"Base case: 100% uptake (structural assumption)"

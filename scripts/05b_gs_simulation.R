@@ -71,6 +71,18 @@ for (i in 1:N_ITER) {
         rbeta(1, shape1 = bp["shape1"], shape2 = bp["shape2"])
     })
 
+    # Sample uptake probabilities (maintains RNG alignment with 05_simulation_engine.R)
+    uptake_reflex_i <- if (!is.na(params$uptake$reflex$beta_shape1)) {
+        rbeta(1, params$uptake$reflex$beta_shape1, params$uptake$reflex$beta_shape2)
+    } else {
+        params$uptake$reflex$base_case
+    }
+    uptake_cascade_i <- if (!is.na(params$uptake$cascade$beta_shape1)) {
+        rbeta(1, params$uptake$cascade$beta_shape1, params$uptake$cascade$beta_shape2)
+    } else {
+        params$uptake$cascade$base_case
+    }
+
     cohort_res <- generate_cohort(
         n_probands = N_PROBANDS,
         params = params,
@@ -84,7 +96,9 @@ for (i in 1:N_ITER) {
     # Run GS strategy
     res <- run_simulation_step(
         cohort, "GS", s_det, s_vus, curr_costs, params$panels, curr_pheno_costs,
-        cascade_n_relatives = params$cascade$eligible_relatives_base
+        cascade_n_relatives = params$cascade$eligible_relatives_base,
+        uptake_reflex = uptake_reflex_i,
+        uptake_cascade = uptake_cascade_i
     )
 
     cost_per_diagnosis <- if (res$diagnoses_per_proband > 0) {

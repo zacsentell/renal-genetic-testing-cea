@@ -40,7 +40,7 @@ Each simulated proband goes through the following steps:
 1. **Phenotype assignment** — Dirichlet-multinomial draw from pooled phenotype proportions (literature synthesis).
 2. **Monogenic status** — Beta-distributed probability conditional on phenotype.
 3. **Causal architecture** — If monogenic, draw a (Gene, Inheritance mode, Variant class) triple from phenotype-specific empirical joint proportions derived from the curated variant table.
-4. **Strategy application** — check gene coverage, apply analytic detection probability by modality and variant class. If detected: diagnose, accumulate costs, stop. If negative and strategy has reflex: execute ES step.
+4. **Strategy application** — check gene coverage, apply analytic detection probability by modality and variant class. If detected: diagnose, accumulate costs, stop. If negative and strategy has reflex: draw a Bernoulli trial with probability equal to the reflex uptake parameter. Probands who accept proceed to the ES step; those who decline are counted as panel-only outcomes with no further testing costs.
 5. **VUS outcome** — independent Bernoulli draw per testing step using modality-specific Beta-distributed probabilities.
 6. **Cost accumulation** — sum clinical visits, laboratory testing, VUS follow-up, and cascade testing for diagnosed probands.
 
@@ -109,7 +109,26 @@ Beta distribution parameters by modality and variant class, derived from laborat
 
 Binary per-proband outcome (≥1 reportable VUS). Beta priors by modality and gene-count bin, fit from published VUS rates. Panel strategies are assigned a bin based on panel gene count; ES and GS use exome/genome-wide parameters. Parameters in `data/params/vus_betas.rds`.
 
-### 4.5 Unit costs (2024 CAD)
+| Modality | Gene Panel Size | Mean Pr(≥1 VUS) |
+|---|---|---|
+| Panel (tubulointerstitial) | 11–25 genes | 18.1% |
+| Panel (cystic, glomerular, tubulopathies) | 51–100 genes | 47.1% |
+| Panel (CKDu/comprehensive) | >200 genes | 76.2% |
+| ES | Exome-wide | 27.6% |
+| GS | Genome-wide | 27.6% |
+
+### 4.5 Uptake probabilities
+
+Two probabilities govern whether a proband completes an offered testing step. Both are loaded from `data/raw/uptake_parameters.csv`.
+
+| Parameter | Base Case | PSA Prior | DSA Range | Source |
+|---|---|---|---|---|
+| Reflex ES uptake | 50% | Beta(5,5); mean 0.50 [0.19–0.81] | 20%–100% | Bindhu et al. |
+| Cascade uptake | 100% | Fixed (structural assumption) | — | — |
+
+Reflex ES uptake is the probability that a panel-negative proband proceeds to ES when offered. A Bernoulli trial is drawn independently per proband at each PSA iteration. Cascade uptake is held at 100% as a structural upper-bound assumption; this creates a conservative cost-effectiveness bias against higher-yield strategies because high-yield strategies trigger more cascade testing at 100% uptake.
+
+### 4.6 Unit costs (2024 CAD)
 
 All cost parameters from `data/raw/genetic_test_costs.csv`. Probabilistic uncertainty applied via Gamma distribution (CV = 0.25):
 
@@ -122,7 +141,7 @@ All cost parameters from `data/raw/genetic_test_costs.csv`. Probabilistic uncert
 | Pre-test genetics consultation (RAMQ 09001) | $350 |
 | Post-test genetics consultation (RAMQ 09001/09003) | $200 |
 
-Cascade testing per eligible relative: 1 pre-test consultation + 1 targeted familial variant test. Base case: 2 eligible first-degree relatives per diagnosed proband (sensitivity range: 0–4). VUS follow-up: 1 post-test visit + 1 targeted familial variant test.
+Cascade testing per eligible relative: 1 pre-test consultation + 1 targeted familial variant test. Base case: 2 eligible first-degree relatives per diagnosed proband (one-way DSA range: 0–4). VUS follow-up: 1 post-test visit + 1 targeted familial variant test per VUS-positive undiagnosed proband.
 
 ---
 
@@ -150,6 +169,9 @@ Incremental analysis uses the efficiency frontier: strategies are ordered by cos
 - **Cystic subgroup:** base-case CEA restricted to cystic phenotype (`06c_cystic_subgroup.R`). Clinically relevant because the cystic panel bundles a targeted PKD1 assay, giving Panel a structural detection advantage over standalone ES.
 - **Phenotype stratification:** Reflex (Panel→ES) outcomes by phenotype category (`06e_phenotype_figure.R`).
 - **GS scenario:** +10% relative yield uplift applied to GS arm to model enhanced bioinformatics detection of difficult loci. GS scenario compared against Reflex as the incumbent frontier strategy (`09a_gs_scenario_analysis.R`). The uplift is a deterministic scenario assumption; uncertainty in its magnitude is not propagated through the PSA.
+- **PKD1 full detection scenario:** PKD1 difficult-locus detection overridden to 100% for all panels and ES, representing a near-future state where optimised capture and pseudogene-aware bioinformatics eliminate the current PKD1 detection barrier (`09d_pkd1_full_detection_scenario.R`). A full PSA re-run (1,000 iterations × 1,000 probands) is performed. MUC1 VNTR detection is unchanged. Test costs are unchanged.
+- **Cascade eligible relatives DSA:** one-way sensitivity varying the number of eligible first-degree relatives from 0 to 4 (`09c_cascade_dsa.R`). Examines whether frontier ranking is preserved across cascade assumptions.
+- **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 20% to 100% (`09e_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
 
 ---
 
@@ -161,4 +183,5 @@ Incremental analysis uses the efficiency frontier: strategies are ordered by cos
 4. **VUS modelling.** Binary per-proband outcome; VUS count, gene-specific rates, and correlation with diagnosis are not modelled.
 5. **Cost sources.** Send-out pricing and RAMQ list prices; in-house and negotiated institutional pricing may differ.
 6. **Referral population.** Synthetic cohort derived from published case series; phenotype proportions may not generalise to all renal genetics referral populations.
+7. **Uptake assumptions.** Cascade testing is modelled at 100% uptake (structural upper-bound assumption), which creates a conservative bias against higher-yield strategies. Reflex ES uptake is set to 50% in the base case, based on published cascade and reflex acceptance estimates; the impact of varying this from 20% to 100% is characterised in the reflex uptake DSA.
 
