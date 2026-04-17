@@ -14,25 +14,33 @@ default:
     min: 0
     max: 100000
     step: 1000
+    anchors: [0, 20000, 40000, 60000, 80000, 100000]
   pipeline:
     scripts:
+      # Parameters
       - scripts/01_import_validate.R
       - scripts/01b_load_parameters.R
       - scripts/01c_load_vus.R
       - scripts/01d_load_detection.R
       - scripts/02_meta_analysis.R
       - scripts/03_vis_parameters.R
+      # Simulation
       - scripts/05_simulation_engine.R
       - scripts/05b_gs_simulation.R
+      # Base-case analyses
       - scripts/06a_base_case_summary.R
       - scripts/06b_incremental_analysis.R
       - scripts/06c_cystic_subgroup.R
       - scripts/06d_vus_burden_analysis.R
       - scripts/06e_phenotype_figure.R
+      # Scenarios and deterministic sensitivity analyses
       - scripts/09a_gs_scenario_analysis.R
       - scripts/09c_cascade_dsa.R
-      - scripts/09e_reflex_uptake_dsa.R
       - scripts/09d_pkd1_full_detection_scenario.R
+      - scripts/09e_reflex_uptake_dsa.R
+      # Secondary outcome: clinical impact (requires base case + GS scenario)
+      - scripts/10_clinical_impact_analysis.R
+      # Uncertainty analyses
       - scripts/07_global_sensitivity_analysis.R
       - scripts/08a_probabilistic_sensitivity.R
       - scripts/08_wtp_analysis.R

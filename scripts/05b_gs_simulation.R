@@ -20,8 +20,12 @@ source("scripts/05_simulation_engine.R")
 GS_STRATEGY_ID <- 4L
 OUTPUT_DIR <- "outputs/results/scenario_analysis/gs_uplift"
 OUTPUT_GS_BASELINE_ITER_CSV <- file.path(OUTPUT_DIR, "gs_baseline_iteration_outcomes.csv")
+OUTPUT_GS_GENE_COUNTS_CSV <- "outputs/results/clinical_impact/gs_iteration_gene_counts.csv"
 
 if (!dir.exists(OUTPUT_DIR)) dir.create(OUTPUT_DIR, recursive = TRUE)
+if (!dir.exists(dirname(OUTPUT_GS_GENE_COUNTS_CSV))) {
+    dir.create(dirname(OUTPUT_GS_GENE_COUNTS_CSV), recursive = TRUE)
+}
 
 # ==============================================================================
 # Configuration — must match 05_simulation_engine.R exactly
@@ -46,6 +50,8 @@ cat(sprintf(
 # GS Simulation Loop
 # ==============================================================================
 gs_results_list <- vector("list", N_ITER)
+gs_gene_count_list <- list()
+gs_gene_count_idx <- 0
 
 for (i in 1:N_ITER) {
     if (i %% 50 == 0) cat(sprintf("  Processing Iteration %d / %d...\n", i, N_ITER))
@@ -118,9 +124,20 @@ for (i in 1:N_ITER) {
         pr_at_least_one_vus = res$pr_at_least_one_vus,
         stringsAsFactors = FALSE
     )
+
+    # Gene-level diagnosed counts for clinical impact analysis
+    # (pre-tabulated inside run_simulation_step).
+    gene_counts <- res$diagnosed_gene_counts
+    gene_counts$iteration_id <- i
+    gene_counts$strategy_id <- GS_STRATEGY_ID
+    gene_counts$strategy_label <- "GS"
+    gene_counts$n_probands <- N_PROBANDS
+    gs_gene_count_idx <- gs_gene_count_idx + 1
+    gs_gene_count_list[[gs_gene_count_idx]] <- gene_counts
 }
 
 gs_baseline_df <- do.call(rbind, gs_results_list)
+gs_gene_count_df <- do.call(rbind, gs_gene_count_list)
 
 # ==============================================================================
 # Validate and Write
@@ -139,5 +156,14 @@ assert_no_na(
 )
 write_csv_validated(gs_baseline_df, OUTPUT_GS_BASELINE_ITER_CSV, "gs_baseline_iteration_outcomes")
 
+# Gene counts for clinical impact analysis
+gs_gene_count_required <- c("gene_symbol", "phenotype", "n_diagnosed",
+                            "iteration_id", "strategy_id", "strategy_label",
+                            "n_probands")
+assert_required_columns(gs_gene_count_df, gs_gene_count_required,
+                        "gs_iteration_gene_counts", exact = TRUE)
+write_csv_validated(gs_gene_count_df, OUTPUT_GS_GENE_COUNTS_CSV, "gs_iteration_gene_counts")
+
 cat("\nGS simulation complete.\n")
 cat("Results saved to:", OUTPUT_GS_BASELINE_ITER_CSV, "\n")
+cat("Gene counts saved to:", OUTPUT_GS_GENE_COUNTS_CSV, "\n")

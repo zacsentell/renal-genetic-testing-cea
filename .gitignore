@@ -6,15 +6,16 @@
 .DS_Store
 *.Rproj
 
-# Editor configuration 
+# Editor configuration
 .agent/
 .claude/
+.vscode/
 CLAUDE.md
+
+# Archived scripts (preserved for provenance, not part of pipeline)
+scripts/archive/
 # Docs
 docs/report/
-scripts/10_generate_report_md.R
-Rplots.pdf
-
 
 # Source PDFs
 data/raw/cohort_literature/

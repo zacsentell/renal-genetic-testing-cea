@@ -152,6 +152,26 @@ Cascade testing per eligible relative: 1 pre-test consultation + 1 targeted fami
 
 Incremental analysis uses the efficiency frontier: strategies are ordered by cost; strictly and extendedly dominated strategies are removed; ICPD is computed between adjacent non-dominated strategies.
 
+### Clinical impact classification
+
+A secondary outcome quantifies the proportion of diagnosed probands whose molecular result drives a defined clinical action beyond genetic counselling and reproductive planning. The framework is adapted from Knoers et al. (NDT 2022), which identifies domains of clinical benefit from genetic testing in CKD. We use three non-exclusive primary categories that each correspond to a distinct downstream clinical action:
+
+1. **Therapeutic.** Diagnosis enables a gene-specific treatment decision. Partitioned into three non-exclusive sub-categories: *targeted drug* (e.g., tolvaptan for *PKD1/PKD2*, eculizumab for complement genes, ERT for *GLA*, RAS inhibition initiated on the basis of an Alport diagnosis for *COL4A3/4/5*); *avoidance of ineffective therapy* (e.g., immunosuppression in hereditary SRNS or Alport, parathyroidectomy in FHH, AL-amyloid chemotherapy in hereditary amyloidosis); and *supportive or dietary management* (e.g., diet for hyperoxaluria, electrolyte replacement in tubulopathies).
+
+*Caveat on RAS inhibition for Alport.* RAS inhibition is a drug class used broadly for proteinuric kidney disease, not a gene-specific pharmacotherapy in the narrow sense of tolvaptan or eculizumab. It is classified as *targeted drug* for *COL4A3/4/5* because initiation is triggered by the molecular Alport diagnosis (including in pre-proteinuric carriers), which is the clinical action the category is meant to capture. Readers who prefer a strict gene-specific-agent definition can subtract the Alport genes from the *targeted drug* count using `gene_coverage_audit.csv`.
+2. **Extrarenal surveillance.** Diagnosis triggers a defined screening protocol for an extrarenal complication such as hearing loss, ocular abnormalities, diabetes, or tumour predisposition.
+3. **Transplant and donor management.** Diagnosis alters living-donor evaluation, post-transplant recurrence risk, or transplant timing.
+
+Genetic counselling and reproductive planning was excluded because it applies universally to any monogenic diagnosis and therefore cannot discriminate between strategies. Diagnostic reclassification was considered as a fourth category but excluded because it is clinically consequential only when it changes management, and that change is already captured by one of the three action-oriented categories above.
+
+Gene-level assignments were curated from the "Diagnosis utility" column of the Knoers supplemental tables (S1 through S5) as the primary annotation source, with the paper body "Clinical benefit of genetic testing" subsections used as secondary evidence. Generic phrases ("adequation of treatment and follow-up", "renal protection strategies" alone, genetic counselling variants) did not qualify a gene for any category. Twenty-seven simulation genes absent from Knoers were annotated from independent clinical literature. Every assignment was manually reviewed against current clinical evidence. Full curation methodology and data sources are documented at `data/raw/clinical_utility/curation_methodology.md`; the curated table is at `data/raw/clinical_utility/gene_clinical_utility.csv`.
+
+A gene was classified as high clinical impact if it mapped to at least one primary category. For each PSA iteration and testing strategy, the proportion of diagnosed probands whose causal gene falls into each category was computed (diagnosed-proband denominator). Cost per high-impact diagnosis was derived as total cost per proband divided by the proportion of all probands receiving a high-impact diagnosis (all-proband denominator), because testing costs are borne by all probands regardless of diagnostic outcome. No weights were applied across categories and no composite utility score was constructed.
+
+**Phenotype attribution.** Several simulation genes contribute diagnoses to more than one phenotype category (for example *COL4A3*, *COL4A5*, *PKD1*, *UMOD*, *HNF1B*, *PAX2*). To preserve exact phenotype attribution, the simulation engine tabulates diagnosed probands at the (gene, phenotype) level at the end of each iteration, rather than summing over phenotype and allocating post hoc. This allows phenotype-stratified clinical impact proportions to reflect the same cohort realisation as the iteration-level cost and yield outcomes.
+
+**Clinical impact figure.** One composite three-panel figure is produced at `clinical_impact_composite.png`. Panel A shows, for all four strategies (Panel, ES, Reflex, GS), the proportion of diagnosed probands in each primary impact category (High Impact, Therapeutic, Extrarenal Surveillance, Transplant/Donor), with 95% uncertainty intervals. Panel B shows, for the Reflex reference strategy, the proportion of all probands in each phenotype who fall into each impact category (all-proband denominator, so bar height absorbs phenotype-specific yield). Panel C is a condensed gene-by-category dot matrix of the top ten genes by High Impact contribution under Reflex; dot size encodes mean cohort proportion diagnosed. Impact categories are non-exclusive.
+
 ---
 
 ## 6. Uncertainty and sensitivity analyses
@@ -168,10 +188,23 @@ Incremental analysis uses the efficiency frontier: strategies are ordered by cos
 
 - **Cystic subgroup:** base-case CEA restricted to cystic phenotype (`06c_cystic_subgroup.R`). Clinically relevant because the cystic panel bundles a targeted PKD1 assay, giving Panel a structural detection advantage over standalone ES.
 - **Phenotype stratification:** Reflex (Panel→ES) outcomes by phenotype category (`06e_phenotype_figure.R`).
+- **Phenotype-specific WTP winners:** most probable cost-effective strategy by phenotype at selected WTP anchors, reported as a matrix figure and findings tables (`06e_phenotype_figure.R`).
 - **GS scenario:** +10% relative yield uplift applied to GS arm to model enhanced bioinformatics detection of difficult loci. GS scenario compared against Reflex as the incumbent frontier strategy (`09a_gs_scenario_analysis.R`). The uplift is a deterministic scenario assumption; uncertainty in its magnitude is not propagated through the PSA.
 - **PKD1 full detection scenario:** PKD1 difficult-locus detection overridden to 100% for all panels and ES, representing a near-future state where optimised capture and pseudogene-aware bioinformatics eliminate the current PKD1 detection barrier (`09d_pkd1_full_detection_scenario.R`). A full PSA re-run (1,000 iterations × 1,000 probands) is performed. MUC1 VNTR detection is unchanged. Test costs are unchanged.
 - **Cascade eligible relatives DSA:** one-way sensitivity varying the number of eligible first-degree relatives from 0 to 4 (`09c_cascade_dsa.R`). Examines whether frontier ranking is preserved across cascade assumptions.
 - **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 20% to 100% (`09e_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
+
+### 7.1 Phenotype-specific WTP winner analysis
+
+This analysis identifies the most probable cost-effective strategy for each phenotype at selected willingness-to-pay (WTP) anchors. Input data are iteration-level phenotype outcomes from the base case.
+
+For each phenotype, strategy, and WTP anchor, net monetary benefit (NMB) is computed as:
+
+NMB = (WTP × diagnoses per proband) − total cost per proband.
+
+Within each iteration, the strategy with the highest NMB is selected as the winner. If strategies tie, deterministic ordering by strategy ID is used to ensure reproducible winner assignment. Winner probability is the proportion of iterations in which each strategy is optimal for that phenotype and WTP anchor.
+
+WTP anchors are derived deterministically from the configured WTP range and step in `config.yml`, including the minimum and maximum values. Two output tables are produced in `outputs/results/supplement/phenotype_stratified/`: a long-format table (`phenotype_wtp_winner_long.csv`) with one row per phenotype and anchor, and a wide findings table (`phenotype_wtp_winner_wide.csv`) for direct report display. The corresponding matrix figure is exported as `phenotype_wtp_winner_matrix.png` and `.svg`.
 
 ---
 

@@ -32,11 +32,12 @@ OUTPUT_ITERATION_CSV <- "outputs/results/base_case/iteration_level/strategy_iter
 OUTPUT_COMPONENT_CSV <- "outputs/results/base_case/cost_composition/iteration_cost_components.csv"
 OUTPUT_PHENOTYPE_CSV <- "outputs/results/supplement/phenotype_stratified/base_case/phenotype_iteration_outcomes.csv"
 OUTPUT_PARAM_TRACE_CSV <- "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/iteration_parameter_trace.csv"
+OUTPUT_GENE_COUNTS_CSV <- "outputs/results/clinical_impact/iteration_gene_counts.csv"
 
 # Ensure output directories exist
 for (out_path in c(
     OUTPUT_ITERATION_CSV, OUTPUT_COMPONENT_CSV, OUTPUT_PHENOTYPE_CSV,
-    OUTPUT_PARAM_TRACE_CSV
+    OUTPUT_PARAM_TRACE_CSV, OUTPUT_GENE_COUNTS_CSV
 )) {
     if (!dir.exists(dirname(out_path))) dir.create(dirname(out_path), recursive = TRUE)
 }
@@ -533,7 +534,35 @@ run_simulation_step <- function(cohort, strategy,
         cost_consultation_vec = cost_consultation,
         cost_testing_vec = cost_testing,
         cost_cascade_vec = cost_cascade,
-        cost_vus_followup_vec = cost_vus_followup
+        cost_vus_followup_vec = cost_vus_followup,
+
+        # Pre-tabulated (gene x phenotype) counts for diagnosed probands
+        # (for clinical impact analysis). Returned already aggregated to avoid
+        # round-tripping length-N character vectors through the main simulation
+        # loop. Phenotype is included because several genes contribute to more
+        # than one phenotype category in the cohort (e.g. UMOD, COL4A3, PKD1),
+        # so gene-only tabulation cannot be de-aggregated post-hoc.
+        diagnosed_gene_counts = {
+            dg <- cohort$causal_gene[is_diagnosed]
+            dp <- cohort$phenotype[is_diagnosed]
+            if (length(dg) > 0) {
+                tab <- as.data.frame(
+                    table(gene_symbol = dg, phenotype = dp),
+                    responseName = "n_diagnosed",
+                    stringsAsFactors = FALSE
+                )
+                tab <- tab[tab$n_diagnosed > 0, , drop = FALSE]
+                tab$gene_symbol <- as.character(tab$gene_symbol)
+                tab$phenotype <- as.character(tab$phenotype)
+                rownames(tab) <- NULL
+                tab
+            } else {
+                data.frame(gene_symbol = character(0),
+                           phenotype = character(0),
+                           n_diagnosed = integer(0),
+                           stringsAsFactors = FALSE)
+            }
+        }
     )
 }
 
@@ -561,8 +590,10 @@ if (sys.nframe() == 0) {
     cost_components_list <- vector("list", N_ITER * length(STRATEGIES))
     phenotype_results_list <- list() # 5.5.5: Phenotype-stratified outcomes
     param_trace_list <- vector("list", N_ITER) # 5.5.6: Parameter trace for PRCC
+    gene_count_list <- list() # Gene-level diagnosed counts for clinical impact
     list_idx <- 0
     pheno_idx <- 0
+    gene_count_idx <- 0
 
     set.seed(SEED_START)
     iter_seeds <- sample.int(1e9, N_ITER)
@@ -763,6 +794,16 @@ if (sys.nframe() == 0) {
                 stringsAsFactors = FALSE
             )
 
+            # Gene-level diagnosed counts for clinical impact analysis
+            # (pre-tabulated inside run_simulation_step).
+            gene_counts <- res$diagnosed_gene_counts
+            gene_counts$iteration_id <- i
+            gene_counts$strategy_id <- STRATEGY_MAP[[strat]]
+            gene_counts$strategy_label <- strat
+            gene_counts$n_probands <- N_PROBANDS
+            gene_count_idx <- gene_count_idx + 1
+            gene_count_list[[gene_count_idx]] <- gene_counts
+
             # 5.5.5: Phenotype-stratified aggregation (§7.7)
             for (pheno in PHENOTYPE_CATEGORIES) {
                 pheno_idx <- pheno_idx + 1
@@ -818,6 +859,7 @@ if (sys.nframe() == 0) {
     cost_components_df <- do.call(rbind, cost_components_list)
     phenotype_results_df <- do.call(rbind, phenotype_results_list)
     param_trace_df <- do.call(rbind, param_trace_list)
+    gene_count_df <- do.call(rbind, gene_count_list)
 
     # ==============================================================================
     # 4. Export Results
@@ -858,6 +900,14 @@ if (sys.nframe() == 0) {
     write_csv_validated(phenotype_results_df, OUTPUT_PHENOTYPE_CSV, "phenotype_iteration_outcomes")
     write_csv_validated(param_trace_df, OUTPUT_PARAM_TRACE_CSV, "iteration_parameter_trace")
 
+    # Gene counts for clinical impact analysis
+    gene_count_required <- c("gene_symbol", "phenotype", "n_diagnosed",
+                             "iteration_id", "strategy_id", "strategy_label",
+                             "n_probands")
+    assert_required_columns(gene_count_df, gene_count_required,
+                            "iteration_gene_counts", exact = TRUE)
+    write_csv_validated(gene_count_df, OUTPUT_GENE_COUNTS_CSV, "iteration_gene_counts")
+
     cat("\nSimulation Complete.\n")
     cat("Results saved to:\n")
     cat("- ", OUTPUT_RESULTS, "\n")
@@ -865,4 +915,5 @@ if (sys.nframe() == 0) {
     cat("- ", OUTPUT_COMPONENT_CSV, "\n")
     cat("- ", OUTPUT_PHENOTYPE_CSV, "\n")
     cat("- ", OUTPUT_PARAM_TRACE_CSV, "\n")
+    cat("- ", OUTPUT_GENE_COUNTS_CSV, "\n")
 } # end if (sys.nframe() == 0)

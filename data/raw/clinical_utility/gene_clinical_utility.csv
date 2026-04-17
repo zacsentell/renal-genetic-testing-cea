@@ -1,0 +1,450 @@
+gene_symbol,high_impact,therapeutic,targeted_drug,avoid_ineffective_therapy,supportive_dietary,extrarenal_surveillance,transplant_donor,rationale,knoers_table,knoers_utility_text,notes,in_simulation,needs_review,disease_groups
+ACE,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+ACTA2,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+ACTG2,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+ACTN4,1,1,0,1,0,0,1,AD FSGS: avoid IS (hereditary glomerulopathy); donor screening (AD),S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per Knoers p.245; AD requires donor genotyping,FALSE,FALSE,Glomerulopathies
+ADCY10,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+AGT,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+AGTR1,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+AGXT,1,1,1,0,1,0,0,PH1: pyridoxine (B6-responsive); adapted diet; nephrolithiasis prevention,S2,"Adapted treatment (pyridoxine) and diet. Renal protection strategies.
+Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility explicit: adapted treatment (pyridoxine) + diet + nephrolithiasis prevention,TRUE,FALSE,Tubulopathies
+AHI1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ALDOB,1,1,0,0,1,0,0,HFI: strict fructose/sucrose/sorbitol avoidance; renal protection,S2,Adapted dietary management. Renal protection strategies. Adequation of treatment and follow-up,S2 utility explicit: adapted dietary management + renal protection,FALSE,FALSE,Tubulopathies
+ALG1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ALMS1,1,0,0,0,0,1,0,"Alstrom: retinal dystrophy, cardiomyopathy, diabetes, hearing loss surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; Alstrom extrarenal features well-established,TRUE,FALSE,Ciliopathies
+AMPD2,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+ANKFY1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ANKS6,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ANLN,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ANOS1,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+AP2S1,1,1,0,1,0,0,0,auto-assigned by keyword matching,S2,Differential diagnosis with Hyperparathyroidism (avoid unnecessary surgery),,FALSE,FALSE,Tubulopathies
+APOA1,1,1,0,1,0,0,0,ApoAI hereditary amyloidosis: molecular diagnosis avoids AL-amyloid chemotherapy regimens which are ineffective in hereditary amyloidosis,,,Extension gene; molecular diagnosis changes management (no chemotherapy),TRUE,FALSE,
+APOL1,0,0,0,0,0,0,0,"APOL1 risk variants (G1/G2) are common population variants, not rare monogenic causes; no gene-specific therapy",S1,,"Common risk alleles, not P/LP monogenic variants; IS response variable; no gene-specific intervention meets threshold",TRUE,FALSE,Glomerulopathies
+APRT,1,1,0,0,1,0,0,APRT deficiency: low-purine diet + hydration; nephrolithiasis prevention (allopurinol adjunct),S2,Adapted dietary management.  Prevention of recurrent nephrolithiasis. Renal protection strategies.,S2 utility explicit: adapted dietary management + nephrolithiasis prevention,FALSE,FALSE,Tubulopathies
+AQP2,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of severe dehydration,,FALSE,FALSE,Tubulopathies
+ARHGAP24,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ARHGDIA,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ARL13B,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ARL3,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ARL6,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ARMC9,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ATP6V0A4,1,0,0,0,0,1,0,dRTA (ATP6V0A4): sensorineural hearing loss surveillance,S2,Early detection and treatment of Sensorineural hearing loss,S2 utility explicit: Early detection and treatment of Sensorineural hearing loss,TRUE,FALSE,Tubulopathies
+ATP6V1B1,1,0,0,0,0,1,0,dRTA (ATP6V1B1): sensorineural hearing loss surveillance,S2,Early detection and treatment of Sensorineural hearing loss,S2 utility explicit: Early detection and treatment of Sensorineural hearing loss,TRUE,FALSE,Tubulopathies
+AVIL,1,1,0,1,0,0,0,AR SRNS: avoid IS (hereditary glomerulopathy),S1,Renal protection strategies. Adequation of treatment and follow-up,"S1 generic utility; avoid IS per Knoers p.245; ultra-rare, no established extrarenal",FALSE,FALSE,Glomerulopathies
+AVPR2,1,1,0,0,1,0,0,X-linked NDI: prevention of severe dehydration and life-threatening hypernatremia,S2,"Prevention of severe dehydration
+Identification of females carriers | Identification of females carriers",S2 utility explicit: Prevention of severe dehydration; Identification of females carriers,TRUE,FALSE,Tubulopathies
+B9D1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+B9D2,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBIP1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBS1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBS10,1,0,0,0,0,1,0,"BBS: retinal dystrophy, obesity, endocrine surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; BBS extrarenal features from OMIM/GeneReviews,TRUE,FALSE,Ciliopathies
+BBS12,1,0,0,0,0,1,0,"BBS: retinal dystrophy, obesity, endocrine surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; BBS extrarenal features from OMIM/GeneReviews,TRUE,FALSE,Ciliopathies
+BBS2,1,0,0,0,0,1,0,"BBS: retinal dystrophy, obesity, endocrine surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; BBS extrarenal features from OMIM/GeneReviews,TRUE,FALSE,Ciliopathies
+BBS4,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBS5,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBS7,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+BBS9,1,0,0,0,0,1,0,"BBS: retinal dystrophy, obesity, endocrine surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; BBS extrarenal features from OMIM/GeneReviews,TRUE,FALSE,Ciliopathies
+BICC1,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+BSND,1,1,0,0,1,1,0,Bartter type 4: renal protection/electrolyte management; hearing surveillance,S2,"Renal protection strategies
+Early detection and treatment of Sensorineural hearing loss",S2 utility explicit: renal protection + hearing,FALSE,FALSE,Tubulopathies
+C2CD3,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+C3,1,1,1,0,0,0,1,aHUS/C3G: complement inhibitor therapy (eculizumab); post-transplant recurrence risk,S3,,S3 utility blank for C3; CFH row names complement inhibitors; paper p.247 confirms for all complement genes,TRUE,FALSE,Complement disorders
+C8orf37,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CA2,0,0,0,0,0,0,0,,S2,,,FALSE,FALSE,Tubulopathies
+CASR,1,1,0,1,0,0,0,FHH/ADH: avoid unnecessary parathyroidectomy; diagnostic reclass from primary hyperPTH,S2,Differential diagnosis with Hyperparathyroidism (avoid unnecessary surgery),S2 utility explicit: Differential diagnosis with Hyperparathyroidism (avoid unnecessary surgery),TRUE,FALSE,Tubulopathies
+CC2D2A,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CD151,1,1,0,1,0,1,0,Integrin-associated NS: avoid IS; hearing + skin (epidermolysis bullosa) surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 609057,FALSE,FALSE,Glomerulopathies
+CD2AP,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+CD46,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CD46-AAGGT,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CD46-GGAAC,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CEP104,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CEP120,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CEP164,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CEP19,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CEP290,1,0,0,0,0,1,0,"CEP290/Joubert: retinal, hepatic, CNS surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; Joubert extrarenal features well-established,TRUE,FALSE,Ciliopathies
+CEP41,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CEP83,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CFB,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CFH,1,1,1,0,0,0,1,aHUS: complement inhibitor therapy; post-transplant recurrence; confirm diagnosis/prognosis,S3,"Confirm diagnosis, predict long-term outcome, response to therapies and the risk of relapses after discontinuation.  Predict risk of recurrence in the graft | Choice of treatment strategies (immunosuppression vs complement inhibitors).
+Identify subjects at risk of disease within families","S3 utility explicit: complement inhibitors, graft recurrence",TRUE,FALSE,Complement disorders
+CFH-H1,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CFH-H3,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CFHR1-R4 del,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CFHR3-R1 del,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CFI,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+CHD1L,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+CHD7,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+CHRM3,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+CLCN5,1,1,0,0,1,0,0,Dent disease 1: renal protection; nephrolithiasis prevention,S2,"Identification of females carriers
+Renal protection strategies Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility: renal protection + nephrolithiasis prevention,TRUE,FALSE,Tubulopathies
+CLCNKA,1,1,0,0,1,1,0,Bartter type 4A: renal protection; hearing surveillance,S2,"Renal protection strategies
+Early detection and treatment of Sensorineural hearing loss",S2 utility explicit: renal protection + hearing,FALSE,FALSE,Tubulopathies
+CLCNKB,1,1,0,0,1,1,0,Bartter type 3: renal protection; nephrolithiasis prevention; hearing screening (some overlap with type 4),S2,"Renal protection strategies
+Prevention of recurrent nephrolithiasis/nephrocalcinois | Renal protection strategies
+Early detection and treatment of Sensorineural hearing loss",S2 utility: renal protection + nephrolithiasis. Hearing for overlap phenotypes,TRUE,FALSE,Tubulopathies
+CLDN10,0,0,0,0,0,0,0,,S2,,,FALSE,FALSE,Tubulopathies
+CLDN16,1,1,0,0,1,1,0,FHHNC: renal protection; nephrolithiasis prevention; ocular/dental surveillance (CLDN19 overlap),S2,"Renal protection strategies 
+Prevention of recurrent nephrolithiasis/nephrocalcinois
+Correlation between de type of mutation and GFR decline
+Dental survey and treatment",S2 utility: renal protection + nephrolithiasis + dental,TRUE,FALSE,Tubulopathies
+CLDN19,1,1,0,0,1,1,0,FHHNC: renal protection; nephrolithiasis prevention; ophthalmologic/dental surveillance,S2,"Renal protection strategies
+Prevention of recurrent nephrolithiasis/nephrocalcinois Dental survey and treatment  Ophtalmologic screening",S2 utility explicit: renal protection + nephrolithiasis + ophthal + dental,TRUE,FALSE,Tubulopathies
+CNNM2,0,0,0,0,0,0,0,,S2,,,FALSE,FALSE,Tubulopathies
+COL4A1,1,0,0,0,0,1,0,COL4A1: cerebrovascular (porencephaly/stroke) + ocular surveillance,,,Extension gene; extrarenal from OMIM,TRUE,FALSE,
+COL4A3,1,1,1,1,1,1,1,Alport: RAS inhibition; avoid immunosuppression; audiometry and ophthalmology surveillance; donor screening; anti-GBM risk post-transplant; clarifies working diagnosis in MPGN/FSGS,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 utility generic; categories from paper body pp.243-246; targeted_drug flagged for RAS inhibition (see methods §5 caveat),TRUE,FALSE,Glomerulopathies
+COL4A4,1,1,1,1,1,1,1,Alport: RAS inhibition; avoid immunosuppression; audiometry and ophthalmology surveillance; donor screening; anti-GBM risk post-transplant; clarifies working diagnosis in MPGN/FSGS,S1,,S1 utility blank; categories from paper body pp.243-246; targeted_drug flagged for RAS inhibition (see methods §5 caveat),TRUE,FALSE,Glomerulopathies
+COL4A5,1,1,1,1,1,1,1,X-linked Alport: RAS inhibition; avoid immunosuppression; audiometry and ophthalmology surveillance; donor screening; anti-GBM risk post-transplant; clarifies working diagnosis in MPGN/FSGS,S1,,S1 utility blank; categories from paper body pp.243-246; targeted_drug flagged for RAS inhibition (see methods §5 caveat),TRUE,FALSE,Glomerulopathies
+COL4A6,0,0,0,0,0,0,0,COL4A6 not independently nephropathy-causative; contiguous COL4A5-COL4A6 deletions managed as Alport,S1,,Standalone COL4A6 variants do not cause nephropathy; only causative as COL4A5 contiguous deletion,TRUE,FALSE,Glomerulopathies
+COQ2,1,1,1,0,1,0,0,CoQ10 supplementation; renal protection,S1,CoQ10 supplementation. Renal protection strategies. Adequation of treatment and follow-up,S1 utility explicit: CoQ10 + renal protection,FALSE,FALSE,Glomerulopathies
+COQ6,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+COQ8B,1,1,1,0,0,0,0,CoQ10 supplementation (CoQ biosynthesis pathway); same as COQ2/COQ6/PDSS2,S1,,S1 utility blank for COQ8B but COQ2 row lists CoQ10; paper p.245-246 confirms,TRUE,FALSE,Glomerulopathies
+CPLANE1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CRB2,1,1,0,1,0,0,0,AR SRNS: avoid IS (hereditary glomerulopathy),S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; no consistent extrarenal,FALSE,FALSE,Glomerulopathies
+CSPP1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+CTNS,1,1,1,0,0,1,0,Cystinosis: cysteamine therapy; ophthalmologic/thyroid/endocrine surveillance,S2,Renal protection strategies. Specific treatment. Adequation of support treatment and follow-up,S2 utility: 'Specific treatment'; extrarenal from GeneReviews/OMIM,TRUE,FALSE,Tubulopathies
+CUBN,0,0,0,0,0,0,0,"Imerslund-Grasbeck: proteinuria is benign; B12 supplementation is for hematologic phenotype, not renal",S1,,"Renal finding (proteinuria) does not require treatment; B12 is for megaloblastic anemia, typically already known",TRUE,FALSE,Glomerulopathies
+CUL3,1,1,1,0,1,0,0,auto-assigned by keyword matching,S2,Specific treatment. Prevention of hypertension complications,,FALSE,FALSE,Tubulopathies
+CUL7,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+CYP24A1,1,1,0,0,1,0,0,Infantile hypercalcemia: nephrolithiasis/nephrocalcinosis prevention,S2,Prevention of recurrent nephrolithiasis/nephrocalcinois,S2 utility explicit: Prevention of recurrent nephrolithiasis/nephrocalcinosis,TRUE,FALSE,Tubulopathies
+DCDC2,0,0,0,0,0,0,0,"NPHP-related ciliopathy (DCDC2): ultra-rare, limited clinical data, no established extrarenal surveillance protocol",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; very few reported cases; insufficient evidence for specific clinical impact category,TRUE,FALSE,Ciliopathies
+DDX59,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+DGKE,0,0,0,0,0,0,0,,S1;S3,,,FALSE,FALSE,Glomerulopathies;Complement disorders
+DIS3L2,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+DLC1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+DNAJB11,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+DNASE1,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+DYNC2H1,1,0,0,0,0,1,0,SRTD: skeletal/respiratory surveillance,,,Extension gene; established syndromic features,TRUE,FALSE,
+DZIP1L,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+EGF,0,0,0,0,0,0,0,,S2,,,FALSE,FALSE,Tubulopathies
+EHHADH,0,0,0,0,0,0,0,,S2,Adequation of treatment and follow-up,,FALSE,FALSE,Tubulopathies
+EMP2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+EYA1,1,0,0,0,0,1,0,BOR syndrome: hearing screening,S4,"earing screening, adequation of treatment and follow up
+genetic counseling",S4 utility: earing screening,TRUE,FALSE,CAKUT
+FAH,1,1,1,0,1,0,0,Tyrosinemia type 1: nitisinone (NTBC); dietary tyrosine/phenylalanine restriction,S2,Specific treatment. Adapted dietary management. Renal protection strategies. Adequation of treatment and follow-up,S2 utility explicit: specific treatment + adapted dietary management,FALSE,FALSE,Tubulopathies
+FAM149B1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+FAM20A,1,1,0,0,1,1,0,auto-assigned by keyword matching,S2,"Prevention of recurrent nephrolithiasis/nephrocalcinois 
+Dental survey and treatment",,FALSE,FALSE,Tubulopathies
+FAM58A,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+FAN1,0,0,0,0,0,0,0,Karyomegalic nephropathy: no gene-specific therapy; no established extrarenal surveillance,S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; FAN1 causes isolated progressive TIN without consistent syndromic features,TRUE,FALSE,Ciliopathies
+FANCI,1,0,0,0,0,1,0,"Fanconi anemia: cancer predisposition surveillance (hematologic, solid tumors)",,,Extension gene; FANCI is FA complementation group; tumor surveillance indicated,TRUE,FALSE,
+FAT4,1,0,0,0,0,1,0,auto-assigned by keyword matching,S4,"earing screening, adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+FGA,1,0,0,0,0,0,1,Hereditary fibrinogen amyloidosis: reclass from AL amyloidosis; combined liver-kidney Tx consideration,,,Extension gene; transplant management well-established for FGA amyloidosis,TRUE,FALSE,
+FGF20,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+FGF23,1,1,0,0,1,0,0,"ADHR: phosphate supplementation, active vitamin D",,,Extension gene; supportive/dietary management established,TRUE,FALSE,
+FLCN,1,0,0,0,0,1,0,BHD: renal tumor + pneumothorax surveillance,,,Extension gene; established surveillance protocols,TRUE,FALSE,
+FN1,1,0,0,0,0,0,1,Fibronectin GN: reclass from other GN; donor screening (AD),,,Extension gene; limited evidence but reclass and donor implications present,TRUE,FALSE,
+FOXI1,1,0,0,0,0,1,0,auto-assigned by keyword matching,S2,Early detection and treatment of Sensorineural hearing loss,,FALSE,FALSE,Tubulopathies
+FRAS1,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+FREM1,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+FREM2,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+FXYD2,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,prevention of hypomagnesemia complications,,FALSE,FALSE,Tubulopathies
+G6PC,1,1,0,0,1,0,0,GSD-1a: continuous glucose dietary management; renal protection,S2,Adapted dietary management. Renal protection strategies. Adequation of treatment and follow-up,S2 utility explicit: adapted dietary management + renal protection,FALSE,FALSE,Tubulopathies
+GANAB,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+GAPVD1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+GATA3,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+GATM,0,0,0,0,0,0,0,GATM renal phenotype not well-established; creatine supplementation is for neurological phenotype,S2,"
+Renal protection strategies. Adequation of treatment and follow-up",S2 utility generic; renal-specific benefit does not meet threshold,FALSE,FALSE,Tubulopathies
+GDF6,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+GLA,1,1,1,0,0,1,0,Fabry: ERT (agalsidase)/migalastat; cardiac/neuro/ocular surveillance; reclass from idiopathic FSGS,,,Extension gene; targeted therapy + extrarenal well-established; Knoers Table 2 p.242 reclass,TRUE,FALSE,
+GLI3,0,0,0,0,0,0,0,"Pallister-Hall/Greig: structural anomalies (polydactyly, hypothalamic hamartoma) are congenital, not progressive; no ongoing surveillance protocol changed by renal genetics diagnosis",S4,"adequation of treatment and follow up
+genetic counseling",S4 utility generic; congenital anomalies typically detected before genetic diagnosis; no new surveillance triggered,TRUE,FALSE,CAKUT
+GLIS2,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+GNA11,1,1,0,1,1,0,0,ADH2/FHH: avoid unnecessary parathyroidectomy; nephrolithiasis prevention; reclass from primary hyperPTH,S2,Differential diagnosis with Hyperparathyroidism (avoid unnecessary surgery) | Prevention of recurrent nephrolithiasis/nephrocalcinois,S2 utility explicit: differential dx with hyperPTH + nephrolithiasis,FALSE,FALSE,Tubulopathies
+GPC3,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+GREB1L,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+GRHPR,1,1,0,0,1,0,0,PH2: dietary management; nephrolithiasis prevention,S2,"Adapted dietary management. Renal protection strategies.
+Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility explicit: adapted dietary management + nephrolithiasis,TRUE,FALSE,Tubulopathies
+GRIP1,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+HNF1B,1,0,0,0,0,1,1,HNF1B: diabetes/liver/pancreas screening; donor screening (AD); clarifies working diagnosis in ADPKD phenocopy,S2;S4;S5,"Renal protection strategies | diabetes screening
+adequation of treatment and follow up
+genetic counseling | adequation of treatment follow up
+genetic counseling",S2/S4/S5; diabetes screening in S4; paper Table 2 p.242 reclass; paper p.243 donor,TRUE,FALSE,Tubulopathies;CAKUT;Ciliopathies
+HOGA1,1,1,0,0,1,0,0,PH3: dietary management; nephrolithiasis prevention,S2,"Adapted dietary management. Renal protection strategies.
+Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility explicit: adapted dietary management + nephrolithiasis prevention,FALSE,FALSE,Tubulopathies
+HPRT1,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Adapted dietary management. Prevention of recurrent nephrolithiasis,,FALSE,FALSE,Tubulopathies
+HPSE2,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+HS2ST1,0,0,0,0,0,0,0,,S4,genetic ounseling,,FALSE,FALSE,CAKUT
+IFT140,1,0,0,0,0,1,0,IFT140: retinal/skeletal surveillance; reclass from atypical ADPKD,,,Extension gene; Knoers paper does not cover but UKKA/Genomics England include; IFT140 now recognized ADPKD mimic,TRUE,FALSE,
+IFT172,1,0,0,0,0,1,0,IFT172: retinal/skeletal surveillance (Mainzer-Saldino / SRTD),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; extrarenal from OMIM,TRUE,FALSE,Ciliopathies
+IFT27,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+IFT57,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+IFT74,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+INF2,1,1,0,1,1,0,1,AD FSGS: avoid IS; RAS inhibition/nephroprotection; donor screening (AD),S1,Renal protection strategies. Adequation of treatment and follow-up,S1 utility generic; categories from paper body p.245,TRUE,FALSE,Glomerulopathies
+INPP5E,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+INVS,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+IQCB1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+ITGA3,1,1,0,1,0,1,0,Congenital NS: avoid IS; pulmonary (ILD) + skin surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 614748,FALSE,FALSE,Glomerulopathies
+ITGA8,0,0,0,0,0,0,0,CAKUT gene: no gene-directed intervention and no defined extrarenal surveillance protocol,S4,genetic counseling,S4 utility text is the exclusion phrase; no qualifying action identified,TRUE,FALSE,CAKUT
+ITGB4,1,1,0,1,0,1,0,Junctional EB + NS: avoid IS; skin + GI (pyloric atresia) surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 226730,FALSE,FALSE,Glomerulopathies
+ITSN1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ITSN2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+JAG1,1,0,0,0,0,1,0,Alagille syndrome: hepatic/cardiac/ocular/vertebral surveillance,S4,"adequation of treatment and follow up
+genetic counseling",S4 utility generic; extrarenal from OMIM/GeneReviews,TRUE,FALSE,CAKUT
+KANK1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+KANK2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+KCNA1,0,0,0,0,0,0,0,KCNA1 hypomagnesemia: ultra-rare; limited renal phenotype data; no established gene-specific management,S2,,S2 utility blank; insufficient clinical data for gene-specific intervention,TRUE,FALSE,Tubulopathies
+KCNJ1,1,1,0,0,1,0,0,Bartter type 2: renal protection; nephrolithiasis prevention,S2,"Renal protection strategies
+Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility: renal protection + nephrolithiasis,TRUE,FALSE,Tubulopathies
+KCNJ10,1,0,0,0,0,1,0,auto-assigned by keyword matching,S2,Early detection and treatment of Sensorineural hearing loss,,FALSE,FALSE,Tubulopathies
+KCNJ16,1,0,0,0,0,1,0,auto-assigned by keyword matching,S2,Early detection and treatment of Sensorineural hearing loss,,FALSE,FALSE,Tubulopathies
+KIAA0556,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+KIAA0586,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+KIF14,0,0,0,0,0,0,0,,S4;S5,"genetic couseling | adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,CAKUT;Ciliopathies
+KIF7,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+KLHL3,1,1,1,0,1,0,0,PHA2 (Gordon): thiazide diuretics; hypertension prevention,S2,Specific treatment. Prevention of hypertension complications,S2 utility explicit: Specific treatment. Prevention of hypertension complications,TRUE,FALSE,Tubulopathies
+LAGE3,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+LAMA5,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+LAMB2,1,1,0,1,0,1,0,Pierson syndrome: avoid IS; ocular (microcoria) + neuromuscular surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 609049,FALSE,FALSE,Glomerulopathies
+LDLR,1,1,1,0,0,1,0,FH: statin/PCSK9i therapy; cardiovascular surveillance,,,Extension gene; actionable but not a primary renal gene,TRUE,FALSE,
+LHX1,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+LIFR,0,0,0,0,0,0,0,,S4,,,FALSE,FALSE,CAKUT
+LMNA,1,0,0,0,0,1,0,LMNA: cardiac (DCM/conduction) surveillance,,,Extension gene; cardiac monitoring established,TRUE,FALSE,
+LMX1B,1,0,0,0,0,1,0,Nail-patella syndrome: skeletal/ocular/nail surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,"S1 utility generic; extrarenal surveillance from OMIM/GeneReviews, not Knoers paper body specifically",TRUE,FALSE,Glomerulopathies
+LRIG2,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+LRP4,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+LRP5,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+LZTFL1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+MAGED2,0,0,0,0,0,0,0,,S2,Identification of females carriers,,FALSE,FALSE,Tubulopathies
+MAGI2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+MAP2K2,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+MAP7D3,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+MAPKBP1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+MKKS,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+MKS1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+MTTL1,1,1,0,1,0,1,0,"Mitochondrial (m.3243A>G): avoid IS for FSGS; MELAS surveillance (diabetes, deafness, cardiac, stroke-like)",S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 540000,FALSE,FALSE,Glomerulopathies
+MUC1,1,0,0,0,0,0,1,"ADTKD-MUC1: clarifies working diagnosis in CKDu; donor screening (AD, variable penetrance)",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; paper p.243 discusses ADTKD donor implications,TRUE,FALSE,Ciliopathies
+MYH11,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+MYH9,1,1,0,1,0,1,1,MYH9-RD: avoid IS for FSGS; hearing + ocular (cataracts) + hematologic surveillance; donor screening (AD),S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 155100; AD requires donor evaluation,FALSE,FALSE,Glomerulopathies
+MYO1E,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+NADSYN1,0,0,0,0,0,0,0,,S4,genetic couseling,,FALSE,FALSE,CAKUT
+NEK8,0,0,0,0,0,0,0,,S4;S5,"genetic 
+counseling | adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,CAKUT;Ciliopathies
+NOTCH2,1,0,0,0,0,1,0,Alagille type 2: hepatic/cardiac surveillance (same as JAG1),S4,"adequation of treatment and follow up
+genetic counseling",S4 utility generic; Alagille extrarenal features,TRUE,FALSE,CAKUT
+NPHP1,1,0,0,0,0,1,0,NPHP1: retinal degeneration screening (Senior-Loken syndrome),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; paper p.249-250 names extrarenal manifestations of NPHP genes,TRUE,FALSE,Ciliopathies
+NPHP3,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+NPHP4,1,0,0,0,0,1,0,NPHP4: retinal degeneration screening (ciliopathy extrarenal),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; same rationale as NPHP1,TRUE,FALSE,Ciliopathies
+NPHS1,1,1,0,1,0,0,1,Hereditary NS: avoid IS; donor screening (AR but proband Tx evaluation),S1,,S1 utility blank; categories from paper body pp.245-246,TRUE,FALSE,Glomerulopathies
+NPHS2,1,1,0,1,0,0,1,SRNS: avoid IS; donor screening; R229Q genotype-phenotype,S1,,S1 utility blank; categories from paper body pp.245-246,TRUE,FALSE,Glomerulopathies
+NR3C2,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of severe dehydration and life-threatening hyperkalemia,,FALSE,FALSE,Tubulopathies
+NUP107,1,1,0,1,0,0,0,AR SRNS (nucleoporin): avoid IS (hereditary glomerulopathy),S1,,S1 generic utility; avoid IS per Knoers p.245; consistent with blanket hereditary SRNS rule,TRUE,FALSE,Glomerulopathies
+NUP133,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+NUP160,1,1,0,1,0,0,0,AR SRNS (nucleoporin): avoid IS (hereditary glomerulopathy),S1,,S1 generic utility; avoid IS per Knoers p.245; consistent with blanket hereditary SRNS rule,TRUE,FALSE,Glomerulopathies
+NUP205,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+NUP85,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+NUP93,1,1,0,1,0,0,0,AR SRNS (nucleoporin): avoid IS (hereditary glomerulopathy),S1,,S1 generic utility; avoid IS per Knoers p.245; partial IS response reported in isolated cases but general recommendation is avoidance,TRUE,FALSE,Glomerulopathies
+OCRL,1,1,0,0,1,1,0,Lowe/Dent-2: renal protection; ophthalmologic/developmental surveillance,S2,"Identification of females carriers
+Renal protection strategies
+ | Identification of females carriers
+Renal protection strategies Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility: renal protection; Lowe extrarenal from OMIM,TRUE,FALSE,Tubulopathies
+OFD1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+OSGEP,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+PAX2,1,0,0,0,0,1,1,Papillorenal: ocular screening (p.243); FSGS phenocopy of SRNS (p.249); donor screening (AD),S1;S4,"adequation of treatment and follow up
+genetic counseling","S4 utility generic; paper pp.243,249 name specific benefits",TRUE,FALSE,Glomerulopathies;CAKUT
+PBX1,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+PDE6D,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+PDSS2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+PIBF1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+PIGV,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+PKD1,1,1,1,0,0,0,1,Tolvaptan (V2R antagonist); PROPKD genotype-guided risk stratification; donor screening (AD),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; paper p.250 names tolvaptan; UKKA/KDIGO guidelines confirm,TRUE,FALSE,Ciliopathies
+PKD2,1,1,1,0,0,0,1,Tolvaptan; PROPKD score (milder than PKD1); donor screening (AD),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; same rationale as PKD1,TRUE,FALSE,Ciliopathies
+PKHD1,1,0,0,0,0,1,0,ARPKD: hepatic fibrosis surveillance (CHF),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; extrarenal CHF from OMIM/GeneReviews,TRUE,FALSE,Ciliopathies
+PLCe1,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+PMM2,1,1,0,1,0,1,0,CDG-1a: avoid IS for FSGS; neurological + hepatic + cardiac + coagulation surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 212065,FALSE,FALSE,Glomerulopathies
+PODXL,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+PTPRO,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+RCAN1,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+REN,1,0,0,0,0,0,1,ADTKD-REN: clarifies working diagnosis in CKDu; donor screening (AD),S4;S5,"genetic
+counseling | adequation of treatment follow up
+genetic counseling",S4/S5 utility genetic counseling only; same ADTKD rationale as MUC1/UMOD,TRUE,FALSE,CAKUT;Ciliopathies
+RET,0,0,0,0,0,0,0,,S4,"genetic 
+counseling",,FALSE,FALSE,CAKUT
+RPGRIP1L,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+SALL1,1,0,0,0,0,1,0,Townes-Brocks: hearing/anal/limb surveillance,S4,"adequation of treatment and follow up
+genetic counseling",S4 utility generic; extrarenal from OMIM,TRUE,FALSE,CAKUT
+SALL4,0,0,0,0,0,0,0,,S4,"adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+SCARB2,1,1,0,1,0,1,0,AMRF: avoid IS; progressive myoclonus epilepsy surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 254900,FALSE,FALSE,Glomerulopathies
+SCNN1A,1,1,1,0,1,0,0,Liddle/PHA1: amiloride (Liddle) or salt supplementation (PHA1); dehydration/hyperkalemia prevention,S2,Specific treatment. Prevention of hypertension complications | Prevention of severe dehydration and life-threatening hyperkalemia,S2 utility explicit: Specific treatment (Liddle) + Prevention of severe dehydration (PHA1),TRUE,FALSE,Tubulopathies
+SCNN1B,1,1,1,0,1,0,0,auto-assigned by keyword matching,S2,Specific treatment. Prevention of hypertension complications | Prevention of severe dehydration and life-threatening hyperkalemia,,FALSE,FALSE,Tubulopathies
+SCNN1G,1,1,1,0,1,0,0,auto-assigned by keyword matching,S2,Specific treatment. Prevention of hypertension complications | Prevention of severe dehydration and life-threatening hyperkalemia,,FALSE,FALSE,Tubulopathies
+SDCCAG8,1,0,0,0,0,1,0,SDCCAG8/NPHP: retinal degeneration surveillance (Senior-Loken type 16),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; retinal involvement established in OMIM,TRUE,FALSE,Ciliopathies
+SEC61A1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+SGPL1,1,1,0,1,0,1,0,SPLIS: avoid IS; adrenal insufficiency (critical) + neurological + immunodeficiency surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 617575; adrenal crisis risk,FALSE,FALSE,Glomerulopathies
+SIX1,1,0,0,0,0,1,0,auto-assigned by keyword matching,S4,"earing screening, adequation of treatment and follow up
+genetic counseling",,FALSE,FALSE,CAKUT
+SIX2,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+SIX5,0,0,0,0,0,0,0,,S4,,,FALSE,FALSE,CAKUT
+SLC12A1,1,1,0,0,1,0,0,Bartter type 1: electrolyte management; nephrolithiasis prevention,S2,"Renal protection strategies
+Prevention of recurrent nephrolithiasis/nephrocalcinois",S2 utility explicit: renal protection + nephrolithiasis prevention,FALSE,FALSE,Tubulopathies
+SLC12A3,1,1,0,0,1,0,0,Gitelman: prevention of chronic complications (electrolyte management),S2,Prevention of chronic complications,S2 utility: prevention of chronic complications,TRUE,FALSE,Tubulopathies
+SLC22A12,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of AKI and recurrent nephrolithiasis,,FALSE,FALSE,Tubulopathies
+SLC2A2,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Adapted dietary management. Adequation of treatment and follow-up,,FALSE,FALSE,Tubulopathies
+SLC2A9,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of AKI and recurrent nephrolithiasis,,FALSE,FALSE,Tubulopathies
+SLC34A1,1,1,0,0,1,0,0,HHRH/Fanconi renotubular: prevention of recurrent nephrolithiasis and nephrocalcinosis,S2,Adequation of treatment and follow-up | Prevention of recurrent nephrolithiasis | Prevention of recurrent nephrolithiasis/nephrocalcinois,S2 utility explicit: nephrolithiasis prevention,TRUE,FALSE,Tubulopathies
+SLC34A3,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of recurrent nephrolithiasis,,FALSE,FALSE,Tubulopathies
+SLC37A4,1,1,0,0,1,0,0,GSD-1b: dietary management; renal protection; neutropenia monitoring,S2,Adapted dietary management. Renal protection strategies. Adequation of treatment and follow-up,S2 utility explicit: adapted dietary management + renal protection,FALSE,FALSE,Tubulopathies
+SLC3A1,1,1,0,0,1,0,0,"Cystinuria type A: nephrolithiasis prevention (hydration, alkalinization)",S2,Prevention of recurrent nephrolithiasis,S2 utility explicit: Prevention of recurrent nephrolithiasis,TRUE,FALSE,Tubulopathies
+SLC41A1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+SLC4A1,1,1,0,0,1,0,0,dRTA (SLC4A1): nephrolithiasis prevention; alkali therapy,S2,Prevention of recurrent nephrolithiasis,S2 utility explicit: Prevention of recurrent nephrolithiasis,TRUE,FALSE,Tubulopathies
+SLC4A4,1,0,0,0,0,1,0,"pRTA (SLC4A4): ophthalmologic + dental surveillance (band keratopathy, dental enamel defects)",S2,"Ophtalmologic screening 
+Dental survey and treatment",S2 utility explicit: Ophtalmologic screening; Dental survey and treatment,TRUE,FALSE,Tubulopathies
+SLC5A2,0,0,0,0,0,0,0,Renal glucosuria: benign condition; no treatment required,S2,,S2 utility blank; benign renal glucosuria requires no intervention,TRUE,FALSE,Tubulopathies
+SLC7A9,1,1,0,0,1,0,0,"Cystinuria type B: nephrolithiasis prevention (hydration, alkalinization, tiopronin)",S2,Prevention of recurrent nephrolithiasis,S2 utility explicit: Prevention of recurrent nephrolithiasis,TRUE,FALSE,Tubulopathies
+SLC9A3R1,1,1,0,0,1,0,0,NHERF1 nephrolithiasis: stone prevention,S2,Prevention of recurrent nephrolithiasis,S2 utility explicit: Prevention of recurrent nephrolithiasis,TRUE,FALSE,Tubulopathies
+SMARCAL1,1,1,0,1,0,1,0,Schimke SIOD: avoid IS; skeletal + immunodeficiency + cerebrovascular surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 242900,FALSE,FALSE,Glomerulopathies
+SRCAP,0,0,0,0,0,0,0,Insufficient evidence for gene-specific clinical impact categories,,,Extension gene; limited evidence for actionable interventions; conservative assignment,TRUE,FALSE,
+SUFU,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TBC1D1,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+TBC1D8B,1,1,0,1,0,0,0,X-linked SRNS: avoid IS (hereditary glomerulopathy),S1,,S1 generic utility; avoid IS per Knoers p.245; consistent with other SRNS genes,TRUE,FALSE,Glomerulopathies
+TBX18,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+TBX3,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+TCTN1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TCTN2,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TCTN3,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+THBD,0,0,0,0,0,0,0,,S3,,,FALSE,FALSE,Complement disorders
+TMEM107,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TMEM138,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TMEM216,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TMEM231,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TMEM237,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TMEM67,1,0,0,0,0,1,0,"TMEM67/Joubert-Meckel: hepatic fibrosis, retinal, CNS surveillance",S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; Joubert/Meckel extrarenal features from OMIM,TRUE,FALSE,Ciliopathies
+TNS2,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+TP53RK,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+TPRKB,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+TRAF3IP1,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TRIM32,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+TRPC6,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+TRPM6,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,"prevention of hypomagnesemia complications, prevention of hypocalcemia",,FALSE,FALSE,Tubulopathies
+TSC1,1,1,1,0,0,1,0,TSC: everolimus (mTOR inhibitor) for AML; tumor/CNS/skin surveillance,,,Extension gene; EXIST-1/2 trials confirm everolimus efficacy,TRUE,FALSE,
+TSC2,1,1,1,0,0,1,0,TSC: everolimus for AML; tumor/CNS/skin/cardiac surveillance,,,Extension gene; EXIST-1/2 trials; TSC2 more severe phenotype,TRUE,FALSE,
+TTC21B,1,0,0,0,0,1,0,TTC21B/NPHP12: retinal/hepatic surveillance,S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; extrarenal from OMIM,TRUE,FALSE,Ciliopathies
+TTC8,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+UMOD,1,0,0,0,0,0,1,ADTKD-UMOD: clarifies working diagnosis in CKDu/FSGS; donor screening (AD),S5,"adequation of treatment follow up
+genetic counseling",S5 utility generic; paper p.243 names UMOD specifically,TRUE,FALSE,Ciliopathies
+VHL,1,0,0,0,0,1,0,VHL: renal/CNS/retinal/adrenal tumor surveillance,,,Extension gene; established surveillance protocols,TRUE,FALSE,
+WDPCP,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+WDR19,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
+WDR4,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+WDR72,0,0,0,0,0,0,0,,S2,,,FALSE,FALSE,Tubulopathies
+WDR73,1,1,0,1,0,1,0,Galloway-Mowat: avoid IS; microcephaly + cerebellar surveillance,S1,Renal protection strategies. Adequation of treatment and follow-up,S1 generic utility; avoid IS per p.245; extrarenal from OMIM 251300,FALSE,FALSE,Glomerulopathies
+WFS1,1,0,0,0,0,1,0,"Wolfram: optic atrophy, diabetes insipidus, deafness surveillance",,,Extension gene; extrarenal from OMIM,TRUE,FALSE,
+WNK1,1,1,1,0,1,0,0,PHA2 (Gordon): thiazide diuretics; hypertension prevention,S2,Specific treatment. Prevention of hypertension complications,S2 utility explicit: Specific treatment. Prevention of hypertension complications,TRUE,FALSE,Tubulopathies
+WNK4,1,1,1,0,1,0,0,auto-assigned by keyword matching,S2,Specific treatment. Prevention of hypertension complications,,FALSE,FALSE,Tubulopathies
+WNT9B,0,0,0,0,0,0,0,,S4,genetic counseling,,FALSE,FALSE,CAKUT
+WT1,1,1,0,1,0,1,1,WT1 nephropathy: avoid IS; gonadoblastoma/Wilms tumor surveillance; donor screening,S1,Renal protection strategies. Adequation of treatment and follow-up,"S1 utility generic; paper pp.243,245-246 names specific interventions",TRUE,FALSE,Glomerulopathies
+XDH,1,1,0,0,1,0,0,auto-assigned by keyword matching,S2,Prevention of recurrent nephrolithiasis/nephrocalcinois,,FALSE,FALSE,Tubulopathies
+XPO5,0,0,0,0,0,0,0,,S1,,,FALSE,FALSE,Glomerulopathies
+ZNF423,0,0,0,0,0,0,0,,S5,"adequation of treatment follow up
+genetic counseling",,FALSE,FALSE,Ciliopathies
