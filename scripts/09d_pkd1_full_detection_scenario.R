@@ -368,7 +368,102 @@ if (file.exists(BASE_CASE_CSV)) {
 }
 
 # ==============================================================================
-# 9. Efficiency Frontier Figure
+# 9. ES PKD1 Detection Threshold Analysis
+# ==============================================================================
+# Sweep ES PKD1 detection from the base rate to 1.0 to find the minimum
+# detection rate at which ES becomes non-dominated (joins the frontier).
+#
+# Assumptions (deterministic, same approximation as GS uplift threshold):
+#   - Panel yield is held at the base case mean. Panel already uses its bundled
+#     long-range PCR assay (~99% PKD1 detection); improving ES detection does not
+#     affect the Panel step.
+#   - Reflex yield is held at the base case mean. Most cystic PKD1 probands are
+#     diagnosed at the Panel step and never reach ES, so the second-order effect
+#     of improved ES PKD1 detection on Reflex yield is negligible.
+#   - ES yield scales linearly between the base case mean (at BASE_PKD1_DETECT)
+#     and the full-detection scenario mean (at 1.0).
+#   - ES cost is held at the base case mean (assay cost is not separately
+#     modelled in this threshold sweep).
+
+cat("\n--- ES PKD1 Detection Threshold Analysis ---\n")
+
+OUTPUT_THRESHOLD_PKD1 <- file.path(OUTPUT_DIR, "pkd1_es_detection_threshold.csv")
+
+BASE_CASE_SUMMARY_CSV <- "outputs/results/base_case/summary_tables/base_case_outcomes_by_strategy.csv"
+BASE_PKD1_DETECT <- 0.125
+
+if (file.exists(BASE_CASE_SUMMARY_CSV)) {
+    base_summary_tbl <- read_csv(BASE_CASE_SUMMARY_CSV, show_col_types = FALSE)
+
+    panel_base  <- base_summary_tbl %>% filter(strategy_id == 1)
+    es_base     <- base_summary_tbl %>% filter(strategy_id == 2)
+    reflex_base <- base_summary_tbl %>% filter(strategy_id == 3)
+
+    panel_mean_cost   <- panel_base$total_cost_per_proband_cad_mean
+    panel_mean_yield  <- panel_base$diagnoses_per_proband_mean
+    es_mean_cost      <- es_base$total_cost_per_proband_cad_mean
+    base_es_yield     <- es_base$diagnoses_per_proband_mean
+    reflex_mean_cost  <- reflex_base$total_cost_per_proband_cad_mean
+    reflex_mean_yield <- reflex_base$diagnoses_per_proband_mean
+
+    full_es_yield <- summary_df %>%
+        filter(strategy_id == 2) %>%
+        pull(diagnoses_per_proband_mean)
+
+    detect_seq <- seq(BASE_PKD1_DETECT, 1.0, by = 0.005)
+
+    threshold_results_pkd1 <- lapply(detect_seq, function(d) {
+        es_yield_d <- base_es_yield +
+            (d - BASE_PKD1_DETECT) * (full_es_yield - base_es_yield) / (1.0 - BASE_PKD1_DETECT)
+
+        frontier_input <- data.frame(
+            strategy_label = c("Panel", "ES", "Reflex"),
+            cost   = c(panel_mean_cost, es_mean_cost, reflex_mean_cost),
+            effect = c(panel_mean_yield, es_yield_d, reflex_mean_yield),
+            stringsAsFactors = FALSE
+        )
+
+        dom <- perform_incremental_analysis(frontier_input)
+        es_row <- dom[dom$strategy_label == "ES", , drop = FALSE]
+
+        data.frame(
+            pkd1_detect_rate = d,
+            es_yield         = es_yield_d,
+            panel_yield      = panel_mean_yield,
+            reflex_yield     = reflex_mean_yield,
+            es_on_frontier   = es_row$dominance_status == "non_dominated",
+            icpd_es_vs_panel = ifelse(
+                es_row$dominance_status == "non_dominated" & !is.na(es_row$icer),
+                es_row$icer, NA_real_
+            ),
+            stringsAsFactors = FALSE
+        )
+    })
+
+    threshold_pkd1_df <- do.call(rbind, threshold_results_pkd1)
+    write_csv(threshold_pkd1_df, OUTPUT_THRESHOLD_PKD1)
+    cat("PKD1 ES detection threshold table written to:", OUTPUT_THRESHOLD_PKD1, "\n")
+
+    min_frontier_pkd1 <- threshold_pkd1_df[threshold_pkd1_df$es_on_frontier, , drop = FALSE]
+    if (nrow(min_frontier_pkd1) > 0) {
+        min_row_pkd1 <- min_frontier_pkd1[1, , drop = FALSE]
+        cat(sprintf(
+            "Minimum ES PKD1 detection rate for ES on frontier: %.1f%% (ES yield %.1f%% vs Reflex %.1f%%; ICPD vs Panel $%s)\n",
+            min_row_pkd1$pkd1_detect_rate * 100,
+            min_row_pkd1$es_yield * 100,
+            min_row_pkd1$reflex_yield * 100,
+            formatC(round(min_row_pkd1$icpd_es_vs_panel), format = "f", digits = 0, big.mark = ",")
+        ))
+    } else {
+        cat("ES does not enter the frontier at any tested detection rate (12.5%-100%).\n")
+    }
+} else {
+    cat("WARNING: Base case summary not found at:", BASE_CASE_SUMMARY_CSV, "\n")
+    cat("Skipping ES PKD1 detection threshold analysis.\n")
+}
+
+# ==============================================================================
+# 10. Efficiency Frontier Figure
 # ==============================================================================
 plot_df <- results %>%
     left_join(summary_df %>% select(strategy_id, pr_at_least_one_vus_mean), by = "strategy_id") %>%
@@ -459,7 +554,7 @@ ggsave(OUTPUT_FRONTIER_PNG, p_frontier, width = 7, height = 5.5, dpi = 300, bg =
 cat("Efficiency frontier saved to:", OUTPUT_FRONTIER_PNG, "\n")
 
 # ==============================================================================
-# 10. Print key results for report
+# 11. Print key results for report
 # ==============================================================================
 cat("\n=== KEY RESULTS FOR \u00a77.3 ===\n")
 cat("\nMean outcomes:\n")

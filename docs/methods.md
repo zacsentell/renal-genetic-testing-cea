@@ -69,7 +69,7 @@ Parameterised from a structured MEDLINE search of adult renal genetics cohorts (
 
 | Study | PMID | N | Modality |
 |---|---|---|---|
-| Vaisitti 2021 | 33226590 | 131 | Panel |
+| Vaisitti 2021 | 33226606 | 86 | Panel |
 | Dahl 2023 | 37794564 | 1,619 | Panel |
 | Jayasinghe 2021 | 32939031 | 165 | Exome |
 | Blasco 2024 | 38972501 | 748 | Panel |

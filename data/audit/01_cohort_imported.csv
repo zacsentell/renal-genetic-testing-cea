@@ -1,26 +1,26 @@
 pmid,study_id,phenotype,n_total,n_monogenic,overall_yield_in_category,phenotype_mapping_source,notes
-33226590,Vaisitti2021_JNephrol,glomerular,21,14,0.6666666666666666,Glomerular disease,Yield explicitly stated as 14/21 (66.7%)
-33226590,Vaisitti2021_JNephrol,cystic,32,22,0.6875,Ciliopathies,Yield explicitly stated as 22/32 (68.8%)
-33226590,Vaisitti2021_JNephrol,tubulopathies,13,5,0.38461538461538464,Tubular disease including Nephrolithiasis/nephrocalcinosis,Yield explicitly stated as 4/11 (36.4%) for tubular disease and Yield explicitly stated as 1/2 (50%)
-33226590,Vaisitti2021_JNephrol,CKDu,65,34,0.5230769230769231,Organ failure for unknown reasons; Others,"Combines ""Organ failure for unknown reasons"" (n=60, 32 solved) and ""Others"" (n=5). Yield for ""Others"" derived as 2 based on residual math from total solved (78) and Figure 4 percentages."
-37794564,Dahl2023_RenaCARE,cystic,262,130,0.4961832061068702,Cystic nephropathy,Yield calculation includes PKD1/2 and other ciliopathy genes.
-37794564,Dahl2023_RenaCARE,glomerular,281,55,0.19572953736654805,Proteinuric disease suggestive of a primary glomerulopathy; Hematuria,"Combined ""Proteinuric disease"" (N=236, 40 solved) and ""Hematuria"" (N=45, 15 solved) as both map primarily to glomerular etiologies (e.g., Alport) in this dataset."
-37794564,Dahl2023_RenaCARE,tubulointerstitial,44,6,0.13636363636363635,Tubulointerstitial disease of unknown etiology,NA
-37794564,Dahl2023_RenaCARE,tubulopathies,101,16,0.15841584158415842,Electrolyte and/or acid base disorder + Nephrolithiasis with family history,NA
-37794564,Dahl2023_RenaCARE,CKDu,931,131,0.14070891514500536,"Nephropathy associated with hypertension; Nephropathy associated with diabetes mellitus; ESKD; CKD of unknown etiology; Congenital nephropathy; Early onset, severe, or familial hypertension; Not reported","Large proportion of cohort (57%) categorized by broad clinical status (e.g., HTN, DM, ESKD) rather than specific phenotype. ""Congenital nephropathy"" (N=50, 10 solved) is included here as molecular findings were mixed (Alport, CAKUT, metabolic)."
-32939031,Jayasinghe2021_ES_MonogenicKidney,cystic,65,31,0.47692307692307695,"Table 2 ""Cystic""","Authors included some tubulointerstitial diseases (e.g., UMOD, HNF1B, NPHP) within the ""Cystic"" category based on Supplementary Table S2 groupings."
-32939031,Jayasinghe2021_ES_MonogenicKidney,glomerular,82,31,0.3780487804878049,"Table 2 ""Alport"" (n=43) + ""Nephrotic"" (n=39)",Combined Alport syndrome and Nephrotic syndrome categories as both represent glomerular phenotypes.
-32939031,Jayasinghe2021_ES_MonogenicKidney,tubulopathies,18,11,0.6111111111111112,"Table 2 ""Tubular diseases""",Primarily tubulopathies and nephrocalcinosis/nephrolithiasis phenotypes based on solved cases in Supplementary Table S2.
-38972501,Blasco2024_AJKD_GENSEN,CKDu,266,63,0.23684210526315788,Nonspecific CKD,"Study focused on CKD of Unknown Etiology (CKDUE) age ≤45. ""Nonspecific CKD"" defined as CKD without specific features."
-38972501,Blasco2024_AJKD_GENSEN,glomerular,365,87,0.23835616438356164,Glomerular disease,Largest subgroup in the cohort.
-38972501,Blasco2024_AJKD_GENSEN,tubulointerstitial,104,29,0.27884615384615385,Tubulointerstitial disease,NA
-38972501,Blasco2024_AJKD_GENSEN,cystic,13,11,0.8461538461538461,Cystic disease,Study explicitly excluded patients with a positive family history and clinical diagnosis of ADPKD.
-35099770,Elhassan2022_JNephrol,cystic,188,148,0.7872340425531915,PKD,"Includes ADPKD, ARPKD."
-35099770,Elhassan2022_JNephrol,glomerular,126,31,0.24603174603174602,"Chronic GN, FSGS, AS","Aggregated from Chronic GN (n=74, solved=6), FSGS (n=20, solved=7), and Alport syndrome (n=32, solved=18)."
-35099770,Elhassan2022_JNephrol,tubulointerstitial,39,18,0.46153846153846156,TIKD,Tubulointerstitial kidney disease (ADTKD).
+33226606,Vaisitti2021_JNephrol,glomerular,14,9,0.643,Glomerular disease,Yield explicitly stated as 14/21 (66.7%)
+33226606,Vaisitti2021_JNephrol,cystic,21,14,0.667,Ciliopathies,Yield explicitly stated as 22/32 (68.8%)
+33226606,Vaisitti2021_JNephrol,tubulopathies,9,3,0.333,Tubular disease including Nephrolithiasis/nephrocalcinosis,Yield explicitly stated as 4/11 (36.4%) for tubular disease and Yield explicitly stated as 1/2 (50%)
+33226606,Vaisitti2021_JNephrol,CKDu,42,22,0.524,Organ failure for unknown reasons; Others,"Combines ""Organ failure for unknown reasons"" (n=60, 32 solved) and ""Others"" (n=5). Yield for ""Others"" derived as 2 based on residual math from total solved (78) and Figure 4 percentages."
+37794564,Dahl2023_RenaCARE,cystic,262,130,0.49618320610687,Cystic nephropathy,Yield calculation includes PKD1/2 and other ciliopathy genes.
+37794564,Dahl2023_RenaCARE,glomerular,281,55,0.195729537366548,Proteinuric disease suggestive of a primary glomerulopathy; Hematuria,"Combined ""Proteinuric disease"" (N=236, 40 solved) and ""Hematuria"" (N=45, 15 solved) as both map primarily to glomerular etiologies (e.g., Alport) in this dataset."
+37794564,Dahl2023_RenaCARE,tubulointerstitial,44,6,0.136363636363636,Tubulointerstitial disease of unknown etiology,NA
+37794564,Dahl2023_RenaCARE,tubulopathies,101,16,0.158415841584158,Electrolyte and/or acid base disorder + Nephrolithiasis with family history,NA
+37794564,Dahl2023_RenaCARE,CKDu,931,131,0.140708915145005,"Nephropathy associated with hypertension; Nephropathy associated with diabetes mellitus; ESKD; CKD of unknown etiology; Congenital nephropathy; Early onset, severe, or familial hypertension; Not reported","Large proportion of cohort (57%) categorized by broad clinical status (e.g., HTN, DM, ESKD) rather than specific phenotype. ""Congenital nephropathy"" (N=50, 10 solved) is included here as molecular findings were mixed (Alport, CAKUT, metabolic)."
+32939031,Jayasinghe2021_ES_MonogenicKidney,cystic,65,31,0.476923076923077,"Table 2 ""Cystic""","Authors included some tubulointerstitial diseases (e.g., UMOD, HNF1B, NPHP) within the ""Cystic"" category based on Supplementary Table S2 groupings."
+32939031,Jayasinghe2021_ES_MonogenicKidney,glomerular,82,31,0.378048780487805,"Table 2 ""Alport"" (n=43) + ""Nephrotic"" (n=39)",Combined Alport syndrome and Nephrotic syndrome categories as both represent glomerular phenotypes.
+32939031,Jayasinghe2021_ES_MonogenicKidney,tubulopathies,18,11,0.611111111111111,"Table 2 ""Tubular diseases""",Primarily tubulopathies and nephrocalcinosis/nephrolithiasis phenotypes based on solved cases in Supplementary Table S2.
+38972501,Blasco2024_AJKD_GENSEN,CKDu,266,63,0.236842105263158,Nonspecific CKD,"Study focused on CKD of Unknown Etiology (CKDUE) age ≤45. ""Nonspecific CKD"" defined as CKD without specific features."
+38972501,Blasco2024_AJKD_GENSEN,glomerular,365,87,0.238356164383562,Glomerular disease,Largest subgroup in the cohort.
+38972501,Blasco2024_AJKD_GENSEN,tubulointerstitial,104,29,0.278846153846154,Tubulointerstitial disease,NA
+38972501,Blasco2024_AJKD_GENSEN,cystic,13,11,0.846153846153846,Cystic disease,Study explicitly excluded patients with a positive family history and clinical diagnosis of ADPKD.
+35099770,Elhassan2022_JNephrol,cystic,188,148,0.787234042553192,PKD,"Includes ADPKD, ARPKD."
+35099770,Elhassan2022_JNephrol,glomerular,126,31,0.246031746031746,"Chronic GN, FSGS, AS","Aggregated from Chronic GN (n=74, solved=6), FSGS (n=20, solved=7), and Alport syndrome (n=32, solved=18)."
+35099770,Elhassan2022_JNephrol,tubulointerstitial,39,18,0.461538461538462,TIKD,Tubulointerstitial kidney disease (ADTKD).
 35099770,Elhassan2022_JNephrol,CKDu,71,25,0.352112676056338,"uCKD, Others","Includes uCKD (n=61, solved=19) and ""Others"" (n=10, solved=6). ""Others"" contains mixed etiologies including VHL, stones, and specific tubulopathies not categorized under ""Tubular""."
 35099770,Elhassan2022_JNephrol,tubulopathies,4,4,1,Tubular,"Maps to the specific ""Tubular"" category in Table 2."
-40533884,Giovanella2026_ClinGenet,cystic,371,183,0.49326145552560646,Cystic disease,NA
-40533884,Giovanella2026_ClinGenet,glomerular,184,52,0.2826086956521739,Glomerulopathy,NA
-40533884,Giovanella2026_ClinGenet,tubulopathies,58,11,0.1896551724137931,Tubulopathy + Nephrolithiasis,NA
+40533884,Giovanella2026_ClinGenet,cystic,371,183,0.493261455525606,Cystic disease,NA
+40533884,Giovanella2026_ClinGenet,glomerular,184,52,0.282608695652174,Glomerulopathy,NA
+40533884,Giovanella2026_ClinGenet,tubulopathies,58,11,0.189655172413793,Tubulopathy + Nephrolithiasis,NA
 40533884,Giovanella2026_ClinGenet,CKDu,34,0,0,uCKD and At risk-negative phenotype,"""uCKD"" defined as unknown/late referral CKD; ""At risk"" defined as negative phenotype but affected relatives (e.g. kidney donation assessment)."

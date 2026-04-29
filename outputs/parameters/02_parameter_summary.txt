@@ -1,21 +1,21 @@
 === RENAL GENETICS CEA: PARAMETER AUDIT ===
-Generated: 2026-03-29 07:26:14.609223 
+Generated: 2026-04-29 06:35:20.149161 
 
 --- 1. DIAGNOSTIC YIELDS (Pooled Random Effects) ---
-          Phenotype Pooled_Yield CI_95_Lower CI_95_Upper N_Studies Alpha Beta
-         glomerular        30.0%       21.4%       40.2%         6  26.6 62.2
-             cystic        62.1%       49.3%       73.5%         6  36.2 22.1
-      tubulopathies        39.5%       16.8%       67.9%         5   4.2  6.4
-               CKDu        19.6%        6.9%       44.4%         5   3.2 13.1
- tubulointerstitial        27.7%       15.6%       44.3%         3   9.7 25.3
+          Phenotype Pooled_Yield CI_95_Lower CI_95_Upper N_Studies Alpha  Beta
+         glomerular        28.1%       21.4%       35.9%         6  40.9 104.6
+             cystic        61.7%       48.7%       73.2%         6  35.4  22.0
+      tubulopathies        38.6%       15.9%       67.6%         5   4.0   6.3
+               CKDu        19.5%        6.9%       44.2%         5   3.2  13.3
+ tubulointerstitial        27.7%       15.6%       44.3%         3   9.7  25.3
 
 --- 2. PHENOTYPE PREVALENCE (Dirichlet Alphas) ---
                    phenotype_alphas
-CKDu                           1367
-cystic                          931
-glomerular                     1059
+CKDu                           1344
+cystic                          920
+glomerular                     1052
 tubulointerstitial              187
-tubulopathies                   194
+tubulopathies                   190
 
 --- 3. JOINT (GENE, VARIANT_CLASS) PROPORTIONS BY PHENOTYPE ---
 Proportions should sum to 1.0.

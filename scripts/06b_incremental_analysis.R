@@ -70,6 +70,13 @@ results <- results %>%
 # Format output table per §7.5 spec
 output_table <- results %>%
     arrange(cost) %>%
+    mutate(
+        nnt_probands_per_additional_diagnosis_mean = ifelse(
+            !is.na(incremental_effect) & incremental_effect > 0,
+            1 / incremental_effect,
+            NA_real_
+        )
+    ) %>%
     select(
         strategy_id,
         strategy_label,
@@ -82,6 +89,7 @@ output_table <- results %>%
         incremental_cost_vs_prev_cad_mean = incremental_cost,
         incremental_diagnoses_vs_prev_mean = incremental_effect,
         icpd_cad_per_additional_diagnosis_mean = icer,
+        nnt_probands_per_additional_diagnosis_mean,
         dominance_status
     )
 
@@ -90,7 +98,8 @@ incremental_required <- c(
     "total_cost_per_proband_cad_mean", "total_cost_per_proband_cad_ui_low", "total_cost_per_proband_cad_ui_high",
     "diagnoses_per_proband_mean", "diagnoses_per_proband_ui_low", "diagnoses_per_proband_ui_high",
     "incremental_cost_vs_prev_cad_mean", "incremental_diagnoses_vs_prev_mean",
-    "icpd_cad_per_additional_diagnosis_mean", "dominance_status"
+    "icpd_cad_per_additional_diagnosis_mean", "nnt_probands_per_additional_diagnosis_mean",
+    "dominance_status"
 )
 assert_required_columns(output_table, incremental_required, "incremental_table_base_case", exact = TRUE)
 assert_no_na(output_table, c("strategy_id", "strategy_label", "dominance_status"), "incremental_table_base_case")

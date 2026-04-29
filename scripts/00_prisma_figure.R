@@ -31,7 +31,28 @@ duplicates <- sum(log$duplicate == 1, na.rm = TRUE)
 
 # Initial screening (Title/Abstract)
 records_screened <- database_results - duplicates
+
+# TA exclusion count and breakdown by reason.
+# Record 32312792 (CAKUT-only paper) was tagged "Not adult predominant cohort" at the TA
+# stage but is correctly classified as a single-phenotype cohort; it is remapped here.
+ta_excludes <- log %>%
+    filter(ta_decision == "exclude") %>%
+    mutate(reason_display = case_when(
+        fulltext_exclusion_reason == "Not renal genetic testing study" ~
+            "Out of scope",
+        fulltext_exclusion_reason %in% c("Single phenotype", "Not adult predominant cohort") ~
+            "Single-phenotype cohort",
+        TRUE ~ fulltext_exclusion_reason
+    ))
+
+ta_reason_counts <- ta_excludes %>%
+    count(reason_display, name = "n") %>%
+    arrange(desc(n))
+
 records_excluded <- sum(log$ta_decision == "exclude", na.rm = TRUE)
+records_excluded_str <- paste0(
+    ta_reason_counts$reason_display, ", ", ta_reason_counts$n, collapse = "; "
+)
 
 # Full-text retrieval
 dbr_sought_reports <- sum(log$fulltext_sought == 1, na.rm = TRUE)
@@ -42,11 +63,13 @@ dbr_assessed <- dbr_sought_reports - dbr_notretrieved_reports
 ft_excludes <- log %>%
     filter(fulltext_sought == 1, fulltext_retrieved == 1, fulltext_decision == "exclude")
 
-# Harmonize exclusion reasons
+# Harmonize exclusion reasons to match PRISMA display labels
 ft_excludes_clean <- ft_excludes %>%
     mutate(reason_clean = case_when(
-        fulltext_exclusion_reason == "Single phenotype" ~ "Single phenotype only",
-        fulltext_exclusion_reason == "Does not meet N proband criteria" ~ "Sample size < 150 probands",
+        fulltext_exclusion_reason == "Not adult predominant cohort" ~ "Not adult-predominant cohort",
+        fulltext_exclusion_reason == "Review commentary protocol"   ~ "Review, commentary, or protocol",
+        fulltext_exclusion_reason == "Does not meet N proband criteria" ~ "Sample size <150 probands",
+        fulltext_exclusion_reason == "Single phenotype" ~ "Single-phenotype cohort",
         TRUE ~ fulltext_exclusion_reason
     ))
 
@@ -119,7 +142,14 @@ prisma_filled <- prisma_data %>%
     update_n("Reports of new included studies", new_reports)
 
 # Update Labels for clarity
+# Embed TA exclusion breakdown in the "Records excluded" box label so the figure
+# shows reason counts rather than just the total (the n field carries the total).
+ta_label_str <- paste0(
+    "Records excluded\n   ",
+    paste0(ta_reason_counts$reason_display, ": ", ta_reason_counts$n, collapse = "\n   ")
+)
 prisma_filled <- prisma_filled %>%
+    update_label("Records excluded", ta_label_str) %>%
     update_label("New studies included in review", "Studies (cohorts) included for parameterization") # %>%
 # update_label("Reports of new included studies", paste0("reports (n = ", new_reports, ")")) # Not strictly used as label but usually n is appended.
 # Actually, 'Reports of new included studies' is the text for the second line in the final box.
@@ -177,9 +207,10 @@ caption_text <- "Title: Study selection for synthetic cohort parameterization
 
 Caption:
 PRISMA 2020 flow diagram depicting the study selection process for synthetic cohort parameterization.
-Database search (PubMed/MEDLINE; 2020 to September 2025) identified 179 records using terms for kidney disease, genetic testing/sequencing, and clinical utility or yield.
-Key eligibility criteria included: adult-predominant population (≥60% adults), sample size ≥150 probands, broad CKD phenotype spectrum (vs. single-disease cohorts), and first-line NGS strategy.
-Included studies (n=6) provided phenotype prevalence, diagnostic yields, and gene/variant architecture parameters for the cost-effectiveness model.
+Database search (PubMed/MEDLINE; title-only; 2020/01/01 to 2025/09/12) identified 179 records.
+Title/abstract screening excluded 166 records: 160 out of scope (not a renal genetic testing cohort study) and 6 single-phenotype cohorts.
+Full-text review excluded 7 reports: 3 not adult-predominant, 3 reviews or protocols, 1 sample size <150 probands.
+Six cohorts were retained and provided phenotype prevalence, diagnostic yields, and gene/variant architecture parameters for the cost-effectiveness model.
 'Registers' and 'Automation tools' were not used and are omitted for clarity."
 
 writeLines(caption_text, file.path(output_dir, "caption.txt"))
