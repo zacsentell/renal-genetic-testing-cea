@@ -1,37 +1,23 @@
-# 05_simulation_engine.R
-# Purpose: Run probabilistic CEA simulation (Monte Carlo)
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-29
-
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("tidyr")) install.packages("tidyr")
-if (!require("readr")) install.packages("readr")
-if (!require("purrr")) install.packages("purrr")
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
+# scripts/06_simulation_engine.R
+# Purpose: Run the probabilistic CEA Monte Carlo simulation across strategies.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(tidyr)
 library(readr)
 library(purrr)
 
-# Source Cohort Generator (to get generate_cohort and sampling functions)
-source("scripts/04_cohort_generator.R")
+source("scripts/05_cohort_generator.R")
 source("scripts/utils_schema.R")
 
-# ==============================================================================
-# IO Paths & Configuration
-# ==============================================================================
 PARAMS_DIR <- "data/params"
 OUTPUT_DIR <- "data/intermediate"
-OUTPUT_RESULTS <- file.path(OUTPUT_DIR, "05_cea_results.rds")
+OUTPUT_RESULTS <- file.path(OUTPUT_DIR, "cea_results.rds")
 
-# New output paths per methods.md §7.1
-OUTPUT_ITERATION_CSV <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
-OUTPUT_COMPONENT_CSV <- "outputs/results/base_case/cost_composition/iteration_cost_components.csv"
-OUTPUT_PHENOTYPE_CSV <- "outputs/results/supplement/phenotype_stratified/base_case/phenotype_iteration_outcomes.csv"
-OUTPUT_PARAM_TRACE_CSV <- "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc/iteration_parameter_trace.csv"
+OUTPUT_ITERATION_CSV   <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
+OUTPUT_COMPONENT_CSV   <- "outputs/results/base_case/cost_composition/iteration_cost_components.csv"
+OUTPUT_PHENOTYPE_CSV   <- "outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv"
+OUTPUT_PARAM_TRACE_CSV <- "outputs/results/base_case/iteration_level/iteration_parameter_trace.csv"
 OUTPUT_GENE_COUNTS_CSV <- "outputs/results/clinical_impact/iteration_gene_counts.csv"
 
 # Ensure output directories exist

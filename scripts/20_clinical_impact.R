@@ -1,20 +1,6 @@
-# 10_clinical_impact_analysis.R
-# Purpose: Join gene-level clinical utility annotations to simulation diagnosis
-#          counts and compute clinical impact proportions by strategy.
-#
-# Inputs:
-#   - data/raw/clinical_utility/gene_clinical_utility.csv (curated)
-#   - outputs/results/clinical_impact/iteration_gene_counts.csv (from 05)
-#   - outputs/results/clinical_impact/gs_iteration_gene_counts.csv (from 05b)
-#   - outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv
-#   - outputs/results/scenario_analysis/gs_uplift/gs_baseline_iteration_outcomes.csv
-#
-# Outputs:
-#   - outputs/results/clinical_impact/high_impact_outcomes_by_strategy.csv
-#   - outputs/results/clinical_impact/gene_coverage_audit.csv
-#   - outputs/results/clinical_impact/impact_by_phenotype.csv
-#   - outputs/results/clinical_impact/gene_composition_by_impact.csv
-#   - outputs/results/clinical_impact/clinical_impact_composite.png/.svg
+# scripts/20_clinical_impact.R
+# Purpose: Join curated gene-level clinical utility annotations to diagnosis counts and quantify clinical impact by strategy.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(tidyr)
@@ -24,16 +10,13 @@ library(patchwork)
 
 source("scripts/utils_schema.R")
 
-# ==============================================================================
-# 1. Configuration
-# ==============================================================================
 UTILITY_TABLE_PATH <- "data/raw/clinical_utility/gene_clinical_utility.csv"
 GENE_COUNTS_PATH <- "outputs/results/clinical_impact/iteration_gene_counts.csv"
 GS_GENE_COUNTS_PATH <- "outputs/results/clinical_impact/gs_iteration_gene_counts.csv"
 ITER_OUTCOMES_PATH <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
 GS_ITER_OUTCOMES_PATH <- "outputs/results/scenario_analysis/gs_uplift/gs_baseline_iteration_outcomes.csv"
-SIM_GENE_PATH <- "outputs/parameters/joint_proportions_full.csv"
-PHENO_ITER_PATH <- "outputs/results/supplement/phenotype_stratified/base_case/phenotype_iteration_outcomes.csv"
+SIM_GENE_PATH <- "outputs/results/parameters/joint_proportions_full.csv"
+PHENO_ITER_PATH <- "outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv"
 
 OUTPUT_DIR <- "outputs/results/clinical_impact"
 OUTPUT_TABLE1 <- file.path(OUTPUT_DIR, "high_impact_outcomes_by_strategy.csv")

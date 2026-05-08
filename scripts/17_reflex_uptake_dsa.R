@@ -1,33 +1,17 @@
-# 09e_reflex_uptake_dsa.R
-# Purpose: One-way deterministic sensitivity analysis (DSA) for the reflex
-#   testing uptake probability (base case = 50%, range 20%-100%).
-#
-# Method: Full PSA re-simulation at each DSA uptake value. Unlike the cascade
-#   family-size DSA (09c), analytical rescaling is not valid here because
-#   changing uptake alters which probands receive ES, which changes diagnoses,
-#   VUS outcomes, and all downstream costs non-linearly.
-#
-# Outputs:
-#   outputs/results/uncertainty_sensitivity/reflex_uptake_dsa/reflex_uptake_dsa_icpd.csv
-#   outputs/results/uncertainty_sensitivity/reflex_uptake_dsa/reflex_uptake_dsa_costs.csv
-#   outputs/results/uncertainty_sensitivity/reflex_uptake_dsa/reflex_uptake_dsa_icpd_plot.png/.pdf
+# scripts/17_reflex_uptake_dsa.R
+# Purpose: One-way DSA on reflex uptake probability via full PSA re-simulation at each uptake value.
+# Author: Zachary Sentell
 
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("tidyr")) install.packages("tidyr")
-if (!require("readr")) install.packages("readr")
-if (!require("ggplot2")) install.packages("ggplot2")
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
+# Analytical rescaling is invalid because changing uptake alters which probands receive ES,
+# which changes diagnoses, VUS outcomes, and downstream costs non-linearly.
 
 library(dplyr)
 library(tidyr)
 library(readr)
 library(ggplot2)
 
-# Source engine functions (uses sys.nframe() guard to avoid running base PSA)
-source("scripts/04_cohort_generator.R")
-source("scripts/05_simulation_engine.R")
+source("scripts/05_cohort_generator.R")
+source("scripts/06_simulation_engine.R")
 source("scripts/utils_schema.R")
 
 # ==============================================================================

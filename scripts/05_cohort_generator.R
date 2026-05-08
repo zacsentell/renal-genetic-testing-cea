@@ -1,33 +1,16 @@
-# 04_cohort_generator.R
-# Purpose: Generate a synthetic cohort of CKD probands with phenotypes,
-#          monogenic status, joining causal variant architecture.
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-24
-
-# Set CRAN mirror for non-interactive sessions
-local({
-    r <- getOption("repos")
-    r["CRAN"] <- "https://cloud.r-project.org"
-    options(repos = r)
-})
-
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("tidyr")) install.packages("tidyr")
-if (!require("readr")) install.packages("readr")
-if (!require("purrr")) install.packages("purrr")
+# scripts/05_cohort_generator.R
+# Purpose: Generate the synthetic CKD proband cohort (phenotypes, monogenic status, causal variants).
+# Author: Zachary Sentell
 
 library(dplyr)
 library(tidyr)
 library(readr)
 library(purrr)
 
-# ==============================================================================
-# IO Paths
-# ==============================================================================
 PARAMS_DIR <- "data/params"
-OUTPUT_RDS <- "data/intermediate/04_synthetic_cohort.rds"
-OUTPUT_CSV <- "outputs/cohort/synthetic_cohort.csv"
-OUTPUT_SUMMARY <- "outputs/cohort/cohort_summary.txt"
+OUTPUT_RDS <- "data/intermediate/cohort.rds"
+OUTPUT_CSV <- "outputs/results/parameters/synthetic_cohort.csv"
+OUTPUT_SUMMARY <- "outputs/results/parameters/cohort_summary.txt"
 
 # Ensure output directories exist
 if (!dir.exists(dirname(OUTPUT_RDS))) dir.create(dirname(OUTPUT_RDS), recursive = TRUE)

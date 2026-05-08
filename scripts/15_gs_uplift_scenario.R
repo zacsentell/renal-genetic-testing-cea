@@ -1,13 +1,11 @@
-# 09a_gs_scenario_analysis.R
-# Purpose: Scenario analysis for Genome Sequencing with enhanced detection (§8.5)
+# scripts/15_gs_uplift_scenario.R
+# Purpose: GS scenario analysis applying a yield uplift via post-hoc rescaling (no re-simulation).
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)
 library(ggplot2)
 library(ggrepel)
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
 source("scripts/utils_schema.R")
 source("scripts/utils_cea.R")
 

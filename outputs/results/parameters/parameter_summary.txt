@@ -1,5 +1,5 @@
 === RENAL GENETICS CEA: PARAMETER AUDIT ===
-Generated: 2026-04-29 06:35:20.149161 
+Generated: 2026-05-08 08:49:39.507731
 
 --- 1. DIAGNOSTIC YIELDS (Pooled Random Effects) ---
           Phenotype Pooled_Yield CI_95_Lower CI_95_Upper N_Studies Alpha  Beta

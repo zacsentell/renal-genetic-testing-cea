@@ -1,23 +1,18 @@
-# 08_wtp_analysis.R
-# Purpose: Willingness-to-Pay (WTP) Analysis & CEAC (§8.4)
+# scripts/14_wtp_analysis.R
+# Purpose: Compute the CEAC across willingness-to-pay thresholds and render the CEAC plot.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)
 library(ggplot2)
 library(tidyr)
 library(scales)
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
 source("scripts/utils_schema.R")
 source("scripts/utils_cea.R")
 
-# ==============================================================================
-# 1. Configuration
-# ==============================================================================
 cfg <- config::get()
 INPUT_FILE <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
-OUTPUT_DIR <- "outputs/results/uncertainty_sensitivity/willingness_to_pay"
+OUTPUT_DIR <- "outputs/results/uncertainty_sensitivity/ceac"
 OUTPUT_TABLE <- file.path(OUTPUT_DIR, "ceac_table.csv")
 OUTPUT_FIG_BASE <- file.path(OUTPUT_DIR, "ceac_plot")
 

@@ -78,7 +78,7 @@ Parameterised from a structured MEDLINE search of adult renal genetics cohorts (
 
 **Phenotype proportions:** Dirichlet parameters = pooled proband counts per phenotype across all six studies. Curation decisions documented in `data/audit/01_cohort_imported.csv`.
 
-**Diagnostic yields:** Phenotype-specific yields pooled by random-effects meta-analysis (`scripts/02_meta_analysis.R`; R package `meta`). Beta distribution parameters (α, β) fit by method-of-moments to the pooled estimate and 95% CI:
+**Diagnostic yields:** Phenotype-specific yields pooled by random-effects meta-analysis (`scripts/03_meta_analysis.R`; R package `meta`). Beta distribution parameters (α, β) fit by method-of-moments to the pooled estimate and 95% CI:
 
 | Phenotype | Studies | N | Pooled Yield [95% CI] | I² | α | β |
 |---|---|---|---|---|---|---|
@@ -178,21 +178,22 @@ A gene was classified as high clinical impact if it mapped to at least one prima
 
 | Analysis | Method | Script |
 |---|---|---|
-| Probabilistic sensitivity (PSA) | Outer Monte Carlo loop; robustness = fraction of iterations where each strategy is non-dominated | `06a`, `08a` |
-| Cost-effectiveness acceptability (CEAC) | Net Monetary Benefit at WTP $0–$100,000 CAD (step $1,000) | `08_wtp_analysis.R` |
-| Global sensitivity (PRCC) | Partial rank correlation between 31 sampled inputs and incremental cost/yield outcomes; two comparisons: Reflex vs Panel, GS scenario vs Reflex | `07_global_sensitivity_analysis.R` |
+| Probabilistic sensitivity (PSA) | Outer Monte Carlo loop; robustness = fraction of iterations where each strategy is non-dominated | `08_base_case.R`, `13_probabilistic_sensitivity.R` |
+| Cost-effectiveness acceptability (CEAC) | Net Monetary Benefit at WTP $0–$100,000 CAD (step $1,000) | `14_wtp_analysis.R` |
+| Global sensitivity (PRCC) | Partial rank correlation between 31 sampled inputs and incremental cost/yield outcomes; two comparisons: Reflex vs Panel, GS scenario vs Reflex | `12_global_sensitivity.R` |
 
 ---
 
 ## 7. Subgroup and scenario analyses
 
-- **Cystic subgroup:** base-case CEA restricted to cystic phenotype (`06c_cystic_subgroup.R`). Clinically relevant because the cystic panel bundles a targeted PKD1 assay, giving Panel a structural detection advantage over standalone ES.
-- **Phenotype stratification:** Reflex (Panel→ES) outcomes by phenotype category (`06e_phenotype_figure.R`).
-- **Phenotype-specific WTP winners:** most probable cost-effective strategy by phenotype at selected WTP anchors, reported as a matrix figure and findings tables (`06e_phenotype_figure.R`).
-- **GS scenario:** +10% relative yield uplift applied to GS arm to model enhanced bioinformatics detection of difficult loci. GS scenario compared against Reflex as the incumbent frontier strategy (`09a_gs_scenario_analysis.R`). The uplift is a deterministic scenario assumption; uncertainty in its magnitude is not propagated through the PSA.
-- **PKD1 full detection scenario:** PKD1 difficult-locus detection overridden to 100% for all panels and ES, representing a near-future state where optimised capture and pseudogene-aware bioinformatics eliminate the current PKD1 detection barrier (`09d_pkd1_full_detection_scenario.R`). A full PSA re-run (1,000 iterations × 1,000 probands) is performed. MUC1 VNTR detection is unchanged. Test costs are unchanged.
-- **Cascade eligible relatives DSA:** one-way sensitivity varying the number of eligible first-degree relatives from 0 to 4 (`09c_cascade_dsa.R`). Examines whether frontier ranking is preserved across cascade assumptions.
-- **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 20% to 100% (`09e_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
+- **Cystic subgroup:** base-case CEA restricted to cystic phenotype (`09_cystic_subgroup.R`). Clinically relevant because the cystic panel bundles a targeted PKD1 assay, giving Panel a structural detection advantage over standalone ES.
+- **Phenotype stratification:** Reflex (Panel→ES) outcomes by phenotype category (`11_phenotype_figure.R`).
+- **Phenotype-specific WTP winners:** most probable cost-effective strategy by phenotype at selected WTP anchors, reported as a matrix figure and findings tables (`11_phenotype_figure.R`).
+- **GS scenario:** +10% relative yield uplift applied to GS arm to model enhanced bioinformatics detection of difficult loci. GS scenario compared against Reflex as the incumbent frontier strategy (`15_gs_uplift_scenario.R`). The uplift is a deterministic scenario assumption; uncertainty in its magnitude is not propagated through the PSA.
+- **PKD1 full detection scenario:** PKD1 difficult-locus detection overridden to 100% for all panels and ES, representing a near-future state where optimised capture and pseudogene-aware bioinformatics eliminate the current PKD1 detection barrier (`18_pkd1_full_detection_scenario.R`). A full PSA re-run (1,000 iterations × 1,000 probands) is performed. MUC1 VNTR detection is unchanged. Test costs are unchanged.
+- **ES augmented scenario:** ES is co-ordered with phenotype-directed difficult-locus assays (PKD1 long-range PCR universal, MUC1 VNTR for tubulointerstitial), with assay costs absorbed in the ES unit price (`19_es_augmented_scenario.R`). A full PSA re-run is performed.
+- **Cascade eligible relatives DSA:** one-way sensitivity varying the number of eligible first-degree relatives from 0 to 4 (`16_cascade_dsa.R`). Examines whether frontier ranking is preserved across cascade assumptions.
+- **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 20% to 100% (`17_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
 
 ### 7.1 Phenotype-specific WTP winner analysis
 

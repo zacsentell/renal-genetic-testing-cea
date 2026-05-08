@@ -1,8 +1,6 @@
 # scripts/00_prisma_figure.R
-# Generate PRISMA 2020 flow diagram for synthetic cohort creation
-# Input: data/raw/pubmed_query_results.xlsx (PRISMA_log sheet)
-# Output: outputs/figures/prisma/prisma_2020_flowdiagram.{png,svg}
-#         outputs/figures/prisma/caption.txt
+# Purpose: Generate PRISMA 2020 flow diagram for the synthetic cohort literature screen.
+# Author: Zachary Sentell
 
 suppressPackageStartupMessages({
     library(readxl)

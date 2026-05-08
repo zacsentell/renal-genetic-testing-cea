@@ -19,28 +19,67 @@ default:
     scripts:
       # Parameters
       - scripts/01_import_validate.R
-      - scripts/01b_load_parameters.R
-      - scripts/01c_load_vus.R
-      - scripts/01d_load_detection.R
-      - scripts/02_meta_analysis.R
-      - scripts/03_vis_parameters.R
+      - scripts/02_load_parameters.R
+      - scripts/03_meta_analysis.R
+      - scripts/04_visualize_parameters.R
       # Simulation
-      - scripts/05_simulation_engine.R
-      - scripts/05b_gs_simulation.R
-      # Base-case analyses
-      - scripts/06a_base_case_summary.R
-      - scripts/06b_incremental_analysis.R
-      - scripts/06c_cystic_subgroup.R
-      - scripts/06d_vus_burden_analysis.R
-      - scripts/06e_phenotype_figure.R
-      # Scenarios and deterministic sensitivity analyses
-      - scripts/09a_gs_scenario_analysis.R
-      - scripts/09c_cascade_dsa.R
-      - scripts/09d_pkd1_full_detection_scenario.R
-      - scripts/09e_reflex_uptake_dsa.R
-      # Secondary outcome: clinical impact (requires base case + GS scenario)
-      - scripts/10_clinical_impact_analysis.R
+      - scripts/06_simulation_engine.R
+      - scripts/07_gs_baseline_simulation.R
+      # Base-case and subgroup analyses
+      - scripts/08_base_case.R
+      - scripts/09_cystic_subgroup.R
+      - scripts/10_vus_burden.R
+      - scripts/11_phenotype_figure.R
       # Uncertainty analyses
-      - scripts/07_global_sensitivity_analysis.R
-      - scripts/08a_probabilistic_sensitivity.R
-      - scripts/08_wtp_analysis.R
+      - scripts/12_global_sensitivity.R
+      - scripts/13_probabilistic_sensitivity.R
+      - scripts/14_wtp_analysis.R
+      # Scenarios and deterministic sensitivity analyses
+      - scripts/15_gs_uplift_scenario.R
+      - scripts/16_cascade_dsa.R
+      - scripts/17_reflex_uptake_dsa.R
+      - scripts/18_pkd1_full_detection_scenario.R
+      - scripts/19_es_augmented_scenario.R
+      # Clinical impact (depends on base case + GS scenario outputs)
+      - scripts/20_clinical_impact.R
+    required_outputs:
+      - outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv
+      - outputs/results/base_case/iteration_level/iteration_parameter_trace.csv
+      - outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv
+      - outputs/results/base_case/summary_tables/base_case_outcomes_by_strategy.csv
+      - outputs/results/base_case/cost_composition/base_case_cost_components_by_strategy.csv
+      - outputs/results/base_case/cost_composition/mean_cost_composition_by_strategy_base_case.png
+      - outputs/results/base_case/vus_burden/outcome_proportions_by_strategy.csv
+      - outputs/results/base_case/vus_burden/outcome_proportions_stacked.png
+      - outputs/results/incremental_analysis/base_case/incremental_table_base_case.csv
+      - outputs/results/incremental_analysis/base_case/efficiency_frontier_base_case.png
+      - outputs/results/supplement/cystic_subgroup/cystic_outcomes_by_strategy.csv
+      - outputs/results/supplement/cystic_subgroup/cystic_cost_components_by_strategy.csv
+      - outputs/results/supplement/cystic_subgroup/incremental_table_cystic.csv
+      - outputs/results/supplement/cystic_subgroup/mean_cost_composition_by_strategy_cystic.png
+      - outputs/results/supplement/cystic_subgroup/efficiency_frontier_cystic.png
+      - outputs/results/supplement/phenotype_stratified/phenotype_wtp_winner_long.csv
+      - outputs/results/supplement/phenotype_stratified/phenotype_wtp_winner_wide.csv
+      - outputs/results/supplement/phenotype_stratified/phenotype_wtp_winner_matrix.png
+      - outputs/results/uncertainty_sensitivity/psa/psa_decision_robustness.csv
+      - outputs/results/uncertainty_sensitivity/psa/psa_cost_diagnosis_scatter.png
+      - outputs/results/uncertainty_sensitivity/prcc/prcc_results_reflex_vs_panel.csv
+      - outputs/results/uncertainty_sensitivity/prcc/prcc_results_es_vs_panel.csv
+      - outputs/results/uncertainty_sensitivity/prcc/prcc_results_genome_vs_reflex.csv
+      - outputs/results/uncertainty_sensitivity/prcc/prcc_tornado_composite.png
+      - outputs/results/uncertainty_sensitivity/ceac/ceac_table.csv
+      - outputs/results/uncertainty_sensitivity/ceac/ceac_plot.png
+      - outputs/results/scenario_analysis/gs_uplift/gs_baseline_iteration_outcomes.csv
+      - outputs/results/scenario_analysis/gs_uplift/gs_scenario_iteration_outcomes.csv
+      - outputs/results/scenario_analysis/gs_uplift/gs_scenario_summary.csv
+      - outputs/results/scenario_analysis/gs_uplift/gs_scenario_incremental.csv
+      - outputs/results/scenario_analysis/gs_uplift/gs_scenario_comparison.png
+      - outputs/results/scenario_analysis/pkd1_full_detection/pkd1_full_iteration_outcomes.csv
+      - outputs/results/scenario_analysis/pkd1_full_detection/pkd1_full_summary.csv
+      - outputs/results/scenario_analysis/pkd1_full_detection/pkd1_full_incremental.csv
+      - outputs/results/scenario_analysis/es_augmented/es_augmented_iteration_summary.csv
+      - outputs/results/scenario_analysis/es_augmented/efficiency_frontier_es_augmented.png
+      - outputs/results/uncertainty_sensitivity/cascade_dsa/cascade_dsa_icpd.csv
+      - outputs/results/uncertainty_sensitivity/reflex_uptake_dsa/reflex_uptake_dsa_icpd.csv
+      - outputs/results/clinical_impact/high_impact_outcomes_by_strategy.csv
+      - outputs/results/clinical_impact/clinical_impact_composite.png

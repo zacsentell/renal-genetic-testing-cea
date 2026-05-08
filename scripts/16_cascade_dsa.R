@@ -1,31 +1,16 @@
-# 09c_cascade_dsa.R
-# Purpose: One-way deterministic sensitivity analysis (DSA) for the cascade
-#   testing family-size assumption (eligible first-degree relatives per
-#   diagnosed proband, base case = 2, range = 0–4).
-#
-# Method: Analytical derivation from existing PSA iteration-level cost
-#   components. Because cascade cost = n_relatives * unit_cost * yield,
-#   we can scale cost_cascade_cad to any n_relatives without re-running
-#   the simulation:
-#
-#     total_cost_at_k = (total_cost_base - cost_cascade_base)
-#                       + (k / base_n) * cost_cascade_base
-#
-#   This preserves full PSA uncertainty in unit costs (Gamma-sampled per
-#   iteration) while sweeping the structural count assumption separately.
-#
-# Outputs (referenced in report §7.4):
-#   outputs/results/uncertainty_sensitivity/cascade_dsa/cascade_dsa_icpd.csv
-#   outputs/results/uncertainty_sensitivity/cascade_dsa/cascade_dsa_costs.csv
-#   outputs/results/uncertainty_sensitivity/cascade_dsa/cascade_dsa_icpd_plot.png/.pdf
+# scripts/16_cascade_dsa.R
+# Purpose: One-way DSA on cascade family size by analytically rescaling iteration-level cascade cost.
+# Author: Zachary Sentell
+
+# Method: cascade cost = n_relatives * unit_cost * yield, so total cost at k relatives is
+#   total_cost_at_k = (total_cost_base - cost_cascade_base) + (k / base_n) * cost_cascade_base.
+# This preserves full PSA uncertainty in unit costs while sweeping the structural count
+# assumption separately, without re-running the simulation.
 
 library(dplyr)
 library(tidyr)
 library(readr)
 library(ggplot2)
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
 source("scripts/utils_schema.R")
 
 # ==============================================================================

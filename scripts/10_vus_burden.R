@@ -1,7 +1,6 @@
-# 06d_vus_burden_analysis.R
-# Purpose: Analyze VUS burden and trade-offs (§7.7)
-# Author: Renal Genetics CEA Team
-# Date: 2025-01-03
+# scripts/10_vus_burden.R
+# Purpose: Summarize outcome proportions (diagnosis, VUS, no-call) and the diagnosis–VUS trade-off by strategy.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)

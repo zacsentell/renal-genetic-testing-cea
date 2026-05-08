@@ -24,12 +24,13 @@ data/raw/detection_specifications/
 # Derived data 
 data/intermediate/
 
-# Generated outputs 
+# Generated outputs
 outputs/results/
-outputs/cohort/
 outputs/figures/
-outputs/parameters/*.pdf
-# outputs/parameters/ CSVs and TXTs are tracked — useful reference docs
+# Exception: parameter reference tables and summaries are tracked.
+!outputs/results/parameters/
+!outputs/results/parameters/*.csv
+!outputs/results/parameters/*.txt
 
 # Logs
 logs/

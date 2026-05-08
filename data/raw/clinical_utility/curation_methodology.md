@@ -2,7 +2,7 @@
 
 This document describes how `gene_clinical_utility.csv` was constructed.
 The CSV is the sole clinical-utility input consumed by the pipeline
-(`scripts/10_clinical_impact_analysis.R`). It maps each gene modelled
+(`scripts/20_clinical_impact.R`). It maps each gene modelled
 in the simulation to a binary clinical-impact category framework.
 
 ## 1. Purpose
@@ -76,7 +76,7 @@ separate category introduced double-counting and vague assignments.
 `high_impact = 1` if and only if the gene maps to at least one of the
 three primary categories. `therapeutic = 1` if and only if at least one
 of the three therapeutic sub-categories is 1. Both invariants are
-enforced at load time by `scripts/10_clinical_impact_analysis.R`.
+enforced at load time by `scripts/20_clinical_impact.R`.
 
 ## 5. Curation procedure
 
@@ -152,10 +152,10 @@ Columns of `gene_clinical_utility.csv` (15 columns):
 
 **Derived at analysis time (not stored in the CSV).** The `source` field
 (`knoers_2022` vs. `extension`) is derived inside
-`scripts/10_clinical_impact_analysis.R` from whether `knoers_table` is
+`scripts/20_clinical_impact.R` from whether `knoers_table` is
 non-empty. Do not add a `source` column to the CSV.
 
-**Load-time invariants enforced by `scripts/10_clinical_impact_analysis.R`.**
+**Load-time invariants enforced by `scripts/20_clinical_impact.R`.**
 Any edit to the CSV that breaks these will fail validation:
 
 1. Every category column must contain only `0` or `1`.

@@ -1,5 +1,6 @@
-# 06c_cystic_subgroup.R
-# Purpose: Cystic phenotype subgroup analysis (§7.6)
+# scripts/09_cystic_subgroup.R
+# Purpose: Replicate base-case summary, cost composition, and incremental analysis for the cystic phenotype subgroup.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)
@@ -9,10 +10,7 @@ library(tidyr)
 source("scripts/utils_cea.R")
 source("scripts/utils_schema.R")
 
-# ==============================================================================
-# Configuration & IO
-# ==============================================================================
-INPUT_FILE <- "outputs/results/supplement/phenotype_stratified/base_case/phenotype_iteration_outcomes.csv"
+INPUT_FILE <- "outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv"
 OUT_DIR <- "outputs/results/supplement/cystic_subgroup"
 
 SUMMARY_TABLE <- file.path(OUT_DIR, "cystic_outcomes_by_strategy.csv")

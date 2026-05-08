@@ -26,13 +26,20 @@ This runs all pipeline steps in sequence (defined in `config.yml`). Default conf
 ## Repository structure
 
 ```
-data/raw/          Source inputs: costs, gene panels, curated literature data
-data/params/       Derived parameter distributions (.rds)
-data/audit/        Import and validation audit trail (CSV)
-scripts/           All pipeline scripts and utilities
-docs/methods.md    CEA methods (CHEERS 2022)
-config.yml         Pipeline configuration
-outputs/parameters/ Parameter summaries (meta-analysis, detection matrix)
+data/raw/                       Source inputs (read-only): costs, gene panels, curated literature
+data/params/                    Derived parameter distributions (.rds)
+data/audit/                     Import and validation audit trail (CSV)
+scripts/                        Pipeline scripts (00–20) and shared utilities
+config.yml                      Pipeline scripts and required outputs
+docs/methods.md                 CEA methods (CHEERS 2022)
+outputs/figures/                Manual figures (PRISMA, workflow)
+outputs/results/parameters/     Tracked parameter reference tables and summaries
+outputs/results/base_case/      Iteration-level traces, summary tables, cost composition, VUS burden
+outputs/results/incremental_analysis/   Incremental tables and efficiency frontiers
+outputs/results/uncertainty_sensitivity/ PRCC, PSA, CEAC, cascade DSA, reflex-uptake DSA
+outputs/results/scenario_analysis/      GS uplift, PKD1 full detection, ES augmented
+outputs/results/supplement/     Phenotype-stratified and cystic subgroup outputs
+outputs/results/clinical_impact/        Gene-level clinical impact analyses
 ```
 
 ## License

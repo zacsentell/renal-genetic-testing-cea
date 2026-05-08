@@ -1,9 +1,6 @@
-# scripts/06e_phenotype_figure.R
-# Purpose: Phenotype-stratified cost-effectiveness figures
-#   Figure 1: Reflex cost vs yield by phenotype (canonical results figure)
-#   Figure 2: Trajectory of Value – Reflex strategy across phenotypes
-#   Figure 3: All-modes efficiency landscape (small multiples)
-#   Figure 4: Most cost-effective strategy by phenotype at WTP anchors
+# scripts/11_phenotype_figure.R
+# Purpose: Render phenotype-stratified cost-effectiveness figures (reflex yield, trajectory, landscape, WTP winners).
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)
@@ -11,15 +8,9 @@ library(tidyr)
 library(ggplot2)
 library(ggrepel)
 library(scales)
-if (!requireNamespace("config", quietly = TRUE)) {
-    stop("Package 'config' is required. Install it with install.packages('config').")
-}
 source("scripts/utils_schema.R")
 
-# ==============================================================================
-# IO Paths
-# ==============================================================================
-INPUT_PHENO_CSV <- "outputs/results/supplement/phenotype_stratified/base_case/phenotype_iteration_outcomes.csv"
+INPUT_PHENO_CSV <- "outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv"
 OUTPUT_DIR <- "outputs/results/supplement/phenotype_stratified"
 
 OUTPUT_FIG_REFLEX_PNG <- file.path(OUTPUT_DIR, "reflex_cost_yield_by_phenotype.png")

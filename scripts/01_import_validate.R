@@ -1,26 +1,12 @@
-# 01_import_validate.R
-# Purpose: Import and strict validation of Excel data parameters
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-10
-
-# Set CRAN mirror for non-interactive sessions
-local({
-    r <- getOption("repos")
-    r["CRAN"] <- "https://cloud.r-project.org"
-    options(repos = r)
-})
-
-if (!require("readxl")) install.packages("readxl")
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("tidyr")) install.packages("tidyr")
-if (!require("purrr")) install.packages("purrr")
-if (!require("janitor")) install.packages("janitor")
+# scripts/01_import_validate.R
+# Purpose: Import and strict-validate raw Excel cohort and variant tables.
+# Author: Zachary Sentell
 
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(purrr)
-if (!require("assertthat")) install.packages("assertthat")
+library(janitor)
 library(assertthat)
 
 # IO Paths
@@ -170,7 +156,6 @@ AUDIT_DIR <- "data/audit"
 if (!dir.exists(AUDIT_DIR)) dir.create(AUDIT_DIR, recursive = TRUE)
 
 cat("Exporting audit CSVs to", AUDIT_DIR, "...\n")
-if (!require("readr")) install.packages("readr")
 library(readr)
 
 write_csv(cohort_raw, file.path(AUDIT_DIR, "01_cohort_imported.csv"))

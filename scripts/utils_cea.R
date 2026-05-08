@@ -1,7 +1,5 @@
-# utils_cea.R
-# Purpose: Shared utility functions for Cost-Effectiveness Analysis
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-30
+# scripts/utils_cea.R
+# Purpose: Shared incremental cost-effectiveness analysis helpers (dominance checking, frontier).
 
 library(dplyr)
 

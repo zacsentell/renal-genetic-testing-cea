@@ -1,20 +1,15 @@
-# 08a_probabilistic_sensitivity.R
-# Purpose: Probabilistic Sensitivity Analysis (§8.1)
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-30
+# scripts/13_probabilistic_sensitivity.R
+# Purpose: Quantify decision robustness across PSA iterations and produce the cost–diagnosis scatter.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(readr)
 library(ggplot2)
 
-# Source shared utility for incremental analysis logic
 source("scripts/utils_cea.R")
 
-# ==============================================================================
-# Configuration & IO
-# ==============================================================================
 INPUT_FILE <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
-OUT_DIR <- "outputs/results/uncertainty_sensitivity/probabilistic_sensitivity_analysis"
+OUT_DIR <- "outputs/results/uncertainty_sensitivity/psa"
 
 # Output files
 ROBUSTNESS_TABLE <- file.path(OUT_DIR, "psa_decision_robustness.csv")

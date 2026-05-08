@@ -1,30 +1,22 @@
-# 03_vis_parameters.R
-# Purpose: Generate individual parameter and meta-analysis figures (PNG + CSV)
-# Components:
-# 1. Meta-analysis summary table (CSV)
-# 2. Forest plot of diagnostic yields (PNG)
-# 3. Beta density distributions (PNG)
-# 4. Genetic landscape waterfall (PNG)
-# 5. Gene architecture by phenotype (PNG)
-# 6. Joint proportions table (CSV)
-# Author: Renal Genetics CEA Team
-# Date: 2025-12-22
+# scripts/04_visualize_parameters.R
+# Purpose: Render parameter and meta-analysis figures and tables (forest plot, Beta densities, gene architecture).
+# Author: Zachary Sentell
 
-# Set CRAN mirror
-local({
-    r <- getOption("repos")
-    r["CRAN"] <- "https://cloud.r-project.org"
-    options(repos = r)
-})
-
-# Libraries (readxl and meta removed - using pre-computed values from RDS)
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(dplyr, tidyr, ggplot2, readr, purrr, stringr, scales, viridis, patchwork, forcats)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(readr)
+library(purrr)
+library(stringr)
+library(scales)
+library(viridis)
+library(patchwork)
+library(forcats)
 
 # IO Paths
 INPUT_PARAMS <- "data/params"
-OUTPUT_CSV_DIR <- "outputs/parameters"
-OUTPUT_FIG_DIR <- "outputs/figures/parameters"
+OUTPUT_CSV_DIR <- "outputs/results/parameters"
+OUTPUT_FIG_DIR <- "outputs/results/parameters"
 OUTPUT_META_CSV <- file.path(OUTPUT_CSV_DIR, "meta_analysis_summary.csv")
 OUTPUT_JOINT_CSV <- file.path(OUTPUT_CSV_DIR, "joint_proportions_full.csv")
 OUTPUT_JOINT_TBL_CSV <- file.path(OUTPUT_CSV_DIR, "empirical_joint_proportions.csv")

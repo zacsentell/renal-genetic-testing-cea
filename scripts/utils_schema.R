@@ -1,4 +1,4 @@
-# utils_schema.R
+# scripts/utils_schema.R
 # Purpose: Shared schema and output validation utilities.
 
 library(readr)

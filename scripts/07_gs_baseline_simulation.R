@@ -1,18 +1,17 @@
-# 05b_gs_simulation.R
-# Purpose: GS baseline simulation for scenario analysis (§8.5)
-# Produces gs_baseline_iteration_outcomes.csv consumed by 09a_gs_scenario_analysis.R
-#
-# Reproducibility note: iter_seeds are derived identically to 05_simulation_engine.R
+# scripts/07_gs_baseline_simulation.R
+# Purpose: Re-run the simulation engine with GS as the baseline strategy for downstream scenario analysis.
+# Author: Zachary Sentell
+
+# Reproducibility note: iter_seeds are derived identically to the main engine
 # (set.seed(SEED_START); sample.int(1e9, N_ITER)), and parameters are sampled in the
-# same order per iteration, ensuring cohorts and outcomes are identical to what was
-# previously computed inside the main simulation loop.
+# same order per iteration, so cohorts and outcomes match the main loop exactly.
 
 library(dplyr)
 library(readr)
 
-# Source main engine to load all helper functions and parameters.
-# The if (sys.nframe() == 0) guard in 05 ensures the main loop does not execute.
-source("scripts/05_simulation_engine.R")
+# Sourcing the engine loads helpers and parameters; the sys.nframe() guard in 06
+# prevents the main loop from running.
+source("scripts/06_simulation_engine.R")
 
 # ==============================================================================
 # IO Paths

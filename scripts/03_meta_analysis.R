@@ -1,23 +1,18 @@
-# 02_meta_analysis.R
-# Purpose: Generate probabilistic parameters (Beta, Dirichlet) from raw data.
+# scripts/03_meta_analysis.R
+# Purpose: Build probabilistic prevalence and yield parameters (Beta, Dirichlet) from validated raw data.
 # Author: Zachary Sentell
-# Date: 2025-12-10
 
-# Set CRAN mirror for non-interactive sessions
-local({
-    r <- getOption("repos")
-    r["CRAN"] <- "https://cloud.r-project.org"
-    options(repos = r)
-})
-
-# Libraries
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(dplyr, tidyr, meta, readr, purrr, stringr)
+library(dplyr)
+library(tidyr)
+library(meta)
+library(readr)
+library(purrr)
+library(stringr)
 
 # IO Paths
 INPUT_RDS <- "data/intermediate/01_imported_data.rds"
 OUTPUT_PARAMS <- "data/params"
-OUTPUT_AUDIT <- "outputs/parameters/02_parameter_summary.txt"
+OUTPUT_AUDIT <- "outputs/results/parameters/parameter_summary.txt"
 
 # Ensure directories exist
 if (!dir.exists(OUTPUT_PARAMS)) dir.create(OUTPUT_PARAMS, recursive = TRUE)

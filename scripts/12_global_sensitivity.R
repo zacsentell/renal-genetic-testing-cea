@@ -1,40 +1,144 @@
-# 07b_prcc_composite_figure.R
-# Purpose: Build composite PRCC figure (forest plot + heatmap) from CSV outputs.
-#
-# Design:
-#   Panel A — ranked forest plot for the primary comparison (Reflex vs Panel).
-#             Shows both incremental cost and yield outcomes as dodged dots with
-#             95% CI lines. Parameters are selected as the union of:
-#               (i)  top 6 from the primary comparison, and
-#               (ii) any parameter with |PRCC| >= 0.2 and CI excluding zero in
-#                    any comparison.
-#             Parameters significant only in scenario comparisons appear faded
-#             at the bottom, communicating they do not drive the primary decision.
-#   Panel B — PRCC heatmap for all three comparisons (Reflex vs Panel,
-#             ES vs Panel, GS vs Reflex), showing the same parameter rows as
-#             Panel A. Fill = signed PRCC on a diverging blue-white-red palette.
-#             Numeric values printed in cells where |PRCC| >= 0.1 and CI
-#             excludes zero. Grey cells = not material or not significant.
-#
-# Inputs (produced by 07_global_sensitivity_analysis.R):
-#   prcc_results_reflex_vs_panel.csv
-#   prcc_results_es_vs_panel.csv
-#   prcc_results_genome_vs_reflex.csv
-#
-# Outputs:
-#   prcc_tornado_composite.png  (replaces old 2x2 tornado composite)
-#   prcc_tornado_composite.pdf
+# scripts/12_global_sensitivity.R
+# Purpose: PRCC global sensitivity analysis for three strategy comparisons, plus composite figure.
+# Author: Zachary Sentell
 
 library(dplyr)
 library(tidyr)
-library(ggplot2)
+library(sensitivity)
 library(readr)
+library(ggplot2)
 library(patchwork)
 
-OUTPUT_DIR <- "outputs/results/uncertainty_sensitivity/global_sensitivity_analysis_prcc"
+# ==============================================================================
+# IO Paths
+# ==============================================================================
+INPUT_BASE_OUTCOMES   <- "outputs/results/base_case/iteration_level/strategy_iteration_outcomes.csv"
+INPUT_PARAM_TRACE     <- "outputs/results/base_case/iteration_level/iteration_parameter_trace.csv"
+INPUT_GS_SCENARIO_ITER <- "outputs/results/scenario_analysis/gs_uplift/gs_scenario_iteration_outcomes.csv"
+OUTPUT_DIR            <- "outputs/results/uncertainty_sensitivity/prcc"
+
+if (!dir.exists(OUTPUT_DIR)) dir.create(OUTPUT_DIR, recursive = TRUE)
+
+if (!file.exists(INPUT_BASE_OUTCOMES))    stop("Iteration outcomes not found: ",  INPUT_BASE_OUTCOMES)
+if (!file.exists(INPUT_PARAM_TRACE))      stop("Parameter trace not found: ",     INPUT_PARAM_TRACE)
+if (!file.exists(INPUT_GS_SCENARIO_ITER)) stop("GS scenario iteration outcomes not found: ", INPUT_GS_SCENARIO_ITER)
 
 # ==============================================================================
-# 1. Parameter labels and categories
+# 1. Load and prepare data
+# ==============================================================================
+outcomes_df <- read_csv(INPUT_BASE_OUTCOMES, show_col_types = FALSE)
+params_df   <- read_csv(INPUT_PARAM_TRACE, show_col_types = FALSE)
+gs_iter_df  <- read_csv(INPUT_GS_SCENARIO_ITER, show_col_types = FALSE)
+
+params_wide <- params_df %>%
+    pivot_wider(names_from = parameter_name, values_from = parameter_value)
+
+base_wide <- outcomes_df %>%
+    select(iteration_id, strategy_label, total_cost_per_proband_cad, diagnoses_per_proband) %>%
+    pivot_wider(names_from = strategy_label, values_from = c(total_cost_per_proband_cad, diagnoses_per_proband))
+
+gs_scenario_only <- gs_iter_df %>%
+    filter(grepl("^uplift_", scenario_label)) %>%
+    transmute(
+        iteration_id,
+        total_cost_per_proband_cad_GS_scenario = total_cost_per_proband_cad,
+        diagnoses_per_proband_GS_scenario = diagnoses_per_proband
+    )
+
+comparison_frame <- base_wide %>%
+    left_join(gs_scenario_only, by = "iteration_id")
+
+comparisons <- list(
+    list(
+        focal_cost_col = "total_cost_per_proband_cad_Panel_Reflex_ES",
+        comp_cost_col  = "total_cost_per_proband_cad_Panel",
+        focal_diag_col = "diagnoses_per_proband_Panel_Reflex_ES",
+        comp_diag_col  = "diagnoses_per_proband_Panel",
+        label          = "reflex_vs_panel",
+        title_focal    = "Reflex (Panel→ES)",
+        title_comp     = "Panel"
+    ),
+    list(
+        focal_cost_col = "total_cost_per_proband_cad_ES",
+        comp_cost_col  = "total_cost_per_proband_cad_Panel",
+        focal_diag_col = "diagnoses_per_proband_ES",
+        comp_diag_col  = "diagnoses_per_proband_Panel",
+        label          = "es_vs_panel",
+        title_focal    = "ES",
+        title_comp     = "Panel"
+    ),
+    list(
+        focal_cost_col = "total_cost_per_proband_cad_GS_scenario",
+        comp_cost_col  = "total_cost_per_proband_cad_Panel_Reflex_ES",
+        focal_diag_col = "diagnoses_per_proband_GS_scenario",
+        comp_diag_col  = "diagnoses_per_proband_Panel_Reflex_ES",
+        label          = "genome_vs_reflex",
+        title_focal    = "GS (+10% yield)",
+        title_comp     = "Reflex (Panel→ES)"
+    )
+)
+
+# ==============================================================================
+# 2. Run PRCC for each comparison
+# ==============================================================================
+for (comp in comparisons) {
+    req <- c(comp$focal_cost_col, comp$comp_cost_col, comp$focal_diag_col, comp$comp_diag_col)
+    missing <- setdiff(req, names(comparison_frame))
+    if (length(missing) > 0) {
+        warning("Skipping ", comp$label, " due to missing columns: ", paste(missing, collapse = ", "))
+        next
+    }
+
+    analysis_df <- comparison_frame %>%
+        mutate(
+            delta_cost_cad = .data[[comp$focal_cost_col]] - .data[[comp$comp_cost_col]],
+            delta_diagnoses = .data[[comp$focal_diag_col]] - .data[[comp$comp_diag_col]]
+        ) %>%
+        select(iteration_id, delta_cost_cad, delta_diagnoses) %>%
+        inner_join(params_wide, by = "iteration_id")
+
+    X <- analysis_df %>%
+        select(-iteration_id, -delta_cost_cad, -delta_diagnoses) %>%
+        select(where(is.numeric))
+
+    names(X) <- make.names(names(X), unique = TRUE)
+
+    col_vars <- apply(X, 2, function(x) var(x, na.rm = TRUE))
+    X <- X[, !(is.na(col_vars) | col_vars == 0), drop = FALSE]
+
+    if (ncol(X) < 2) {
+        warning("Skipping ", comp$label, ": not enough non-constant parameters")
+        next
+    }
+
+    nboot <- 500
+    cat("Running PRCC for", comp$label, "(nboot=", nboot, ")\n", sep = "")
+    pcc_cost <- pcc(X, analysis_df$delta_cost_cad, rank = TRUE, nboot = nboot, conf = 0.95)
+    pcc_diag <- pcc(X, analysis_df$delta_diagnoses, rank = TRUE, nboot = nboot, conf = 0.95)
+
+    prcc_cost <- pcc_cost$PRCC
+    prcc_diag <- pcc_diag$PRCC
+
+    prcc_table <- data.frame(
+        parameter_name = rownames(prcc_cost),
+        prcc_delta_cost_cad = prcc_cost$original,
+        prcc_delta_cost_cad_ci_low = prcc_cost$`min. c.i.`,
+        prcc_delta_cost_cad_ci_high = prcc_cost$`max. c.i.`,
+        prcc_delta_diagnoses = prcc_diag$original,
+        prcc_delta_diagnoses_ci_low = prcc_diag$`min. c.i.`,
+        prcc_delta_diagnoses_ci_high = prcc_diag$`max. c.i.`,
+        stringsAsFactors = FALSE
+    ) %>%
+        arrange(desc(abs(prcc_delta_cost_cad)))
+
+    out_table <- file.path(OUTPUT_DIR, paste0("prcc_results_", comp$label, ".csv"))
+    write_csv(prcc_table, out_table)
+
+    cat("Saved PRCC results for", comp$label, "\n")
+}
+
+# ==============================================================================
+# 3. Composite figure: ranked forest plot (primary) + heatmap (all comparisons)
 # ==============================================================================
 param_labels <- c(
     "prev_CKDu"               = "Prevalence: CKDu",
@@ -89,10 +193,6 @@ assign_category <- function(param_name) {
     "Other"
 }
 
-# ==============================================================================
-# 2. Load PRCC results
-# ==============================================================================
-# Comparisons in display order (A = primary, B, C = scenario)
 comparison_meta <- list(
     list(label = "reflex_vs_panel", display = "Reflex vs Panel",  file = "prcc_results_reflex_vs_panel.csv"),
     list(label = "es_vs_panel",     display = "ES vs Panel",      file = "prcc_results_es_vs_panel.csv"),
@@ -115,23 +215,18 @@ if (length(prcc_results) == 0) stop("No PRCC result files found in ", OUTPUT_DIR
 primary_key <- if ("reflex_vs_panel" %in% names(prcc_results)) "reflex_vs_panel" else names(prcc_results)[1]
 primary_df  <- prcc_results[[primary_key]]$data
 
-# ==============================================================================
-# 3. Determine union parameter set
-# ==============================================================================
-PRCC_SHOW_THRESH <- 0.10   # minimum |PRCC| to colour a heatmap cell (must also be sig)
-PRCC_UNION_THRESH <- 0.20  # minimum |PRCC| for a parameter to enter the union set
-N_PRIMARY <- 6             # top-N from primary comparison to always include
+PRCC_SHOW_THRESH  <- 0.10   # min |PRCC| to colour a heatmap cell (must also be sig)
+PRCC_UNION_THRESH <- 0.20   # min |PRCC| for a parameter to enter the union set
+N_PRIMARY         <- 6      # top-N from primary comparison to always include
 
 is_sig <- function(lo, hi) !is.na(lo) & !is.na(hi) & sign(lo) == sign(hi)
 
-# Top-N from primary comparison
 top_primary <- primary_df %>%
     mutate(max_abs = pmax(abs(prcc_delta_cost_cad), abs(prcc_delta_diagnoses), na.rm = TRUE)) %>%
     arrange(desc(max_abs)) %>%
     slice_head(n = N_PRIMARY) %>%
     pull(parameter_name)
 
-# Any parameter with |PRCC| >= threshold and significant in any comparison
 top_scenario <- unique(unlist(lapply(names(prcc_results), function(lbl) {
     df <- prcc_results[[lbl]]$data
     df %>%
@@ -144,10 +239,8 @@ top_scenario <- unique(unlist(lapply(names(prcc_results), function(lbl) {
         pull(parameter_name)
 })))
 
-# Union: primary top-N first, then scenario-specific additions
 param_union <- unique(c(top_primary, top_scenario))
 
-# Order scenario additions by their max |PRCC| in any non-primary comparison
 scenario_only <- setdiff(top_scenario, top_primary)
 if (length(scenario_only) > 0) {
     scenario_ranks <- vapply(scenario_only, function(p) {
@@ -162,27 +255,18 @@ if (length(scenario_only) > 0) {
 }
 param_union <- unique(c(top_primary, scenario_only))
 
-# Display labels and categories
 param_display  <- setNames(vapply(param_union, get_label,      character(1)), param_union)
 param_category <- setNames(vapply(param_union, assign_category, character(1)), param_union)
 
-# y-axis factor levels: top-ranked at top of plot (ggplot reads bottom-up so we reverse)
-y_levels <- rev(unname(param_display))
-
-# ==============================================================================
-# 4. Forest plot data (primary comparison, both outcomes)
-# ==============================================================================
 primary_df_reflex <- primary_df %>% filter(parameter_name %in% param_union)
 
-# Rank params by primary comparison max |PRCC| (determines y position)
 rank_order <- primary_df_reflex %>%
     mutate(max_abs = pmax(abs(prcc_delta_cost_cad), abs(prcc_delta_diagnoses), na.rm = TRUE),
            display_label = param_display[parameter_name]) %>%
     arrange(desc(max_abs)) %>%
     pull(display_label)
-# Append scenario-only params at the bottom (they'll have near-zero primary PRCC)
 rank_order_full <- unique(c(rank_order, unname(param_display[scenario_only])))
-y_levels <- rev(rank_order_full)  # reversed for ggplot
+y_levels <- rev(rank_order_full)
 
 forest_df <- bind_rows(
     primary_df_reflex %>%
@@ -205,9 +289,6 @@ forest_df <- bind_rows(
         significant   = is_sig(ci_low, ci_high)
     )
 
-# ==============================================================================
-# 5. Heatmap data (all comparisons)
-# ==============================================================================
 comparison_order <- vapply(comparison_meta, `[[`, character(1), "display")
 comparison_order <- comparison_order[comparison_order %in%
                                          sapply(prcc_results, `[[`, "display")]
@@ -241,7 +322,6 @@ heatmap_df <- bind_rows(heatmap_parts) %>%
         significant = is_sig(ci_low, ci_high),
         material    = !is.na(prcc) & abs(prcc) >= PRCC_SHOW_THRESH & significant,
         fill_value  = ifelse(material, prcc, NA_real_),
-        # PRCC text with explicit sign; white text for high-magnitude cells
         text_label  = ifelse(material,
                              ifelse(prcc >= 0,
                                     sprintf("+%.2f", prcc),
@@ -258,13 +338,6 @@ heatmap_df <- bind_rows(heatmap_parts) %>%
         outcome    = factor(outcome, levels = c("Cost", "Yield"))
     )
 
-# ==============================================================================
-# 6. Forest plot (Panel A)
-# ==============================================================================
-# Use viridis_d for category colours; Set2 for internal contrast
-cats_present  <- unique(param_category)
-n_cats        <- length(cats_present)
-
 forest_plot <- ggplot(
     forest_df,
     aes(x = prcc, y = display_label,
@@ -272,7 +345,6 @@ forest_plot <- ggplot(
 ) +
     geom_vline(xintercept = 0, linetype = "dashed",
                color = "grey45", linewidth = 0.5) +
-    # CI lines (no end-caps for a clean forest look)
     geom_errorbar(
         aes(xmin = ci_low, xmax = ci_high, alpha = significant),
         width       = 0,
@@ -280,7 +352,6 @@ forest_plot <- ggplot(
         orientation = "y",
         position    = position_dodge(width = 0.55)
     ) +
-    # Point estimates
     geom_point(
         aes(alpha = significant),
         size     = 3.0,
@@ -339,15 +410,11 @@ forest_plot <- ggplot(
                                                  size = 3, alpha = 1))
     )
 
-# ==============================================================================
-# 7. Heatmap (Panel B)
-# ==============================================================================
 heatmap_plot <- ggplot(
     heatmap_df,
     aes(x = outcome, y = display_label, fill = fill_value)
 ) +
     geom_tile(color = "white", linewidth = 0.9) +
-    # Numeric PRCC values inside significant cells
     geom_text(
         aes(label = text_label, color = text_color),
         size     = 2.7,
@@ -355,9 +422,9 @@ heatmap_plot <- ggplot(
         show.legend = FALSE
     ) +
     scale_fill_gradient2(
-        low      = "#2166AC",   # blue (negative PRCC)
+        low      = "#2166AC",
         mid      = "white",
-        high     = "#B2182B",   # red  (positive PRCC)
+        high     = "#B2182B",
         midpoint = 0,
         limits   = c(-1, 1),
         na.value = "grey94",
@@ -396,9 +463,6 @@ heatmap_plot <- ggplot(
         plot.margin      = margin(t = 6, r = 10, b = 6, l = 2)
     )
 
-# ==============================================================================
-# 8. Compose and save
-# ==============================================================================
 composite <- forest_plot + heatmap_plot +
     plot_layout(widths = c(3, 2))
 
@@ -411,3 +475,4 @@ ggsave(out_pdf, composite, width = 16, height = 9.0, bg = "white")
 cat("Saved composite PRCC figure:\n  ", out_png, "\n  ", out_pdf, "\n")
 cat("Parameter set (", length(param_union), " parameters):\n",
     paste0("  ", param_union, " -> ", param_display, "\n"), sep = "")
+cat("\nGlobal sensitivity analysis complete.\n")
