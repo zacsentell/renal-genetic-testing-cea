@@ -65,7 +65,7 @@ Phenotype-specific panels include bundled difficult-locus assays where clinicall
 
 ### 4.1 Cohort phenotype composition and diagnostic yields
 
-Parameterised from a structured MEDLINE search of adult renal genetics cohorts (2020–September 2025) meeting pre-specified criteria (≥150 probands, adult-predominant, broad CKD phenotype spectrum, first-line NGS, high-income country). Six cohorts were retained:
+Parameterised from a structured MEDLINE search of adult renal genetics cohorts (2020–September 2025) meeting pre-specified criteria (≥100 probands, adult-predominant, broad CKD phenotype spectrum, first-line NGS, high-income country). Six cohorts were retained:
 
 | Study | PMID | N | Modality |
 |---|---|---|---|

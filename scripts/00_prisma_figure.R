@@ -68,7 +68,7 @@ ft_excludes_clean <- ft_excludes %>%
     mutate(reason_clean = case_when(
         fulltext_exclusion_reason == "Not adult predominant cohort" ~ "Not adult-predominant cohort",
         fulltext_exclusion_reason == "Review commentary protocol"   ~ "Review, commentary, or protocol",
-        fulltext_exclusion_reason == "Does not meet N proband criteria" ~ "Sample size <150 probands",
+        fulltext_exclusion_reason == "Does not meet N proband criteria" ~ "Sample size <100 probands",
         fulltext_exclusion_reason == "Single phenotype" ~ "Single-phenotype cohort",
         TRUE ~ fulltext_exclusion_reason
     ))
@@ -209,7 +209,7 @@ Caption:
 PRISMA 2020 flow diagram depicting the study selection process for synthetic cohort parameterization.
 Database search (PubMed/MEDLINE; title-only; 2020/01/01 to 2025/09/12) identified 179 records.
 Title/abstract screening excluded 166 records: 160 out of scope (not a renal genetic testing cohort study) and 6 single-phenotype cohorts.
-Full-text review excluded 7 reports: 3 not adult-predominant, 3 reviews or protocols, 1 sample size <150 probands.
+Full-text review excluded 7 reports: 3 not adult-predominant, 3 reviews or protocols, 1 sample size <100 probands.
 Six cohorts were retained and provided phenotype prevalence, diagnostic yields, and gene/variant architecture parameters for the cost-effectiveness model.
 'Registers' and 'Automation tools' were not used and are omitted for clarity."
 
