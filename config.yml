@@ -52,6 +52,7 @@ default:
       - outputs/results/base_case/vus_burden/outcome_proportions_by_strategy.csv
       - outputs/results/base_case/vus_burden/outcome_proportions_stacked.png
       - outputs/results/incremental_analysis/base_case/incremental_table_base_case.csv
+      - outputs/results/incremental_analysis/base_case/incremental_vs_panel.csv
       - outputs/results/incremental_analysis/base_case/efficiency_frontier_base_case.png
       - outputs/results/supplement/cystic_subgroup/cystic_outcomes_by_strategy.csv
       - outputs/results/supplement/cystic_subgroup/cystic_cost_components_by_strategy.csv

@@ -47,9 +47,9 @@ STRATEGY_MAP <- c(
 )
 
 STRATEGY_LABELS <- c(
-    "Panel"           = "Panel",
-    "ES"              = "ES",
-    "Panel_Reflex_ES" = "Reflex (Panel\u2192ES)"
+    "Panel"           = "Phenotype-directed Panel",
+    "ES"              = "Exome-first",
+    "Panel_Reflex_ES" = "Panel-first with exome reflex"
 )
 
 # ==============================================================================

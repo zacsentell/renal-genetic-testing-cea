@@ -55,8 +55,8 @@ comparisons <- list(
         focal_diag_col = "diagnoses_per_proband_Panel_Reflex_ES",
         comp_diag_col  = "diagnoses_per_proband_Panel",
         label          = "reflex_vs_panel",
-        title_focal    = "Reflex (Panel→ES)",
-        title_comp     = "Panel"
+        title_focal    = "Panel-first with exome reflex",
+        title_comp     = "Phenotype-directed Panel"
     ),
     list(
         focal_cost_col = "total_cost_per_proband_cad_ES",
@@ -64,8 +64,8 @@ comparisons <- list(
         focal_diag_col = "diagnoses_per_proband_ES",
         comp_diag_col  = "diagnoses_per_proband_Panel",
         label          = "es_vs_panel",
-        title_focal    = "ES",
-        title_comp     = "Panel"
+        title_focal    = "Exome-first",
+        title_comp     = "Phenotype-directed Panel"
     ),
     list(
         focal_cost_col = "total_cost_per_proband_cad_GS_scenario",
@@ -73,8 +73,8 @@ comparisons <- list(
         focal_diag_col = "diagnoses_per_proband_GS_scenario",
         comp_diag_col  = "diagnoses_per_proband_Panel_Reflex_ES",
         label          = "genome_vs_reflex",
-        title_focal    = "GS (+10% yield)",
-        title_comp     = "Reflex (Panel→ES)"
+        title_focal    = "Genome sequencing (+10% yield)",
+        title_comp     = "Panel-first with exome reflex"
     )
 )
 

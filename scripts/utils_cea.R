@@ -3,6 +3,25 @@
 
 library(dplyr)
 
+#' Map internal strategy codes to standardized display labels
+#'
+#' Single source of truth for the strategy names shown in figures and tables so
+#' that every output uses the same naming as the report. Internal codes (used as
+#' join keys and for RNG alignment) are unchanged; only the display strings here.
+#'
+#' @param x Character vector of internal strategy codes
+#' @return Character vector of standardized display labels (unrecognized values
+#'   are returned unchanged)
+strategy_display_label <- function(x) {
+    dplyr::recode(as.character(x),
+        "Panel"           = "Phenotype-directed Panel",
+        "ES"              = "Exome-first",
+        "Panel_Reflex_ES" = "Panel-first with exome reflex",
+        "GS"              = "Genome sequencing",
+        .default = as.character(x)
+    )
+}
+
 #' Perform incremental cost-effectiveness analysis with dominance checking
 #'
 #' @param data Data frame with columns: strategy_label, cost, effect

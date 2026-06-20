@@ -118,20 +118,10 @@ mean_points <- iter_data %>%
 
 # Clean labels for plot
 iter_data <- iter_data %>%
-    mutate(
-        strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            TRUE ~ strategy_label
-        )
-    )
+    mutate(strategy_display = strategy_display_label(strategy_label))
 
 mean_points <- mean_points %>%
-    mutate(
-        strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            TRUE ~ strategy_label
-        )
-    )
+    mutate(strategy_display = strategy_display_label(strategy_label))
 
 p_scatter <- ggplot(iter_data, aes(x = diagnoses_per_proband, y = total_cost_per_proband_cad)) +
     # Scatter points (semi-transparent)

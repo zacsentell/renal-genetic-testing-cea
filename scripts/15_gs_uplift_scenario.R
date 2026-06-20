@@ -125,19 +125,23 @@ es_summary <- base_iter %>%
 plot_data <- bind_rows(
     panel_summary,
     es_summary,
-    data.frame(strategy = "Reflex", yield = reflex_summary$yield_mean, cost = reflex_summary$cost_mean),
-    data.frame(strategy = "GS (+10% yield)", yield = gs_scenario_summary$yield_mean, cost = gs_scenario_summary$cost_mean)
+    data.frame(strategy = "Panel_Reflex_ES", yield = reflex_summary$yield_mean, cost = reflex_summary$cost_mean),
+    data.frame(strategy = "GS_scenario", yield = gs_scenario_summary$yield_mean, cost = gs_scenario_summary$cost_mean)
 ) %>%
     mutate(
         strategy_type = case_when(
-            strategy == "GS (+10% yield)" ~ "Scenario",
+            strategy == "GS_scenario" ~ "Scenario",
             TRUE ~ "Base Case"
+        ),
+        strategy_display = case_when(
+            strategy == "GS_scenario" ~ "Genome sequencing (+10% yield)",
+            TRUE ~ strategy_display_label(strategy)
         )
     )
 
 p <- ggplot(plot_data, aes(x = yield, y = cost, color = strategy_type)) +
     geom_point(aes(shape = strategy_type), size = 4, alpha = 0.9) +
-    geom_label_repel(aes(label = strategy), size = 4, fontface = "bold", box.padding = 0.8, point.padding = 0.4) +
+    geom_label_repel(aes(label = strategy_display), size = 4, fontface = "bold", box.padding = 0.8, point.padding = 0.4) +
     scale_color_manual(values = c("Base Case" = "#2166AC", "Scenario" = "#4DAF4A")) +
     scale_shape_manual(values = c("Base Case" = 16, "Scenario" = 17)) +
     scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -165,10 +169,10 @@ vus_reflex <- mean(base_iter$pr_at_least_one_vus[base_iter$strategy_label == "Pa
 vus_gs <- mean(gs_scenario$pr_at_least_one_vus, na.rm = TRUE)
 
 frontier_raw <- bind_rows(
-    data.frame(strategy_label = "Panel", effect = panel_summary$yield, cost = panel_summary$cost, vus_prob = vus_panel),
-    data.frame(strategy_label = "ES", effect = es_summary$yield, cost = es_summary$cost, vus_prob = vus_es),
-    data.frame(strategy_label = "Panel reflex to ES", effect = reflex_summary$yield_mean, cost = reflex_summary$cost_mean, vus_prob = vus_reflex),
-    data.frame(strategy_label = "GS (+10% yield)", effect = gs_scenario_summary$yield_mean, cost = gs_scenario_summary$cost_mean, vus_prob = vus_gs)
+    data.frame(strategy_label = strategy_display_label("Panel"), effect = panel_summary$yield, cost = panel_summary$cost, vus_prob = vus_panel),
+    data.frame(strategy_label = strategy_display_label("ES"), effect = es_summary$yield, cost = es_summary$cost, vus_prob = vus_es),
+    data.frame(strategy_label = strategy_display_label("Panel_Reflex_ES"), effect = reflex_summary$yield_mean, cost = reflex_summary$cost_mean, vus_prob = vus_reflex),
+    data.frame(strategy_label = "Genome sequencing (+10% yield)", effect = gs_scenario_summary$yield_mean, cost = gs_scenario_summary$cost_mean, vus_prob = vus_gs)
 )
 
 frontier_dominance <- perform_incremental_analysis(
@@ -265,9 +269,8 @@ write_csv_validated(ceac_final, OUTPUT_CEAC_TABLE, "ceac_table_gs_scenario")
 ceac_plot <- ceac_final %>%
     mutate(
         strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            strategy_label == "GS_scenario" ~ "GS (+10% yield)",
-            TRUE ~ strategy_label
+            strategy_label == "GS_scenario" ~ "Genome sequencing (+10% yield)",
+            TRUE ~ strategy_display_label(strategy_label)
         )
     )
 
@@ -278,7 +281,7 @@ p_ceac <- ggplot(ceac_plot, aes(x = wtp_threshold_cad, y = pr_cost_effective, co
     scale_x_continuous(labels = scales::dollar_format(prefix = "$", suffix = ""), expand = c(0, 0)) +
     labs(
         title = "Cost-Effectiveness Acceptability Curve (CEAC)",
-        subtitle = "Base-case strategies plus GS (+10% yield) scenario",
+        subtitle = "Base-case strategies plus genome sequencing (+10% yield) scenario",
         x = "Willingness-to-Pay per Additional Diagnosis (CAD)",
         y = "Probability Cost-Effective",
         color = NULL

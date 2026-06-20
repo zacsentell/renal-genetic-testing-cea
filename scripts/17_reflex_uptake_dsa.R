@@ -268,7 +268,7 @@ p <- ggplot(plot_data,
     labs(
         title    = "One-Way DSA: Reflex Testing Uptake Probability",
         subtitle = paste0(
-            "ICPD for Reflex (Panel\u2192ES) vs Panel by probability that\n",
+            "ICPD for Panel-first with exome reflex vs Phenotype-directed Panel by probability that\n",
             "panel-negative probands proceed to ES (base case = ",
             base_uptake * 100, "%)"
         ),

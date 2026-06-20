@@ -9,6 +9,8 @@ library(ggplot2)
 library(ggrepel)
 library(scales)
 
+source("scripts/utils_cea.R")
+
 # ==============================================================================
 # 1. Configuration
 # ==============================================================================
@@ -106,12 +108,7 @@ cat("Generating Tradeoff Plot...\n")
 
 # Clean labels for plot
 plot_data_tradeoff <- summary_table %>%
-    mutate(
-        strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            TRUE ~ strategy_label
-        )
-    )
+    mutate(strategy_display = strategy_display_label(strategy_label))
 
 p1 <- ggplot(plot_data_tradeoff, aes(x = yield_mean, y = vus_prob_mean)) +
     # Error bars

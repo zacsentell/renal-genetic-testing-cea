@@ -9,6 +9,7 @@ library(ggplot2)
 library(ggrepel)
 library(scales)
 source("scripts/utils_schema.R")
+source("scripts/utils_cea.R")
 
 INPUT_PHENO_CSV <- "outputs/results/base_case/iteration_level/phenotype_iteration_outcomes.csv"
 OUTPUT_DIR <- "outputs/results/supplement/phenotype_stratified"
@@ -82,14 +83,8 @@ assert_no_na(
 pheno_levels <- c("CKDu", "glomerular", "tubulointerstitial", "tubulopathies", "cystic")
 pheno_labels <- c("CKDu", "Glomerular", "Tubulointerstitial", "Tubulopathies", "Cystic")
 
-strategy_display_label <- function(x) {
-    dplyr::case_when(
-        x == "Panel_Reflex_ES" ~ "Reflex (Panel->ES)",
-        TRUE ~ x
-    )
-}
-
-strategy_display_levels <- c("Panel", "ES", "Reflex (Panel->ES)", "GS")
+# strategy_display_label() is provided by scripts/utils_cea.R
+strategy_display_levels <- strategy_display_label(c("Panel", "ES", "Panel_Reflex_ES", "GS"))
 strategy_cols_wtp_all <- setNames(
     scales::viridis_pal(option = "D", begin = 0.15, end = 0.85, direction = 1)(
         length(strategy_display_levels)
@@ -227,10 +222,10 @@ strategy_cols <- c(
     "GS" = "#7B1FA2"
 )
 strategy_labels_clean <- c(
-    "Panel" = "Panel",
-    "Panel_Reflex_ES" = "Reflex",
-    "ES" = "Exome",
-    "GS" = "Genome"
+    "Panel" = strategy_display_label("Panel"),
+    "Panel_Reflex_ES" = strategy_display_label("Panel_Reflex_ES"),
+    "ES" = strategy_display_label("ES"),
+    "GS" = strategy_display_label("GS")
 )
 
 arrow_data <- df_summary %>%

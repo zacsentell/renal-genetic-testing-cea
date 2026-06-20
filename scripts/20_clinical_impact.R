@@ -375,10 +375,10 @@ cat("Generating composite clinical impact figure...\n")
 
 # Strategy display labels
 strategy_display <- c(
-    "Panel" = "Panel",
-    "ES" = "ES",
-    "Panel_Reflex_ES" = "Reflex",
-    "GS" = "GS"
+    "Panel" = "Phenotype-directed Panel",
+    "ES" = "Exome-first",
+    "Panel_Reflex_ES" = "Panel-first with exome reflex",
+    "GS" = "Genome sequencing"
 )
 
 IMPACT_CATS_FIG <- c(
@@ -435,7 +435,7 @@ panel_a_data <- table1 %>%
             labels = category_display[IMPACT_CATS_FIG]
         ),
         strategy = strategy_display[strategy_label],
-        strategy = factor(strategy, levels = c("Panel", "ES", "Reflex", "GS"))
+        strategy = factor(strategy, levels = unname(strategy_display[c("Panel", "ES", "Panel_Reflex_ES", "GS")]))
     )
 
 p_panel_a <- ggplot(panel_a_data, aes(
@@ -582,7 +582,7 @@ p_panel_b <- ggplot(panel_b_data, aes(
         x = NULL,
         y = "Proportion of all probands in phenotype",
         title = "B. Impact by phenotype among all probands",
-        subtitle = "Reference strategy: Reflex (Panel to ES)."
+        subtitle = "Reference strategy: Panel-first with exome reflex."
     ) +
     plot_theme +
     theme(legend.position = "none")
@@ -698,7 +698,7 @@ p_panel_c <- ggplot(fig2_dots, aes(x = impact_category, y = gene_symbol)) +
         y = NULL,
         title = "C. Gene composition by impact category (Top 10)",
         subtitle = paste0(
-            "Reference strategy: Reflex (Panel to ES). ",
+            "Reference strategy: Panel-first with exome reflex. ",
             "Gene labels show High Impact cohort contribution."
         )
     ) +

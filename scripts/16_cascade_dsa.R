@@ -190,7 +190,7 @@ p <- ggplot(plot_data,
     labs(
         title    = "One-Way DSA: Cascade Testing Family Size",
         subtitle = paste0(
-            "ICPD for Reflex (Panel\u2192ES) vs Panel by number of eligible\n",
+            "ICPD for Panel-first with exome reflex vs Phenotype-directed Panel by number of eligible\n",
             "first-degree relatives tested per diagnosed proband (base case = ", base_n, ")"
         ),
         x        = "Eligible first-degree relatives per diagnosed proband (n)",

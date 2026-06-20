@@ -113,20 +113,25 @@ comp_long <- comp_wide %>%
 
 write_csv_validated(comp_long, COMP_TABLE, "cystic_cost_components_by_strategy")
 
+cystic_display_order <- strategy_display_label(comp_wide$strategy_label)
+
 plot_data <- comp_long %>%
     mutate(
-        strategy_label = factor(strategy_label, levels = comp_wide$strategy_label),
+        strategy_display = factor(strategy_display_label(strategy_label), levels = cystic_display_order),
         component_name = factor(component_name,
             levels = c("Genetics Visits", "Laboratory Testing", "Cascade Testing", "VUS Follow-up")
         )
     )
 
-p_comp <- ggplot(plot_data, aes(x = strategy_label, y = component_cost_per_proband_cad_mean, fill = component_name)) +
+comp_wide_disp <- comp_wide %>%
+    mutate(strategy_display = factor(strategy_display_label(strategy_label), levels = cystic_display_order))
+
+p_comp <- ggplot(plot_data, aes(x = strategy_display, y = component_cost_per_proband_cad_mean, fill = component_name)) +
     geom_col(width = 0.7, color = "white", linewidth = 0.3) +
     geom_errorbar(
-        data = comp_wide,
+        data = comp_wide_disp,
         aes(
-            x = strategy_label,
+            x = strategy_display,
             y = total_cost_per_proband_cad_mean,
             ymin = total_cost_per_proband_cad_ui_low,
             ymax = total_cost_per_proband_cad_ui_high
@@ -200,6 +205,7 @@ write_csv_validated(inc_table, INC_TABLE, "incremental_table_cystic")
 
 plot_df <- results %>%
     mutate(
+        strategy_display = strategy_display_label(strategy_label),
         is_frontier = dominance_status == "non_dominated",
         alpha_val = ifelse(is_frontier, 1, 0.4),
         size_val = ifelse(is_frontier, 3, 2)
@@ -224,10 +230,10 @@ p_frontier <- ggplot(plot_df, aes(x = effect, y = cost)) +
         color = "black", linewidth = 0.8, linetype = "solid"
     ) +
     geom_point(
-        aes(color = strategy_label, shape = strategy_label, alpha = alpha_val, size = size_val)
+        aes(color = strategy_display, shape = strategy_display, alpha = alpha_val, size = size_val)
     ) +
     geom_text_repel(
-        aes(label = strategy_label, alpha = alpha_val),
+        aes(label = strategy_display, alpha = alpha_val),
         size = 3.5, family = "sans",
         box.padding = 0.7, point.padding = 0.5,
         min.segment.length = 0.1, segment.size = 0.3,

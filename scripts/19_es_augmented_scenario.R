@@ -39,9 +39,9 @@ STRATEGY_MAP_AUG <- c(
 )
 
 STRATEGY_LABELS <- c(
-    "Panel"            = "Panel",
-    "ES_Augmented"     = "ES (Augmented)",
-    "Reflex_Augmented" = "Reflex (Augmented)"
+    "Panel"            = "Phenotype-directed Panel",
+    "ES_Augmented"     = "Exome-first (augmented)",
+    "Reflex_Augmented" = "Panel-first with exome reflex (augmented)"
 )
 
 # ==============================================================================

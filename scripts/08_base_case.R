@@ -22,6 +22,7 @@ COMP_FIG_BASE       <- "outputs/results/base_case/cost_composition/mean_cost_com
 
 INCREMENTAL_DIR     <- "outputs/results/incremental_analysis/base_case"
 OUTPUT_INCREMENTAL  <- file.path(INCREMENTAL_DIR, "incremental_table_base_case.csv")
+OUTPUT_VS_PANEL     <- file.path(INCREMENTAL_DIR, "incremental_vs_panel.csv")
 FRONTIER_FIG_BASE   <- file.path(INCREMENTAL_DIR, "efficiency_frontier_base_case")
 
 if (!dir.exists(INCREMENTAL_DIR)) dir.create(INCREMENTAL_DIR, recursive = TRUE)
@@ -130,25 +131,29 @@ assert_no_na(comp_summary_long, c("strategy_id", "strategy_label", "component_na
 
 write_csv_validated(comp_summary_long, OUTPUT_COMP_TABLE, "base_case_cost_components_by_strategy")
 
+strategy_display_order <- strategy_display_label(comp_summary_wide$strategy_label)
+
 plot_data <- comp_summary_long %>%
     mutate(
         component_name = factor(component_name,
             levels = c("Genetics Visits", "Laboratory Testing", "Cascade Testing", "VUS Follow-up")
         ),
-        strategy_label = factor(strategy_label,
-            levels = comp_summary_wide$strategy_label
+        strategy_display = factor(strategy_display_label(strategy_label),
+            levels = strategy_display_order
         )
     )
 
 errorbars <- comp_summary_wide %>%
-    select(strategy_label, total_cost_per_proband_cad_mean, total_cost_per_proband_cad_ui_low, total_cost_per_proband_cad_ui_high)
+    mutate(strategy_display = factor(strategy_display_label(strategy_label),
+        levels = strategy_display_order)) %>%
+    select(strategy_display, total_cost_per_proband_cad_mean, total_cost_per_proband_cad_ui_low, total_cost_per_proband_cad_ui_high)
 
-p_comp <- ggplot(plot_data, aes(x = strategy_label, y = component_cost_per_proband_cad_mean, fill = component_name)) +
+p_comp <- ggplot(plot_data, aes(x = strategy_display, y = component_cost_per_proband_cad_mean, fill = component_name)) +
     geom_col(width = 0.7, color = "white", linewidth = 0.3) +
     geom_errorbar(
         data = errorbars,
         aes(
-            x = strategy_label,
+            x = strategy_display,
             y = total_cost_per_proband_cad_mean,
             ymin = total_cost_per_proband_cad_ui_low,
             ymax = total_cost_per_proband_cad_ui_high
@@ -242,6 +247,47 @@ assert_frontier_first_incremental_na(output_table, table_name = "incremental_tab
 write_csv_validated(output_table, OUTPUT_INCREMENTAL, "incremental_table_base_case")
 cat("\nIncremental analysis table exported to:", OUTPUT_INCREMENTAL, "\n")
 
+# ==============================================================================
+# 3b. Incremental outcomes vs Panel (reference) for every other strategy
+# ==============================================================================
+# Unlike the frontier table (incremental vs the next non-dominated strategy), this
+# table reports every alternate strategy's incremental cost, yield, and cost per
+# additional diagnosis relative to the Panel reference, for direct report display.
+panel_ref <- summary_stats %>% filter(strategy_label == "Panel")
+if (nrow(panel_ref) != 1) {
+    stop("Expected exactly one Panel strategy row for incremental-vs-Panel computation")
+}
+
+vs_panel_table <- summary_stats %>%
+    filter(strategy_label != "Panel") %>%
+    transmute(
+        strategy_id,
+        strategy_label,
+        strategy_display = strategy_display_label(strategy_label),
+        total_cost_per_proband_cad_mean,
+        diagnoses_per_proband_mean,
+        cost_per_diagnosis_cad_mean,
+        incremental_cost_vs_panel_cad_mean =
+            total_cost_per_proband_cad_mean - panel_ref$total_cost_per_proband_cad_mean,
+        incremental_diagnoses_vs_panel_mean =
+            diagnoses_per_proband_mean - panel_ref$diagnoses_per_proband_mean
+    ) %>%
+    mutate(
+        icpd_vs_panel_cad_per_additional_diagnosis_mean = ifelse(
+            incremental_diagnoses_vs_panel_mean > 0,
+            incremental_cost_vs_panel_cad_mean / incremental_diagnoses_vs_panel_mean,
+            NA_real_
+        )
+    ) %>%
+    arrange(strategy_id)
+
+write_csv_validated(vs_panel_table, OUTPUT_VS_PANEL, "incremental_vs_panel")
+cat("\nIncremental-vs-Panel table exported to:", OUTPUT_VS_PANEL, "\n")
+print(as.data.frame(vs_panel_table %>%
+    select(strategy_display, incremental_cost_vs_panel_cad_mean,
+           incremental_diagnoses_vs_panel_mean,
+           icpd_vs_panel_cad_per_additional_diagnosis_mean)), row.names = FALSE)
+
 cat("\n=== Incremental Analysis Results ===\n\n")
 print(
     as.data.frame(output_table %>%
@@ -260,10 +306,7 @@ cat("\n--- Generating Efficiency Frontier Plot ---\n")
 
 results <- results %>%
     mutate(
-        strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            TRUE ~ strategy_label
-        ),
+        strategy_display = strategy_display_label(strategy_label),
         strategy_label_full = paste0(
             strategy_display, "\n(VUS: ", round(vus_prob * 100, 0), "%)"
         )
@@ -375,4 +418,5 @@ cat("  -", OUTPUT_SUMMARY, "\n")
 cat("  -", OUTPUT_COMP_TABLE, "\n")
 cat("  -", paste0(COMP_FIG_BASE, ".{png,svg}"), "\n")
 cat("  -", OUTPUT_INCREMENTAL, "\n")
+cat("  -", OUTPUT_VS_PANEL, "\n")
 cat("  -", paste0(FRONTIER_FIG_BASE, ".{png,svg}"), "\n")

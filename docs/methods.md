@@ -1,6 +1,6 @@
 # Methods
 
-Cost-effectiveness analysis (CEA) of genetic testing strategies for adults with chronic kidney disease (CKD) referred for suspected hereditary kidney disease. Perspective: Quebec public payer (RAMQ). Time horizon: 12-month diagnostic episode. Reporting follows CHEERS 2022.
+Cost-effectiveness analysis (CEA) of genetic testing strategies for adults with chronic kidney disease (CKD) referred for suspected hereditary kidney disease. Perspective: Quebec public payer (RAMQ). Time horizon: a 12-month diagnostic episode (or less), from pre-test genetics assessment and test ordering through result disclosure, modelled VUS follow-up, targeted follow-up testing, and first-degree relative cascade testing where applicable. Reporting follows CHEERS 2022.
 
 ---
 
@@ -10,9 +10,11 @@ Three strategies are compared:
 
 | # | Strategy | Description |
 |---|---|---|
-| 1 | **Panel** | Upfront targeted renal gene panel, matched to phenotype |
-| 2 | **ES** | Upfront clinical exome sequencing |
-| 3 | **Reflex (Panel→ES)** | Targeted panel first; unsolved cases reflex to clinical exome |
+| 1 | **Phenotype-directed Panel (reference)** | Upfront targeted renal gene panel, matched to phenotype category (the reference strategy) |
+| 2 | **Exome-first** | Upfront clinical exome sequencing (including CNV detection) |
+| 3 | **Panel-first with exome reflex** | Targeted panel first; unsolved cases reflex to clinical exome sequencing |
+
+For brevity, these are referred to below as Panel, ES (exome sequencing), and Reflex respectively.
 
 **Genome sequencing (GS)** is excluded from the base case because standard short-read pipelines lack validated detection of *MUC1* VNTR expansions (~3–5% of the renal genetics population). GS is evaluated in a scenario analysis (Section 8) modelling enhanced bioinformatics detection.
 
@@ -20,7 +22,7 @@ Three strategies are compared:
 
 ## 2. Target population
 
-Adults with CKD referred to a specialized renal genetics clinic (MUHC, Montreal). Five phenotype categories are modelled: Cystic, Glomerular, Tubulointerstitial, Tubulopathies, and CKD of unknown etiology (CKDu). All strategies model singleton proband testing; cascade testing of first-degree relatives is included as a cost component for diagnosed probands. Costs are in 2024 CAD. Long-term outcomes (CKD progression, dialysis, QALYs) are not modelled.
+Adults with CKD referred to a specialized renal genetics clinic (MUHC, Montreal). Five phenotype categories are modelled: Cystic, Glomerular, Tubulointerstitial, Tubulopathies, and CKD of unknown etiology (CKDu). All strategies model singleton proband testing; cascade testing of first-degree relatives is included as a cost component for diagnosed probands. Costs are in 2024 CAD. Long-term outcomes (CKD progression, dialysis, transplantation, renal replacement therapy costs, QALYs) are not modelled.
 
 ---
 
@@ -39,7 +41,7 @@ Each simulated proband goes through the following steps:
 
 1. **Phenotype assignment** — Dirichlet-multinomial draw from pooled phenotype proportions (literature synthesis).
 2. **Monogenic status** — Beta-distributed probability conditional on phenotype.
-3. **Causal architecture** — If monogenic, draw a (Gene, Inheritance mode, Variant class) triple from phenotype-specific empirical joint proportions derived from the curated variant table.
+3. **Causal architecture** — If monogenic, draw a (Gene, Variant class) pair from phenotype-specific empirical joint proportions derived from the curated variant table. Inheritance mode is not drawn independently; each gene carries its curated modal inheritance, so causal architecture is sampled as a gene-inheritance unit (for example, PKD1-AD), preserving recurrent gene-disease relationships.
 4. **Strategy application** — check gene coverage, apply analytic detection probability by modality and variant class. If detected: diagnose, accumulate costs, stop. If negative and strategy has reflex: draw a Bernoulli trial with probability equal to the reflex uptake parameter. Probands who accept proceed to the ES step; those who decline are counted as panel-only outcomes with no further testing costs.
 5. **VUS outcome** — independent Bernoulli draw per testing step using modality-specific Beta-distributed probabilities.
 6. **Cost accumulation** — sum clinical visits, laboratory testing, VUS follow-up, and cascade testing for diagnosed probands.
@@ -90,7 +92,7 @@ Parameterised from a structured MEDLINE search of adult renal genetics cohorts (
 
 ### 4.2 Causal architecture
 
-Phenotype-specific empirical joint proportions for (Gene, Inheritance mode, Variant class) derived from the curated variant table (`data/raw/variant_curation.xlsx`). One row per P/LP variant: gene, HGVS notation, variant class, zygosity, inheritance mode, test modality. Audit trail in `data/audit/01_variant_imported.csv`, `02_variant_difficult.csv`, `02_variant_standard.csv`.
+Phenotype-specific empirical joint proportions for (Gene, Variant class) derived from the curated variant table (`data/raw/variant_curation.xlsx`). One row per P/LP variant: gene, HGVS notation, variant class, zygosity, inheritance mode, test modality. Inheritance mode is not part of the multinomial draw; each gene is sampled together with its curated modal inheritance as a single gene-inheritance unit, so recurrent gene-disease relationships (for example, PKD1-AD) are preserved. Audit trail in `data/audit/01_variant_imported.csv`, `02_variant_difficult.csv`, `02_variant_standard.csv`.
 
 ### 4.3 Analytic detection
 
@@ -123,10 +125,10 @@ Two probabilities govern whether a proband completes an offered testing step. Bo
 
 | Parameter | Base Case | PSA Prior | DSA Range | Source |
 |---|---|---|---|---|
-| Reflex ES uptake | 50% | Beta(5,5); mean 0.50 [0.19–0.81] | 20%–100% | Bindhu et al. |
+| Reflex ES uptake | 20% | Beta(4,16); mean 0.20 [0.06–0.40] | 0%–100% | MUHC practice; Bindhu et al. |
 | Cascade uptake | 100% | Fixed (structural assumption) | — | — |
 
-Reflex ES uptake is the probability that a panel-negative proband proceeds to ES when offered. A Bernoulli trial is drawn independently per proband at each PSA iteration. Cascade uptake is held at 100% as a structural upper-bound assumption; this creates a conservative cost-effectiveness bias against higher-yield strategies because high-yield strategies trigger more cascade testing at 100% uptake.
+Reflex ES uptake is the probability that a panel-negative proband proceeds to ES when offered. It is set to 20% in the base case, reflecting observed practice in the MUHC renal genetics clinic and practical barriers to completing a second test, within the 15% to 40% range reported after a nondiagnostic kidney gene panel. A Bernoulli trial is drawn independently per proband at each PSA iteration. Cascade uptake is held at 100% as a structural upper-bound assumption; this creates a conservative cost-effectiveness bias against higher-yield strategies because high-yield strategies trigger more cascade testing at 100% uptake.
 
 ### 4.6 Unit costs (2024 CAD)
 
@@ -187,13 +189,13 @@ A gene was classified as high clinical impact if it mapped to at least one prima
 ## 7. Subgroup and scenario analyses
 
 - **Cystic subgroup:** base-case CEA restricted to cystic phenotype (`09_cystic_subgroup.R`). Clinically relevant because the cystic panel bundles a targeted PKD1 assay, giving Panel a structural detection advantage over standalone ES.
-- **Phenotype stratification:** Reflex (Panel→ES) outcomes by phenotype category (`11_phenotype_figure.R`).
+- **Phenotype stratification:** Reflex (Panel-first with exome reflex) outcomes by phenotype category (`11_phenotype_figure.R`).
 - **Phenotype-specific WTP winners:** most probable cost-effective strategy by phenotype at selected WTP anchors, reported as a matrix figure and findings tables (`11_phenotype_figure.R`).
 - **GS scenario:** +10% relative yield uplift applied to GS arm to model enhanced bioinformatics detection of difficult loci. GS scenario compared against Reflex as the incumbent frontier strategy (`15_gs_uplift_scenario.R`). The uplift is a deterministic scenario assumption; uncertainty in its magnitude is not propagated through the PSA.
 - **PKD1 full detection scenario:** PKD1 difficult-locus detection overridden to 100% for all panels and ES, representing a near-future state where optimised capture and pseudogene-aware bioinformatics eliminate the current PKD1 detection barrier (`18_pkd1_full_detection_scenario.R`). A full PSA re-run (1,000 iterations × 1,000 probands) is performed. MUC1 VNTR detection is unchanged. Test costs are unchanged.
 - **ES augmented scenario:** ES is co-ordered with phenotype-directed difficult-locus assays (PKD1 long-range PCR universal, MUC1 VNTR for tubulointerstitial), with assay costs absorbed in the ES unit price (`19_es_augmented_scenario.R`). A full PSA re-run is performed.
 - **Cascade eligible relatives DSA:** one-way sensitivity varying the number of eligible first-degree relatives from 0 to 4 (`16_cascade_dsa.R`). Examines whether frontier ranking is preserved across cascade assumptions.
-- **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 20% to 100% (`17_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
+- **Reflex uptake DSA:** one-way sensitivity varying reflex ES uptake from 0% to 100% (`17_reflex_uptake_dsa.R`). Examines incremental cost per additional diagnosis as a function of the proportion of panel-negative probands who proceed to ES.
 
 ### 7.1 Phenotype-specific WTP winner analysis
 
@@ -217,5 +219,5 @@ WTP anchors are derived deterministically from the configured WTP range and step
 4. **VUS modelling.** Binary per-proband outcome; VUS count, gene-specific rates, and correlation with diagnosis are not modelled.
 5. **Cost sources.** Send-out pricing and RAMQ list prices; in-house and negotiated institutional pricing may differ.
 6. **Referral population.** Synthetic cohort derived from published case series; phenotype proportions may not generalise to all renal genetics referral populations.
-7. **Uptake assumptions.** Cascade testing is modelled at 100% uptake (structural upper-bound assumption), which creates a conservative bias against higher-yield strategies. Reflex ES uptake is set to 50% in the base case, based on published cascade and reflex acceptance estimates; the impact of varying this from 20% to 100% is characterised in the reflex uptake DSA.
+7. **Uptake assumptions.** Cascade testing is modelled at 100% uptake (structural upper-bound assumption), which creates a conservative bias against higher-yield strategies. Reflex ES uptake is set to 20% in the base case, reflecting observed MUHC renal genetics clinic practice and consistent with the 15% to 40% range reported after a nondiagnostic kidney gene panel; the impact of varying this from 0% to 100% is characterised in the reflex uptake DSA.
 

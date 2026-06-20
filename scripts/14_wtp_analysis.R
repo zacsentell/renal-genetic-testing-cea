@@ -51,12 +51,7 @@ write_csv_validated(final_ceac, OUTPUT_TABLE, "ceac_table")
 # 4. Figure
 # ==============================================================================
 plot_data <- final_ceac %>%
-    mutate(
-        strategy_display = case_when(
-            strategy_label == "Panel_Reflex_ES" ~ "Panel reflex to ES",
-            TRUE ~ strategy_label
-        )
-    )
+    mutate(strategy_display = strategy_display_label(strategy_label))
 
 p <- ggplot(plot_data, aes(x = wtp_threshold_cad, y = pr_cost_effective, color = strategy_display)) +
     geom_line(linewidth = 1.0) +
